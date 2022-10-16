@@ -39,7 +39,7 @@
     "@typescript-eslint/parser": "^5.40.0",
     "chalk": "^4.1.0",
     "cli": "^1.0.1",
-    "nestia": "^3.1.1",
+    "nestia": "^3.1.2",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "source-map-support": "^0.5.21",
@@ -56,7 +56,7 @@
     "raw-body": "^2.5.1",
     "rxjs": "^7.5.7",
     "tstl": "^2.5.12",
-    "typescript-json": "^3.3.10",
+    "typescript-json": "^3.3.11",
     "uuid": "^9.0.0"
   }
 }
