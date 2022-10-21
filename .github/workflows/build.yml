@@ -11,6 +11,9 @@ jobs:
       - name: Install Backend-Server
         run: npm install
 
+      - name: Build SDK
+        run: npm run build:sdk
+
       - name: Compile Backend-Server
         run: npm run build
 
