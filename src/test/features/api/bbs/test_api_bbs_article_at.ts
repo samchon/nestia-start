@@ -1,4 +1,4 @@
-import TSON from "typescript-json";
+import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
@@ -28,7 +28,7 @@ export async function test_api_bbs_article_at(
             password: "1234",
         },
     );
-    TSON.assertEquals(stored);
+    typia.assertEquals(stored);
 
     // READ IT
     const read: IBbsArticle = await api.functional.bbs.articles.at(
@@ -36,10 +36,10 @@ export async function test_api_bbs_article_at(
         stored.section,
         stored.id,
     );
-    TSON.assertEquals(read);
+    typia.assertEquals(read);
 
     // CHECK EQUALITY
-    if (api.Primitive.equal_to(stored, read) === false)
+    if (JSON.stringify(stored) !== JSON.stringify(read))
         throw new Error("Bug on BbsArticleProvider.at(): different data.");
 
     // TRY 404 ERRORS

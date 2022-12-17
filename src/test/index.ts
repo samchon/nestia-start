@@ -17,7 +17,6 @@ async function main(): Promise<void> {
     // DO TEST
     const connection: api.IConnection = {
         host: `http://127.0.0.1:${await Configuration.API_PORT()}`,
-        encryption: await Configuration.ENCRYPTION_PASSWORD(),
     };
     const exceptions: Error[] = await DynamicImportIterator.force(
         __dirname + "/features",

@@ -1,4 +1,4 @@
-import TSON from "typescript-json";
+import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
@@ -28,7 +28,7 @@ export async function test_api_bbs_article_store(
             password: v4(),
         },
     );
-    TSON.assertEquals(stored);
+    typia.assertEquals(stored);
 
     // READ THE DATA AGAIN
     const read: IBbsArticle = await api.functional.bbs.articles.at(
@@ -36,7 +36,7 @@ export async function test_api_bbs_article_store(
         stored.section,
         stored.id,
     );
-    TSON.assertEquals(read);
+    typia.assertEquals(read);
 
     // CHECK EXISTENCE
     if (read.id !== stored.id)

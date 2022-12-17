@@ -1,4 +1,4 @@
-import TSON from "typescript-json";
+import typia from "typia";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
@@ -23,7 +23,7 @@ export async function test_api_bbs_article_index_search(
             password: RandomGenerator.alphabets(8),
         }),
     );
-    TSON.assertEquals(articles);
+    typia.assertEquals(articles);
 
     // DO SEARCH
     const validator = search(connection, articles);
@@ -72,7 +72,7 @@ const search =
                 "general",
                 input,
             );
-        TSON.assertEquals(page);
+        typia.assertEquals(page);
 
         validate_index(
             `BbsArticleProvider.index() with ${field} searching`,

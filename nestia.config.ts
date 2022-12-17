@@ -1,7 +1,7 @@
 // nestia configuration file
-import type nestia from "nestia";
+import type sdk from "@nestia/sdk";
 
-const NESTIA_CONFIG: nestia.IConfiguration = {
+const NESTIA_CONFIG: sdk.INestiaConfig = {
     input: "src/controllers",
     output: "src/api",
     swagger: {
