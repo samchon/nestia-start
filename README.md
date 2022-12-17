@@ -79,7 +79,7 @@ During the test automation program development, you can find that which API is m
 > 4. Main Program
 
 ```typescript
-import TSON from "typescript-json";
+import typia from "typia";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
@@ -104,7 +104,7 @@ export async function test_api_bbs_article_index_sort(
             password: RandomGenerator.alphabets(8),
         }),
     );
-    TSON.assertEquals(articles);
+    typia.assertEquals(articles);
 
     // PREPARE VALIDATOR
     const validator = validate_index_sort("BbsArticleProvider.idex()")(

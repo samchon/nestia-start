@@ -1,4 +1,4 @@
-import TSON from "typescript-json";
+import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
@@ -30,7 +30,7 @@ export async function test_api_bbs_article_update(
             password,
         },
     );
-    TSON.assertEquals(article);
+    typia.assertEquals(article);
 
     // UPDATE WITH EXACT PASSWORD
     const content: IBbsArticle.IContent =
@@ -46,7 +46,7 @@ export async function test_api_bbs_article_update(
                 password,
             },
         );
-    article.contents.push(TSON.assertEquals(content));
+    article.contents.push(typia.assertEquals(content));
 
     // TRY UPDATE WITH WRONG PASSWORD
     await exception_must_be_thrown("update with wrong password", () =>

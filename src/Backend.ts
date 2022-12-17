@@ -1,7 +1,7 @@
+import core from "@nestia/core";
 import { INestApplication } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import express from "express";
-import helper from "nestia-helper";
 
 import { Configuration } from "./Configuration";
 
@@ -15,10 +15,7 @@ export class Backend {
         //----
         // MOUNT CONTROLLERS
         this.application_ = await NestFactory.create(
-            await helper.EncryptedModule.dynamic(
-                __dirname + "/controllers",
-                await Configuration.ENCRYPTION_PASSWORD(),
-            ),
+            await core.DynamicModule.mount(__dirname + "/controllers"),
             { logger: false },
         );
 

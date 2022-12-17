@@ -1,1 +1,1 @@
-export { AesPkcs5 } from "nestia-fetcher";
+export { AesPkcs5 } from "@nestia/fetcher";

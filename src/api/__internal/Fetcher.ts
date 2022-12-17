@@ -1,1 +1,1 @@
-export { Fetcher } from "nestia-fetcher";
+export { Fetcher } from "@nestia/fetcher";

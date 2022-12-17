@@ -1,5 +1,5 @@
+import core from "@nestia/core";
 import { Controller } from "@nestjs/common";
-import helper from "nestia-helper";
 
 import { IBbsArticle } from "../api/structures/bbs/IBbsArticle";
 import { IPage } from "../api/structures/common/IPage";
@@ -19,10 +19,10 @@ export class BbsArticlesController {
      * @param input Pagination request info with searching and sorting options
      * @returns Paged articles witb summarization
      */
-    @helper.EncryptedRoute.Patch()
+    @core.TypedRoute.Patch()
     public index(
-        @helper.TypedParam("section", "string") section: string,
-        @helper.TypedBody() input: IBbsArticle.IRequest,
+        @core.TypedParam("section", "string") section: string,
+        @core.TypedBody() input: IBbsArticle.IRequest,
     ): Promise<IPage<IBbsArticle.ISummary>> {
         return BbsArticleProvider.index(section, input);
     }
@@ -34,10 +34,10 @@ export class BbsArticlesController {
      * @param id Target articles id
      * @returns Detailed article info
      */
-    @helper.TypedRoute.Get(":id")
+    @core.TypedRoute.Get(":id")
     public at(
-        @helper.TypedParam("section", "string") section: string,
-        @helper.TypedParam("id", "uuid") id: string,
+        @core.TypedParam("section", "string") section: string,
+        @core.TypedParam("id", "uuid") id: string,
     ): Promise<IBbsArticle> {
         return BbsArticleProvider.find(section, id);
     }
@@ -49,10 +49,10 @@ export class BbsArticlesController {
      * @param input New article info
      * @returns Newly created article info
      */
-    @helper.TypedRoute.Post()
+    @core.TypedRoute.Post()
     public store(
-        @helper.TypedParam("section", "string") section: string,
-        @helper.TypedBody() input: IBbsArticle.IStore,
+        @core.TypedParam("section", "string") section: string,
+        @core.TypedBody() input: IBbsArticle.IStore,
     ): Promise<IBbsArticle> {
         return BbsArticleProvider.store(section, input);
     }
@@ -69,11 +69,11 @@ export class BbsArticlesController {
      * @param input Content to update
      * @returns Newly created content info
      */
-    @helper.TypedRoute.Put(":id")
+    @core.TypedRoute.Put(":id")
     public update(
-        @helper.TypedParam("section", "string") section: string,
-        @helper.TypedParam("id", "uuid") id: string,
-        @helper.TypedBody() input: IBbsArticle.IUpdate,
+        @core.TypedParam("section", "string") section: string,
+        @core.TypedParam("id", "uuid") id: string,
+        @core.TypedBody() input: IBbsArticle.IUpdate,
     ): Promise<IBbsArticle.IContent> {
         return BbsArticleProvider.update(section, id, input);
     }

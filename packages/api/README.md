@@ -49,7 +49,7 @@ async function main(): Promise<void>
             password: "1234",
         },
     );
-    TSON.assertEquals(stored);
+    typia.assertEquals(stored);
 
     const page: IPage<IBbsArticle> = await api.functional.bbs.articles.index(
         connection,
@@ -61,6 +61,6 @@ async function main(): Promise<void>
             }
         }
     );
-    await TSON.assertEquals(page);
+    await typia.assertEquals(page);
 }
 ```
