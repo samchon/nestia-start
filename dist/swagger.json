@@ -35,7 +35,8 @@
               }
             }
           },
-          "required": true
+          "required": true,
+          "x-nestia-encrypted": false
         },
         "responses": {
           "201": {
@@ -46,10 +47,57 @@
                   "$ref": "#/components/schemas/IPage_lt_IBbsArticle.ISummary_gt_"
                 }
               }
-            }
+            },
+            "x-nestia-encrypted": false
           }
         },
-        "description": "List up entire articles, but paginated and summarized."
+        "description": "List up entire articles, but paginated and summarized.",
+        "x-nestia-namespace": "bbs.articles.index",
+        "x-nestia-jsDocTags": [
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "section",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "Target section",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "input",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "Pagination request info with searching and sorting options",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "returns",
+            "text": [
+              {
+                "text": "Paged articles witb summarization",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [],
@@ -74,7 +122,8 @@
               }
             }
           },
-          "required": true
+          "required": true,
+          "x-nestia-encrypted": false
         },
         "responses": {
           "201": {
@@ -85,10 +134,57 @@
                   "$ref": "#/components/schemas/IBbsArticle"
                 }
               }
-            }
+            },
+            "x-nestia-encrypted": false
           }
         },
-        "description": "Store a new article."
+        "description": "Store a new article.",
+        "x-nestia-namespace": "bbs.articles.store",
+        "x-nestia-jsDocTags": [
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "section",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "Target section",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "input",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "New article info",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "returns",
+            "text": [
+              {
+                "text": "Newly created article info",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       }
     },
     "/bbs/articles/{section}/{id}": {
@@ -125,10 +221,57 @@
                   "$ref": "#/components/schemas/IBbsArticle"
                 }
               }
-            }
+            },
+            "x-nestia-encrypted": false
           }
         },
-        "description": "Get an article with detailed info."
+        "description": "Get an article with detailed info.",
+        "x-nestia-namespace": "bbs.articles.at",
+        "x-nestia-jsDocTags": [
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "section",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "Target section",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "id",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "Target articles id",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "returns",
+            "text": [
+              {
+                "text": "Detailed article info",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [],
@@ -163,7 +306,8 @@
               }
             }
           },
-          "required": true
+          "required": true,
+          "x-nestia-encrypted": false
         },
         "responses": {
           "201": {
@@ -174,10 +318,74 @@
                   "$ref": "#/components/schemas/IBbsArticle.IContent"
                 }
               }
-            }
+            },
+            "x-nestia-encrypted": false
           }
         },
-        "description": "Update article.\n\nWhen updating, this BBS system does not overwrite the content, but accumulate it.\nTherefore, whenever an article being updated, length of {@link IBbsArticle.contents}\nwould be increased and accumulated."
+        "description": "Update article.\n\nWhen updating, this BBS system does not overwrite the content, but accumulate it.\nTherefore, whenever an article being updated, length of {@link IBbsArticle.contents}\nwould be increased and accumulated.",
+        "x-nestia-namespace": "bbs.articles.update",
+        "x-nestia-jsDocTags": [
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "section",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "Target section",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "id",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "Target articles id",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "input",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "Content to update",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "returns",
+            "text": [
+              {
+                "text": "Newly created content info",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -251,7 +459,7 @@
         },
         "nullable": false,
         "description": "Page request info with some options.",
-        "x-typia_jsDocTags": []
+        "x-typia-jsDocTags": []
       },
       "IBbsArticle.IRequest.ISearch": {
         "type": "object",
@@ -274,7 +482,7 @@
         },
         "nullable": false,
         "description": "Searching options.",
-        "x-typia_jsDocTags": []
+        "x-typia-jsDocTags": []
       },
       "IPage_lt_IBbsArticle.ISummary_gt_": {
         "type": "object",
@@ -302,7 +510,7 @@
           "data"
         ],
         "description": "Paged record set.",
-        "x-typia_jsDocTags": [
+        "x-typia-jsDocTags": [
           {
             "name": "author",
             "text": [
@@ -362,7 +570,7 @@
           "total_pages"
         ],
         "description": "Pagination info.",
-        "x-typia_jsDocTags": []
+        "x-typia-jsDocTags": []
       },
       "IBbsArticle.ISummary": {
         "type": "object",
@@ -402,7 +610,7 @@
           "updated_at"
         ],
         "description": "Summarized info.",
-        "x-typia_jsDocTags": []
+        "x-typia-jsDocTags": []
       },
       "IBbsArticle": {
         "type": "object",
@@ -470,7 +678,7 @@
           "created_at"
         ],
         "description": "BBS article.",
-        "x-typia_jsDocTags": []
+        "x-typia-jsDocTags": []
       },
       "IBbsArticle.IContent": {
         "type": "object",
@@ -550,7 +758,7 @@
           "files"
         ],
         "description": "Content info.",
-        "x-typia_jsDocTags": []
+        "x-typia-jsDocTags": []
       },
       "IAttachmentFile": {
         "type": "object",
@@ -577,7 +785,7 @@
           "extension",
           "url"
         ],
-        "x-typia_jsDocTags": []
+        "x-typia-jsDocTags": []
       },
       "IBbsArticle.IStore": {
         "type": "object",
@@ -639,7 +847,7 @@
           "password"
         ],
         "description": "Store info.",
-        "x-typia_jsDocTags": []
+        "x-typia-jsDocTags": []
       },
       "IBbsArticle.IUpdate": {
         "type": "object",
@@ -694,7 +902,7 @@
           "password"
         ],
         "description": "Update info.",
-        "x-typia_jsDocTags": []
+        "x-typia-jsDocTags": []
       }
     }
   }

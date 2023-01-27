@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/samchon/nestia-template#readme",
   "devDependencies": {
-    "@nestia/sdk": "^1.0.0",
+    "@nestia/sdk": "^1.0.5",
     "@trivago/prettier-plugin-sort-imports": "^3.3.1",
     "@types/cli": "^0.11.21",
     "@types/express": "^4.17.14",
@@ -40,7 +40,7 @@
     "@typescript-eslint/parser": "^5.40.0",
     "chalk": "^4.1.0",
     "cli": "^1.0.1",
-    "nestia": "^4.0.0",
+    "nestia": "^4.0.5",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "source-map-support": "^0.5.21",
@@ -50,9 +50,9 @@
     "typescript-transform-paths": "^3.4.4"
   },
   "dependencies": {
-    "@nestia/core": "^1.0.0",
+    "@nestia/core": "^1.0.10",
     "tstl": "^2.5.12",
-    "typia": "^3.4.9",
+    "typia": "^3.4.22",
     "uuid": "^9.0.0"
   }
 }
