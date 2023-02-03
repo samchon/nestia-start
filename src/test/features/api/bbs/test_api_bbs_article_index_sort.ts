@@ -1,12 +1,14 @@
+import {
+    ArrayUtil,
+    GaffComparator,
+    RandomGenerator,
+    TestValidator,
+} from "@nestia/e2e";
 import typia from "typia";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
-
-import { ArrayUtil } from "../../../../utils/ArrayUtil";
-import { GaffComparator } from "../../../internal/GaffComparator";
-import { RandomGenerator } from "../../../internal/RandomGenerator";
-import { validate_index_sort } from "../../../internal/validate_index_sort";
+import { IPage } from "@ORGANIZATION/PROJECT-api/lib/structures/common/IPage";
 
 export async function test_api_bbs_article_index_sort(
     connection: api.IConnection,
@@ -16,8 +18,8 @@ export async function test_api_bbs_article_index_sort(
     const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100, () =>
         api.functional.bbs.articles.store(connection, section, {
             writer: RandomGenerator.name(),
-            title: RandomGenerator.paragraph(),
-            body: RandomGenerator.content(),
+            title: RandomGenerator.paragraph(5)(),
+            body: RandomGenerator.content(8)()(),
             format: "txt",
             files: [],
             password: RandomGenerator.alphabets(8),
@@ -26,9 +28,17 @@ export async function test_api_bbs_article_index_sort(
     typia.assertEquals(articles);
 
     // PREPARE VALIDATOR
-    const validator = validate_index_sort("BbsArticleProvider.idex()")(
-        (input: IBbsArticle.IRequest) =>
-            api.functional.bbs.articles.index(connection, section, input),
+    const validator = TestValidator.sort("BbsArticleProvider.index()")(
+        async (
+            sort: IPage.IRequest.Sort<IBbsArticle.IRequest.SortableColumns>,
+        ) => {
+            const page: IPage<IBbsArticle.ISummary> =
+                await api.functional.bbs.articles.index(connection, section, {
+                    limit: 100,
+                    sort,
+                });
+            return typia.assertEquals(page).data;
+        },
     );
 
     // DO VALIDATE
@@ -43,7 +53,7 @@ export async function test_api_bbs_article_index_sort(
         )(GaffComparator.strings((x) => [x.writer, x.title])),
     ];
     for (const comp of components) {
-        await comp("+");
-        await comp("-");
+        await comp("+", false);
+        await comp("-", false);
     }
 }

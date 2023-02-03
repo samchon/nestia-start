@@ -1,10 +1,10 @@
+import { DynamicExecutor } from "@nestia/e2e";
 import { sleep_for } from "tstl/thread/global";
 
 import api from "@ORGANIZATION/PROJECT-api";
 
 import { Backend } from "../Backend";
 import { Configuration } from "../Configuration";
-import { DynamicImportIterator } from "./internal/DynamicImportIterator";
 
 async function main(): Promise<void> {
     // BACKEND SERVER
@@ -18,13 +18,10 @@ async function main(): Promise<void> {
     const connection: api.IConnection = {
         host: `http://127.0.0.1:${await Configuration.API_PORT()}`,
     };
-    const exceptions: Error[] = await DynamicImportIterator.force(
-        __dirname + "/features",
-        {
-            prefix: "test",
-            parameters: () => [connection],
-        },
-    );
+    const report: DynamicExecutor.IReport = await DynamicExecutor.validate({
+        prefix: "test",
+        parameters: () => [connection],
+    })(__dirname + "/features");
 
     // WAIT FOR A WHILE FOR THE EVENTS
     await sleep_for(2500);
@@ -32,9 +29,11 @@ async function main(): Promise<void> {
     // TERMINATE
     await backend.close();
 
-    if (exceptions.length === 0) console.log("Success");
+    const failures: DynamicExecutor.IReport.IExecution[] =
+        report.executions.filter((exec) => exec.error !== null);
+    if (report.executions.length === 0) console.log("Success");
     else {
-        for (const exp of exceptions) console.log(exp);
+        for (const f of failures) console.log(f.error);
         process.exit(-1);
     }
 }

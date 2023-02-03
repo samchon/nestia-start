@@ -1,11 +1,9 @@
+import { RandomGenerator, TestValidator } from "@nestia/e2e";
 import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
-
-import { RandomGenerator } from "../../../internal/RandomGenerator";
-import { exception_must_be_thrown } from "../../../internal/exception_must_be_thrown";
 
 export async function test_api_bbs_article_update(
     connection: api.IConnection,
@@ -17,8 +15,8 @@ export async function test_api_bbs_article_update(
         "general",
         {
             writer: RandomGenerator.name(),
-            title: RandomGenerator.paragraph(),
-            body: RandomGenerator.content(),
+            title: RandomGenerator.paragraph(3)(),
+            body: RandomGenerator.content(8)()(),
             format: "txt",
             files: [
                 {
@@ -39,8 +37,8 @@ export async function test_api_bbs_article_update(
             article.section,
             article.id,
             {
-                title: RandomGenerator.paragraph(),
-                body: RandomGenerator.content(),
+                title: RandomGenerator.paragraph(3)(),
+                body: RandomGenerator.content(8)()(),
                 format: "txt",
                 files: [],
                 password,
@@ -49,14 +47,14 @@ export async function test_api_bbs_article_update(
     article.contents.push(typia.assertEquals(content));
 
     // TRY UPDATE WITH WRONG PASSWORD
-    await exception_must_be_thrown("update with wrong password", () =>
+    await TestValidator.error("update with wrong password")(() =>
         api.functional.bbs.articles.update(
             connection,
             article.section,
             article.id,
             {
-                title: RandomGenerator.paragraph(),
-                body: RandomGenerator.content(),
+                title: RandomGenerator.paragraph(5)(),
+                body: RandomGenerator.content(8)()(),
                 format: "txt",
                 files: [],
                 password: v4(),

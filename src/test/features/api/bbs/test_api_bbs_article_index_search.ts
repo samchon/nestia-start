@@ -1,12 +1,9 @@
+import { ArrayUtil, RandomGenerator, TestValidator } from "@nestia/e2e";
 import typia from "typia";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
 import { IPage } from "@ORGANIZATION/PROJECT-api/lib/structures/common/IPage";
-
-import { ArrayUtil } from "../../../../utils/ArrayUtil";
-import { RandomGenerator } from "../../../internal/RandomGenerator";
-import { validate_index } from "../../../internal/validate_index";
 
 export async function test_api_bbs_article_index_search(
     connection: api.IConnection,
@@ -16,8 +13,8 @@ export async function test_api_bbs_article_index_search(
     const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100, () =>
         api.functional.bbs.articles.store(connection, section, {
             writer: RandomGenerator.name(),
-            title: RandomGenerator.paragraph(),
-            body: RandomGenerator.content(),
+            title: RandomGenerator.paragraph(4)(),
+            body: RandomGenerator.content(3)()(),
             format: "txt",
             files: [],
             password: RandomGenerator.alphabets(8),
@@ -26,7 +23,7 @@ export async function test_api_bbs_article_index_search(
     typia.assertEquals(articles);
 
     // DO SEARCH
-    const validator = search(connection, articles);
+    const validator = search(connection)(articles);
     await validator(
         "writer",
         (x) => x.writer,
@@ -45,9 +42,10 @@ export async function test_api_bbs_article_index_search(
 }
 
 const search =
-    (connection: api.IConnection, total: IBbsArticle[]) =>
+    (connection: api.IConnection) =>
+    (total: IBbsArticle[]) =>
     async (
-        field: string,
+        field: "writer" | "title" | "body",
         getter: (
             record: IBbsArticle,
             input: IBbsArticle.IRequest.ISearch,
@@ -62,10 +60,11 @@ const search =
             RandomGenerator.pick(total),
             input.search!,
         );
+        input.search![field] = value;
+
         const matched: IBbsArticle[] = total.filter((elem) =>
             filter(elem, value),
         );
-
         const page: IPage<IBbsArticle.ISummary> =
             await api.functional.bbs.articles.index(
                 connection,
@@ -74,9 +73,7 @@ const search =
             );
         typia.assertEquals(page);
 
-        validate_index(
+        TestValidator.index(
             `BbsArticleProvider.index() with ${field} searching`,
-            matched,
-            page.data,
-        );
+        )(matched)(page.data);
     };

@@ -1,10 +1,9 @@
+import { RandomGenerator } from "@nestia/e2e";
 import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
-
-import { RandomGenerator } from "../../../internal/RandomGenerator";
 
 export async function test_api_bbs_article_store(
     connection: api.IConnection,
@@ -15,8 +14,8 @@ export async function test_api_bbs_article_store(
         "general",
         {
             writer: RandomGenerator.name(),
-            title: RandomGenerator.paragraph(),
-            body: RandomGenerator.content(),
+            title: RandomGenerator.paragraph(3)(),
+            body: RandomGenerator.content(8)()(),
             format: "txt",
             files: [
                 {

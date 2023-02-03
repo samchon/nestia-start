@@ -1,10 +1,9 @@
+import { TestValidator } from "@nestia/e2e";
 import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
-
-import { exception_must_be_thrown } from "../../../internal/exception_must_be_thrown";
 
 export async function test_api_bbs_article_at(
     connection: api.IConnection,
@@ -43,10 +42,10 @@ export async function test_api_bbs_article_at(
         throw new Error("Bug on BbsArticleProvider.at(): different data.");
 
     // TRY 404 ERRORS
-    await exception_must_be_thrown("wrong section", () =>
+    await TestValidator.error("wrong section")(() =>
         api.functional.bbs.articles.at(connection, v4(), stored.id),
     );
-    await exception_must_be_thrown("wrong id", () =>
+    await TestValidator.error("wrong id")(() =>
         api.functional.bbs.articles.at(connection, stored.section, v4()),
     );
 }

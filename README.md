@@ -107,7 +107,7 @@ export async function test_api_bbs_article_index_sort(
     typia.assertEquals(articles);
 
     // PREPARE VALIDATOR
-    const validator = validate_index_sort("BbsArticleProvider.idex()")(
+    const validator = validate_index_sort("BbsArticleProvider.index()")(
         (input: IBbsArticle.IRequest) =>
             api.functional.bbs.articles.index(connection, section, input),
     );

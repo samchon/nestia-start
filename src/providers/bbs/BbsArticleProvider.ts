@@ -50,9 +50,9 @@ export namespace BbsArticleProvider {
         }
 
         // SORT
-        if (input.sort?.length) {
+        if (input.sort?.length)
             for (const comp of input.sort.reverse())
-                articles = articles.sort((x, y) => {
+                articles.sort((x, y) => {
                     const sign = comp[0];
                     const column = comp.substring(1);
                     const closure = () => {
@@ -79,13 +79,12 @@ export namespace BbsArticleProvider {
                     };
                     return sign === "+" ? closure() : -closure();
                 });
-        } else {
+        else
             articles.sort(
                 (a, b) =>
                     new Date(b.created_at).getTime() -
                     new Date(a.created_at).getTime(),
             );
-        }
 
         // PAGINATION
         const limit: number = input.limit || 100;
