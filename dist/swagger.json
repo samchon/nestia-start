@@ -51,6 +51,7 @@
             "x-nestia-encrypted": false
           }
         },
+        "summary": "List up entire articles, but paginated and summarized",
         "description": "List up entire articles, but paginated and summarized.",
         "x-nestia-namespace": "bbs.articles.index",
         "x-nestia-jsDocTags": [
@@ -138,6 +139,7 @@
             "x-nestia-encrypted": false
           }
         },
+        "summary": "Store a new article",
         "description": "Store a new article.",
         "x-nestia-namespace": "bbs.articles.store",
         "x-nestia-jsDocTags": [
@@ -225,6 +227,7 @@
             "x-nestia-encrypted": false
           }
         },
+        "summary": "Get an article with detailed info",
         "description": "Get an article with detailed info.",
         "x-nestia-namespace": "bbs.articles.at",
         "x-nestia-jsDocTags": [
@@ -315,14 +318,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/IBbsArticle.IContent"
+                  "$ref": "#/components/schemas/IBbsArticle.ISnapshot"
                 }
               }
             },
             "x-nestia-encrypted": false
           }
         },
-        "description": "Update article.\n\nWhen updating, this BBS system does not overwrite the content, but accumulate it.\nTherefore, whenever an article being updated, length of {@link IBbsArticle.contents}\nwould be increased and accumulated.",
+        "summary": "Update article",
+        "description": "Update article.\n\nWhen updating, this BBS system does not overwrite the content, but accumulate it.\nTherefore, whenever an article being updated, length of {@link IBbsArticle.snapshots}\nwould be increased and accumulated.",
         "x-nestia-namespace": "bbs.articles.update",
         "x-nestia-jsDocTags": [
           {
@@ -424,36 +428,13 @@
           "page": {
             "type": "number",
             "nullable": false,
-            "description": "Target page number.",
-            "x-typia-jsDocTags": [
-              {
-                "name": "default",
-                "text": [
-                  {
-                    "text": "1",
-                    "kind": "text"
-                  }
-                ]
-              }
-            ],
-            "x-typia-required": false,
-            "default": 1
+            "description": "Page number.",
+            "x-typia-required": false
           },
           "limit": {
             "type": "number",
             "nullable": false,
-            "description": "Limit per a page.",
-            "x-typia-jsDocTags": [
-              {
-                "name": "defualt",
-                "text": [
-                  {
-                    "text": "100",
-                    "kind": "text"
-                  }
-                ]
-              }
-            ],
+            "description": "Limitation of records per a page.",
             "x-typia-required": false
           }
         },
@@ -489,18 +470,18 @@
         "properties": {
           "pagination": {
             "$ref": "#/components/schemas/IPage.IPagination",
-            "description": "Pagination info.",
+            "description": "Page information.",
             "x-typia-required": true
           },
           "data": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/IBbsArticle.ISummary",
-              "description": "List of records",
+              "description": "List of records.",
               "x-typia-required": true
             },
             "nullable": false,
-            "description": "List of records",
+            "description": "List of records.",
             "x-typia-required": true
           }
         },
@@ -509,7 +490,7 @@
           "pagination",
           "data"
         ],
-        "description": "Paged record set.",
+        "description": "A page.\n\nCollection of records with pagination indformation.",
         "x-typia-jsDocTags": [
           {
             "name": "author",
@@ -525,16 +506,16 @@
       "IPage.IPagination": {
         "type": "object",
         "properties": {
-          "page": {
+          "current": {
             "type": "number",
             "nullable": false,
-            "description": "Current page number.\n\nStarts from 1.",
+            "description": "Current page number.",
             "x-typia-required": true
           },
           "limit": {
             "type": "number",
             "nullable": false,
-            "description": "Limit records per a page.",
+            "description": "Limitation of records per a page.",
             "x-typia-jsDocTags": [
               {
                 "name": "default",
@@ -549,27 +530,27 @@
             "x-typia-required": true,
             "default": 100
           },
-          "total_count": {
+          "records": {
             "type": "number",
             "nullable": false,
-            "description": "Number of total records.",
+            "description": "Count of total records in database.",
             "x-typia-required": true
           },
-          "total_pages": {
+          "pages": {
             "type": "number",
             "nullable": false,
-            "description": "Number of total pages.",
+            "description": "Number of total pages.\n\nEqual to {@link records} / {@link limit} with ceiling.",
             "x-typia-required": true
           }
         },
         "nullable": false,
         "required": [
-          "page",
+          "current",
           "limit",
-          "total_count",
-          "total_pages"
+          "records",
+          "pages"
         ],
-        "description": "Pagination info.",
+        "description": "Page information.",
         "x-typia-jsDocTags": []
       },
       "IBbsArticle.ISummary": {
@@ -651,15 +632,15 @@
             "description": "Name of nickname of writer.",
             "x-typia-required": true
           },
-          "contents": {
+          "snapshots": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IBbsArticle.IContent",
-              "description": "List of contents.\n\nWhenever updating an article, its contents would be accumulated.",
+              "$ref": "#/components/schemas/IBbsArticle.ISnapshot",
+              "description": "List of snapshot contents.\n\nWhenever updating an article, its contents would be accumulated.",
               "x-typia-required": true
             },
             "nullable": false,
-            "description": "List of contents.\n\nWhenever updating an article, its contents would be accumulated.",
+            "description": "List of snapshot contents.\n\nWhenever updating an article, its contents would be accumulated.",
             "x-typia-required": true
           },
           "created_at": {
@@ -674,13 +655,13 @@
           "id",
           "section",
           "writer",
-          "contents",
+          "snapshots",
           "created_at"
         ],
         "description": "BBS article.",
         "x-typia-jsDocTags": []
       },
-      "IBbsArticle.IContent": {
+      "IBbsArticle.ISnapshot": {
         "type": "object",
         "properties": {
           "id": {

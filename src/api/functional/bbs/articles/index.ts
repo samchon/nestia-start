@@ -150,7 +150,7 @@ export namespace store
  * Update article.
  * 
  * When updating, this BBS system does not overwrite the content, but accumulate it.
- * Therefore, whenever an article being updated, length of {@link IBbsArticle.contents}
+ * Therefore, whenever an article being updated, length of {@link IBbsArticle.snapshots}
  * would be increased and accumulated.
  * 
  * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
@@ -183,7 +183,7 @@ export function update
 export namespace update
 {
     export type Input = IBbsArticle.IUpdate;
-    export type Output = IBbsArticle.IContent;
+    export type Output = IBbsArticle.ISnapshot;
 
     export const METHOD = "PUT" as const;
     export const PATH: string = "/bbs/articles/:section/:id";

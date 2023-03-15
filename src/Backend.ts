@@ -1,7 +1,10 @@
 import core from "@nestia/core";
 import { INestApplication } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
+import { SwaggerModule } from "@nestjs/swagger";
+import cp from "child_process";
 import express from "express";
+import fs from "fs";
 
 import { Configuration } from "./Configuration";
 
@@ -25,6 +28,9 @@ export class Backend {
         this.application_.use(this.middleware.bind(this));
 
         // DO OPEN
+        this.swagger(this.application_).catch((exp) => {
+            console.log(exp);
+        });
         await this.application_.listen(await Configuration.API_PORT());
 
         //----
@@ -56,6 +62,20 @@ export class Backend {
     ): void {
         if (this.is_closing_ === true) response.set("Connection", "close");
         next();
+    }
+
+    private async swagger(app: INestApplication): Promise<void> {
+        // CREATE DIRECTORY
+        const location: string = __dirname + "/../dist";
+        if (fs.existsSync(location) === false)
+            await fs.promises.mkdir(location);
+
+        // BUILD SWAGGER
+        cp.execSync("npm run build:swagger");
+
+        // OPEN SWAGGER
+        const docs = require(location + "/swagger.json");
+        SwaggerModule.setup("__swagger__", app, docs);
     }
 }
 

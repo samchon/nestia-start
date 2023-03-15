@@ -23,11 +23,11 @@ export interface IBbsArticle {
     writer: string;
 
     /**
-     * List of contents.
+     * List of snapshot contents.
      *
      * Whenever updating an article, its contents would be accumulated.
      */
-    contents: IBbsArticle.IContent[];
+    snapshots: IBbsArticle.ISnapshot[];
 
     /**
      * Creation time of the article.
@@ -50,7 +50,7 @@ export namespace IBbsArticle {
          *
          * The plus sign means ASC and minus sign means DESC.
          */
-        sort?: IPage.IRequest.Sort<IRequest.SortableColumns>;
+        sort?: IPage.Sort<IRequest.SortableColumns>;
     }
     export namespace IRequest {
         /**
@@ -86,7 +86,7 @@ export namespace IBbsArticle {
     /**
      * Content info.
      */
-    export interface IContent extends Omit<IUpdate, "password"> {
+    export interface ISnapshot extends Omit<IUpdate, "password"> {
         /**
          * Primary key of individual content.
          *

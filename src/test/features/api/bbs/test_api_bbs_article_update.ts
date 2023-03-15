@@ -31,7 +31,7 @@ export async function test_api_bbs_article_update(
     typia.assertEquals(article);
 
     // UPDATE WITH EXACT PASSWORD
-    const content: IBbsArticle.IContent =
+    const content: IBbsArticle.ISnapshot =
         await api.functional.bbs.articles.update(
             connection,
             article.section,
@@ -44,7 +44,7 @@ export async function test_api_bbs_article_update(
                 password,
             },
         );
-    article.contents.push(typia.assertEquals(content));
+    article.snapshots.push(typia.assertEquals(content));
 
     // TRY UPDATE WITH WRONG PASSWORD
     await TestValidator.error("update with wrong password")(() =>

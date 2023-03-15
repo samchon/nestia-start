@@ -1,75 +1,72 @@
 /**
- * @packageDocumentation
- * @module api.structures.common
- */
-//================================================================
-/**
- * Paged record set.
+ * A page.
+ *
+ * Collection of records with pagination indformation.
  *
  * @author Samchon
  */
- export interface IPage<T extends object> {
+export interface IPage<T extends object> {
     /**
-     * Pagination info.
+     * Page information.
      */
     pagination: IPage.IPagination;
 
     /**
-     * List of records
+     * List of records.
      */
     data: T[];
 }
 export namespace IPage {
     /**
-     * Pagination info.
+     * Page information.
      */
     export interface IPagination {
         /**
          * Current page number.
-         * 
-         * Starts from 1.
          */
-        page: number;
+        current: number;
 
         /**
-         * Limit records per a page.
+         * Limitation of records per a page.
          *
          * @default 100
          */
         limit: number;
 
         /**
-         * Number of total records.
+         * Count of total records in database.
          */
-        total_count: number;
+        records: number;
 
         /**
          * Number of total pages.
+         *
+         * Equal to {@link records} / {@link limit} with ceiling.
          */
-        total_pages: number;
+        pages: number;
     }
 
     /**
-     * Request info of page.
+     * Page request data
      */
     export interface IRequest {
         /**
-         * Target page number.
-         * 
-         * @default 1
+         * Page number.
          */
         page?: number;
 
         /**
-         * Limit per a page.
-         * 
-         * @defualt 100
+         * Limitation of records per a page.
          */
         limit?: number;
     }
-    export namespace IRequest {
-        export type Sort<Literal extends string> = Array<
-            `-${Literal}` | `+${Literal}`
-        >;
-    }
+
+    /**
+     * Sorting column specialization.
+     *
+     * The plus means ascending order and the minus means descending order.
+     */
+    export type Sort<Literal extends string> = Array<
+        `-${Literal}` | `+${Literal}`
+    >;
 }

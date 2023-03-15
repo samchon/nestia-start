@@ -37,15 +37,16 @@ export namespace BbsArticleProvider {
             if (input.search.title)
                 articles = articles.filter(
                     (x) =>
-                        x.contents
+                        x.snapshots
                             .at(-1)!
                             .title.indexOf(input.search!.title!) !== -1,
                 );
             if (input.search.body)
                 articles = articles.filter(
                     (x) =>
-                        x.contents.at(-1)!.body.indexOf(input.search!.body!) !==
-                        -1,
+                        x.snapshots
+                            .at(-1)!
+                            .body.indexOf(input.search!.body!) !== -1,
                 );
         }
 
@@ -64,18 +65,18 @@ export namespace BbsArticleProvider {
                         else if (column === "updated_at")
                             return (
                                 new Date(
-                                    x.contents.at(-1)!.created_at,
+                                    x.snapshots.at(-1)!.created_at,
                                 ).getTime() -
                                 new Date(
-                                    y.contents.at(-1)!.created_at,
+                                    y.snapshots.at(-1)!.created_at,
                                 ).getTime()
                             );
                         else if (column === "writer")
                             return x.writer.localeCompare(y.writer);
                         else
-                            return x.contents
+                            return x.snapshots
                                 .at(-1)!
-                                .title.localeCompare(y.contents.at(-1)!.title);
+                                .title.localeCompare(y.snapshots.at(-1)!.title);
                     };
                     return sign === "+" ? closure() : -closure();
                 });
@@ -91,18 +92,18 @@ export namespace BbsArticleProvider {
         const start: number = ((input.page || 1) - 1) * limit;
         return {
             pagination: {
-                page: input.page || 1,
+                current: input.page || 1,
                 limit: limit,
-                total_count: articles.length,
-                total_pages: Math.ceil(articles.length / limit),
+                records: articles.length,
+                pages: Math.ceil(articles.length / limit),
             },
             data: articles.slice(start, start + limit).map((article) => ({
                 id: article.id,
                 section: article.section,
                 writer: article.writer,
-                title: article.contents.at(-1)!.title,
+                title: article.snapshots.at(-1)!.title,
                 created_at: article.created_at,
-                updated_at: article.contents.at(-1)!.created_at,
+                updated_at: article.snapshots.at(-1)!.created_at,
             })),
         };
     }
@@ -139,7 +140,7 @@ export namespace BbsArticleProvider {
             id: v4(),
             section,
             writer: input.writer,
-            contents: [
+            snapshots: [
                 {
                     ...{
                         ...input,
@@ -169,9 +170,9 @@ export namespace BbsArticleProvider {
         section: string,
         id: string,
         input: IBbsArticle.IUpdate,
-    ): Promise<IBbsArticle.IContent> {
+    ): Promise<IBbsArticle.ISnapshot> {
         const article: IBbsArticle = await find(section, id, input.password);
-        const content: IBbsArticle.IContent = {
+        const content: IBbsArticle.ISnapshot = {
             ...{
                 ...input,
                 password: undefined,
@@ -179,7 +180,7 @@ export namespace BbsArticleProvider {
             id: v4(),
             created_at: datetime_to_string(new Date()),
         };
-        article.contents.push(content);
+        article.snapshots.push(content);
         return content;
     }
 }

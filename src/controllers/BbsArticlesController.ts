@@ -61,7 +61,7 @@ export class BbsArticlesController {
      * Update article.
      *
      * When updating, this BBS system does not overwrite the content, but accumulate it.
-     * Therefore, whenever an article being updated, length of {@link IBbsArticle.contents}
+     * Therefore, whenever an article being updated, length of {@link IBbsArticle.snapshots}
      * would be increased and accumulated.
      *
      * @param section Target section
@@ -74,7 +74,7 @@ export class BbsArticlesController {
         @core.TypedParam("section", "string") section: string,
         @core.TypedParam("id", "uuid") id: string,
         @core.TypedBody() input: IBbsArticle.IUpdate,
-    ): Promise<IBbsArticle.IContent> {
+    ): Promise<IBbsArticle.ISnapshot> {
         return BbsArticleProvider.update(section, id, input);
     }
 }

@@ -29,9 +29,7 @@ export async function test_api_bbs_article_index_sort(
 
     // PREPARE VALIDATOR
     const validator = TestValidator.sort("BbsArticleProvider.index()")(
-        async (
-            sort: IPage.IRequest.Sort<IBbsArticle.IRequest.SortableColumns>,
-        ) => {
+        async (sort: IPage.Sort<IBbsArticle.IRequest.SortableColumns>) => {
             const page: IPage<IBbsArticle.ISummary> =
                 await api.functional.bbs.articles.index(connection, section, {
                     limit: 100,
