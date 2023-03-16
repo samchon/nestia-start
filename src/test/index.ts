@@ -1,5 +1,4 @@
 import { DynamicExecutor } from "@nestia/e2e";
-import { sleep_for } from "tstl/thread/global";
 
 import api from "@ORGANIZATION/PROJECT-api";
 
@@ -23,12 +22,6 @@ async function main(): Promise<void> {
         parameters: () => [connection],
     })(__dirname + "/features");
 
-    // WAIT FOR A WHILE FOR THE EVENTS
-    await sleep_for(2500);
-
-    // TERMINATE
-    await backend.close();
-
     const failures: DynamicExecutor.IReport.IExecution[] =
         report.executions.filter((exec) => exec.error !== null);
     if (report.executions.length === 0) console.log("Success");
@@ -36,6 +29,9 @@ async function main(): Promise<void> {
         for (const f of failures) console.log(f.error);
         process.exit(-1);
     }
+
+    // TERMINATE
+    process.exit(0);
 }
 main().catch((exp) => {
     console.log(exp);
