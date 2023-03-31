@@ -38,8 +38,7 @@ export async function test_api_bbs_article_at(
     typia.assertEquals(read);
 
     // CHECK EQUALITY
-    if (JSON.stringify(stored) !== JSON.stringify(read))
-        throw new Error("Bug on BbsArticleProvider.at(): different data.");
+    TestValidator.equals("stored vs. read")(stored)(read);
 
     // TRY 404 ERRORS
     await TestValidator.error("wrong section")(() =>
