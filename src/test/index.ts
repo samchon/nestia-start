@@ -24,14 +24,13 @@ async function main(): Promise<void> {
 
     const failures: DynamicExecutor.IReport.IExecution[] =
         report.executions.filter((exec) => exec.error !== null);
-    if (report.executions.length === 0) console.log("Success");
-    else {
+    if (report.executions.length === 0) {
+        console.log("Success");
+        console.log("Elapsed time", report.time.toLocaleString(), `ms`);
+    } else {
         for (const f of failures) console.log(f.error);
         process.exit(-1);
     }
-
-    // TERMINATE
-    process.exit(0);
 }
 main().catch((exp) => {
     console.log(exp);
