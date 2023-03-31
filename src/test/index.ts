@@ -21,6 +21,8 @@ async function main(): Promise<void> {
         prefix: "test",
         parameters: () => [connection],
     })(__dirname + "/features");
+    
+    await backend.close();
 
     const failures: DynamicExecutor.IReport.IExecution[] =
         report.executions.filter((exec) => exec.error !== null);
