@@ -21,10 +21,12 @@ async function main(): Promise<void> {
         prefix: "test",
         parameters: () => [connection],
     })(__dirname + "/features");
+    
+    await backend.close();
 
     const failures: DynamicExecutor.IReport.IExecution[] =
         report.executions.filter((exec) => exec.error !== null);
-    if (report.executions.length === 0) {
+    if (failures.length === 0) {
         console.log("Success");
         console.log("Elapsed time", report.time.toLocaleString(), `ms`);
     } else {
