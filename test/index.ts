@@ -1,4 +1,5 @@
 import { DynamicExecutor } from "@nestia/e2e";
+import { sleep_for } from "tstl";
 
 import api from "@ORGANIZATION/PROJECT-api";
 

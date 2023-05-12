@@ -3,11 +3,12 @@
   "name": "@ORGANIZATION/PROJECT",
   "version": "0.1.0",
   "description": "Starter kit of Nestia",
-  "main": "bin/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "----------------------------------------------": "",
-    "build": "rimraf bin && tsc",
-    "build:api": "rimraf packages/api/lib && npm run build:sdk && tsc -p packages/api/tsconfig.api.json",
+    "build": "npm run build:sdk && npm run build:main && npm run build:test",
+    "build:api": "rimraf packages/api/lib && npm run build:sdk && tsc -p packages/api/tsconfig.json",
+    "build:main": "rimraf lib && tsc",
     "build:sdk": "rimraf src/api/functional && nestia sdk",
     "build:swagger": "npx nestia swagger",
     "build:test": "rimraf bin && tsc -p test/tsconfig.json",
@@ -16,8 +17,9 @@
     "eslint:fix": "eslint --fix src && eslint --fix test",
     "prepare": "ts-patch install",
     "prettier": "prettier src --write && prettier test --write",
-    "---------------------------------------------": "",
-    "test": "npm run build:test && node bin/test"
+    "-----------------------------------------------": "",
+    "test": "node bin/test",
+    "------------------------------------------------": ""
   },
   "repository": {
     "type": "git",

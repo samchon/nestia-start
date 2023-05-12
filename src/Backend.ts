@@ -64,13 +64,14 @@ export class Backend {
         cp.execSync("npm run build:swagger");
 
         // OPEN SWAGGER
-        await app.register(require("@fastify/swagger"), {
+        await app.register(await import("@fastify/swagger"), {
             mode: "static",
             specification: {
                 path: `${location}/swagger.json`,
+                baseDir: process.cwd(),
             },
         });
-        await app.register(require("@fastify/swagger-ui"), {
+        await app.register(await import("@fastify/swagger-ui"), {
             routePrefix: "/docs",
         });
     }
