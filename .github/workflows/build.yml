@@ -17,5 +17,11 @@ jobs:
       - name: Compile Backend-Server
         run: npm run build
 
-      - name: Test Backend-Server
+      - name: Compile Test Program
+        run: npm run build:test
+
+      - name: Run Test Program
         run: npm run test
+
+      - name: EsLint
+        run: npm run eslint

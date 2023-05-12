@@ -1,16 +1,17 @@
 import core from "@nestia/core";
-import { INestApplication } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-import { SwaggerModule } from "@nestjs/swagger";
+import {
+    FastifyAdapter,
+    NestFastifyApplication,
+} from "@nestjs/platform-fastify";
 import cp from "child_process";
-import express from "express";
 import fs from "fs";
+import path from "path";
 
 import { Configuration } from "./Configuration";
 
 export class Backend {
-    private application_?: INestApplication;
-    private is_closing_: boolean = false;
+    private application_?: NestFastifyApplication;
 
     public async open(): Promise<void> {
         //----
@@ -19,18 +20,13 @@ export class Backend {
         // MOUNT CONTROLLERS
         this.application_ = await NestFactory.create(
             await core.DynamicModule.mount(__dirname + "/controllers"),
+            new FastifyAdapter(),
             { logger: false },
         );
 
-        // CONFIGURATIONS
-        this.is_closing_ = false;
-        this.application_.enableCors();
-        this.application_.use(this.middleware.bind(this));
-
         // DO OPEN
-        this.swagger(this.application_).catch((exp) => {
-            console.log(exp);
-        });
+        this.application_.enableCors();
+        await this.swagger(this.application_);
         await this.application_.listen(await Configuration.API_PORT());
 
         //----
@@ -41,7 +37,6 @@ export class Backend {
 
         // WHEN KILL COMMAND COMES
         process.on("SIGINT", async () => {
-            this.is_closing_ = true;
             await this.close();
             process.exit(0);
         });
@@ -55,18 +50,13 @@ export class Backend {
         delete this.application_;
     }
 
-    private middleware(
-        _request: express.Request,
-        response: express.Response,
-        next: FunctionLike,
-    ): void {
-        if (this.is_closing_ === true) response.set("Connection", "close");
-        next();
-    }
-
-    private async swagger(app: INestApplication): Promise<void> {
+    private async swagger(app: NestFastifyApplication): Promise<void> {
         // CREATE DIRECTORY
-        const location: string = __dirname + "/../dist";
+        const splitted: string[] = __dirname.split(path.sep);
+        const location: string =
+            splitted.at(-1) === "src" && splitted.at(-2) === "bin"
+                ? __dirname + "/../../dist"
+                : __dirname + "/../dist";
         if (fs.existsSync(location) === false)
             await fs.promises.mkdir(location);
 
@@ -74,9 +64,14 @@ export class Backend {
         cp.execSync("npm run build:swagger");
 
         // OPEN SWAGGER
-        const docs = require(location + "/swagger.json");
-        SwaggerModule.setup("__swagger__", app, docs);
+        await app.register(require("@fastify/swagger"), {
+            mode: "static",
+            specification: {
+                path: `${location}/swagger.json`,
+            },
+        });
+        await app.register(require("@fastify/swagger-ui"), {
+            routePrefix: "/docs",
+        });
     }
 }
-
-type FunctionLike = (...args: any[]) => any;

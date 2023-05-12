@@ -52,7 +52,7 @@ export namespace index
 
     export function path(section: string): string
     {
-        return `/bbs/articles/${encodeURIComponent(section)}`;
+        return `/bbs/articles/${encodeURIComponent(section ?? "null")}`;
     }
 }
 
@@ -96,7 +96,7 @@ export namespace at
 
     export function path(section: string, id: string): string
     {
-        return `/bbs/articles/${encodeURIComponent(section)}/${encodeURIComponent(id)}`;
+        return `/bbs/articles/${encodeURIComponent(section ?? "null")}/${encodeURIComponent(id ?? "null")}`;
     }
 }
 
@@ -142,7 +142,7 @@ export namespace store
 
     export function path(section: string): string
     {
-        return `/bbs/articles/${encodeURIComponent(section)}`;
+        return `/bbs/articles/${encodeURIComponent(section ?? "null")}`;
     }
 }
 
@@ -194,6 +194,6 @@ export namespace update
 
     export function path(section: string, id: string): string
     {
-        return `/bbs/articles/${encodeURIComponent(section)}/${encodeURIComponent(id)}`;
+        return `/bbs/articles/${encodeURIComponent(section ?? "null")}/${encodeURIComponent(id ?? "null")}`;
     }
 }

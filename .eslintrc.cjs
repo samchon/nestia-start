@@ -1,21 +1,30 @@
 module.exports = {
     root: true,
     plugins: [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "deprecation",
     ],
     extends: [
         "plugin:@typescript-eslint/recommended",
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
-        project: "tsconfig.json"
+        project: [
+            "tsconfig.json",
+            "test/tsconfig.json",
+        ]
     },
     overrides: [
         {
-            files: ["src/**/*.ts"],
+            files: ["src/**/*.ts", "test/**/*.ts"],
             rules: {
                 "@typescript-eslint/no-duplicate-imports": "error",
-                "@typescript-eslint/no-floating-promises": "error"
+                "@typescript-eslint/no-explicit-any": "off",
+                "@typescript-eslint/no-floating-promises": "error",
+                "@typescript-eslint/no-inferrable-types": "off",
+                "@typescript-eslint/no-namespace": "off",
+                "@typescript-eslint/no-non-null-assertion": "off",
+                "deprecation/deprecation": "error",
             }
         }
     ]

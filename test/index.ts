@@ -2,8 +2,8 @@ import { DynamicExecutor } from "@nestia/e2e";
 
 import api from "@ORGANIZATION/PROJECT-api";
 
-import { Backend } from "../Backend";
-import { Configuration } from "../Configuration";
+import { Backend } from "../src/Backend";
+import { Configuration } from "../src/Configuration";
 
 async function main(): Promise<void> {
     // BACKEND SERVER
@@ -21,7 +21,7 @@ async function main(): Promise<void> {
         prefix: "test",
         parameters: () => [connection],
     })(__dirname + "/features");
-    
+
     await backend.close();
 
     const failures: DynamicExecutor.IReport.IExecution[] =
