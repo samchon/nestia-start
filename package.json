@@ -17,7 +17,7 @@
     "prepare": "ts-patch install",
     "prettier": "prettier src --write && prettier test --write",
     "---------------------------------------------": "",
-    "test": "node bin/test"
+    "test": "npm run build:test && node bin/test"
   },
   "repository": {
     "type": "git",
@@ -59,7 +59,6 @@
     "@fastify/swagger": "^8.3.1",
     "@fastify/swagger-ui": "^1.8.1",
     "@nestia/core": "^1.2.2",
-    "@nestjs/swagger": "6.2.1",
     "tstl": "^2.5.13",
     "typia": "^3.8.6",
     "uuid": "^9.0.0"
