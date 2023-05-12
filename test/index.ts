@@ -4,8 +4,11 @@ import api from "@ORGANIZATION/PROJECT-api";
 
 import { Backend } from "../src/Backend";
 import { Configuration } from "../src/Configuration";
+import { SGlobal } from "../src/SGlobal";
 
 async function main(): Promise<void> {
+    SGlobal.testing = true;
+
     // BACKEND SERVER
     const backend: Backend = new Backend();
     await backend.open();

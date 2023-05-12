@@ -6,9 +6,9 @@ import {
 } from "@nestjs/platform-fastify";
 import cp from "child_process";
 import fs from "fs";
-import path from "path";
 
 import { Configuration } from "./Configuration";
+import { SGlobal } from "./SGlobal";
 
 export class Backend {
     private application_?: NestFastifyApplication;
@@ -26,7 +26,7 @@ export class Backend {
 
         // DO OPEN
         this.application_.enableCors();
-        await this.swagger(this.application_);
+        if (SGlobal.testing === false) await this.swagger(this.application_);
         await this.application_.listen(await Configuration.API_PORT());
 
         //----
@@ -52,11 +52,7 @@ export class Backend {
 
     private async swagger(app: NestFastifyApplication): Promise<void> {
         // CREATE DIRECTORY
-        const splitted: string[] = __dirname.split(path.sep);
-        const location: string =
-            splitted.at(-1) === "src" && splitted.at(-2) === "bin"
-                ? __dirname + "/../../dist"
-                : __dirname + "/../dist";
+        const location: string = `${Configuration.PROJECT_DIR}/dist`;
         if (fs.existsSync(location) === false)
             await fs.promises.mkdir(location);
 
