@@ -13,7 +13,6 @@ import type { IPage } from "./../../../structures/common/IPage";
 /**
  * List up entire articles, but paginated and summarized.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param section Target section
  * @param input Pagination request info with searching and sorting options
  * @returns Paged articles witb summarization
@@ -59,7 +58,6 @@ export namespace index
 /**
  * Get an article with detailed info.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param section Target section
  * @param id Target articles id
  * @returns Detailed article info
@@ -103,7 +101,6 @@ export namespace at
 /**
  * Store a new article.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param section Target section
  * @param input New article info
  * @returns Newly created article info
@@ -153,7 +150,6 @@ export namespace store
  * Therefore, whenever an article being updated, length of {@link IBbsArticle.snapshots}
  * would be increased and accumulated.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param section Target section
  * @param id Target articles id
  * @param input Content to update
