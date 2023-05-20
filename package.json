@@ -65,5 +65,8 @@
     "tstl": "^2.5.13",
     "typia": "^3.8.9",
     "uuid": "^9.0.0"
+  },
+  "stackblitz": {
+    "startCommand": "npm run prepare && npm run build && npm run test"
   }
 }
