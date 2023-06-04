@@ -31,7 +31,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/IBbsArticle.IRequest"
+                "$ref": "#/components/objects/IBbsArticle.IRequest"
               }
             }
           },
@@ -44,7 +44,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/IPage_lt_IBbsArticle.ISummary_gt_"
+                  "$ref": "#/components/objects/IPage_lt_IBbsArticle.ISummary_gt_"
                 }
               }
             },
@@ -118,7 +118,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/IBbsArticle.IStore"
+                "$ref": "#/components/objects/IBbsArticle.IStore"
               }
             }
           },
@@ -131,7 +131,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/IBbsArticle"
+                  "$ref": "#/components/objects/IBbsArticle"
                 }
               }
             },
@@ -217,7 +217,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/IBbsArticle"
+                  "$ref": "#/components/objects/IBbsArticle"
                 }
               }
             },
@@ -300,7 +300,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/IBbsArticle.IUpdate"
+                "$ref": "#/components/objects/IBbsArticle.IUpdate"
               }
             }
           },
@@ -313,7 +313,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/IBbsArticle.ISnapshot"
+                  "$ref": "#/components/objects/IBbsArticle.ISnapshot"
                 }
               }
             },
@@ -389,37 +389,15 @@
     }
   },
   "components": {
-    "schemas": {
+    "objects": {
       "IBbsArticle.IRequest": {
         "type": "object",
         "properties": {
           "search": {
-            "$ref": "#/components/schemas/IBbsArticle.IRequest.ISearch",
-            "description": "Searching options.",
-            "x-typia-required": false,
-            "x-typia-optional": true
+            "$ref": "#/components/objects/IBbsArticle.IRequest.ISearch"
           },
           "sort": {
-            "description": "Sorting options.\n\nThe plus sign means ASC and minus sign means DESC.",
-            "x-typia-required": false,
-            "x-typia-optional": true,
-            "type": "array",
-            "items": {
-              "description": "Sorting options.\n\nThe plus sign means ASC and minus sign means DESC.",
-              "x-typia-required": false,
-              "x-typia-optional": true,
-              "type": "string",
-              "enum": [
-                "-writer",
-                "-title",
-                "-created_at",
-                "-updated_at",
-                "+writer",
-                "+title",
-                "+created_at",
-                "+updated_at"
-              ]
-            }
+            "$ref": "#/components/aliases/IPage.Sort_lt_IBbsArticle.IRequest.SortableColumns_gt_"
           },
           "page": {
             "description": "Page number.",
@@ -465,10 +443,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/IPage.IPagination",
-            "description": "Page information.",
-            "x-typia-required": true,
-            "x-typia-optional": false
+            "$ref": "#/components/objects/IPage.IPagination"
           },
           "data": {
             "description": "List of records.",
@@ -476,10 +451,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IBbsArticle.ISummary",
-              "description": "List of records.",
-              "x-typia-required": true,
-              "x-typia-optional": false
+              "$ref": "#/components/objects/IBbsArticle.ISummary"
             }
           }
         },
@@ -636,10 +608,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IBbsArticle.ISnapshot",
-              "description": "List of snapshot contents.\n\nWhenever updating an article, its contents would be accumulated.",
-              "x-typia-required": true,
-              "x-typia-optional": false
+              "$ref": "#/components/objects/IBbsArticle.ISnapshot"
             }
           },
           "created_at": {
@@ -722,10 +691,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IAttachmentFile",
-              "description": "List of files (to be) attached.",
-              "x-typia-required": true,
-              "x-typia-optional": false
+              "$ref": "#/components/objects/IAttachmentFile"
             }
           }
         },
@@ -807,10 +773,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IAttachmentFile",
-              "description": "List of files (to be) attached.",
-              "x-typia-required": true,
-              "x-typia-optional": false
+              "$ref": "#/components/objects/IAttachmentFile"
             }
           },
           "password": {
@@ -864,10 +827,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IAttachmentFile",
-              "description": "List of files (to be) attached.",
-              "x-typia-required": true,
-              "x-typia-optional": false
+              "$ref": "#/components/objects/IAttachmentFile"
             }
           },
           "password": {
@@ -887,6 +847,24 @@
         ],
         "description": "Password of the article.",
         "x-typia-jsDocTags": []
+      }
+    },
+    "aliases": {
+      "IPage.Sort_lt_IBbsArticle.IRequest.SortableColumns_gt_": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "-writer",
+            "-title",
+            "-created_at",
+            "-updated_at",
+            "+writer",
+            "+title",
+            "+created_at",
+            "+updated_at"
+          ]
+        }
       }
     }
   }
