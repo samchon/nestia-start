@@ -31,7 +31,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/objects/IBbsArticle.IRequest"
+                "$ref": "#/components/schemas/IBbsArticle.IRequest"
               }
             }
           },
@@ -44,7 +44,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/objects/IPage_lt_IBbsArticle.ISummary_gt_"
+                  "$ref": "#/components/schemas/IPage_lt_IBbsArticle.ISummary_gt_"
                 }
               }
             },
@@ -118,7 +118,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/objects/IBbsArticle.IStore"
+                "$ref": "#/components/schemas/IBbsArticle.IStore"
               }
             }
           },
@@ -131,7 +131,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/objects/IBbsArticle"
+                  "$ref": "#/components/schemas/IBbsArticle"
                 }
               }
             },
@@ -217,7 +217,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/objects/IBbsArticle"
+                  "$ref": "#/components/schemas/IBbsArticle"
                 }
               }
             },
@@ -300,7 +300,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/objects/IBbsArticle.IUpdate"
+                "$ref": "#/components/schemas/IBbsArticle.IUpdate"
               }
             }
           },
@@ -313,7 +313,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/objects/IBbsArticle.ISnapshot"
+                  "$ref": "#/components/schemas/IBbsArticle.ISnapshot"
                 }
               }
             },
@@ -389,15 +389,15 @@
     }
   },
   "components": {
-    "objects": {
+    "schemas": {
       "IBbsArticle.IRequest": {
         "type": "object",
         "properties": {
           "search": {
-            "$ref": "#/components/objects/IBbsArticle.IRequest.ISearch"
+            "$ref": "#/components/schemas/IBbsArticle.IRequest.ISearch"
           },
           "sort": {
-            "$ref": "#/components/aliases/IPage.Sort_lt_IBbsArticle.IRequest.SortableColumns_gt_"
+            "$ref": "#/components/schemas/IPage.Sort_lt_IBbsArticle.IRequest.SortableColumns_gt_"
           },
           "page": {
             "description": "Page number.",
@@ -439,11 +439,27 @@
         "description": "Searching options.",
         "x-typia-jsDocTags": []
       },
+      "IPage.Sort_lt_IBbsArticle.IRequest.SortableColumns_gt_": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "-writer",
+            "-title",
+            "-created_at",
+            "-updated_at",
+            "+writer",
+            "+title",
+            "+created_at",
+            "+updated_at"
+          ]
+        }
+      },
       "IPage_lt_IBbsArticle.ISummary_gt_": {
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/objects/IPage.IPagination"
+            "$ref": "#/components/schemas/IPage.IPagination"
           },
           "data": {
             "description": "List of records.",
@@ -451,7 +467,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/objects/IBbsArticle.ISummary"
+              "$ref": "#/components/schemas/IBbsArticle.ISummary"
             }
           }
         },
@@ -608,7 +624,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/objects/IBbsArticle.ISnapshot"
+              "$ref": "#/components/schemas/IBbsArticle.ISnapshot"
             }
           },
           "created_at": {
@@ -691,7 +707,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/objects/IAttachmentFile"
+              "$ref": "#/components/schemas/IAttachmentFile"
             }
           }
         },
@@ -773,7 +789,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/objects/IAttachmentFile"
+              "$ref": "#/components/schemas/IAttachmentFile"
             }
           },
           "password": {
@@ -827,7 +843,7 @@
             "x-typia-optional": false,
             "type": "array",
             "items": {
-              "$ref": "#/components/objects/IAttachmentFile"
+              "$ref": "#/components/schemas/IAttachmentFile"
             }
           },
           "password": {
@@ -847,24 +863,6 @@
         ],
         "description": "Password of the article.",
         "x-typia-jsDocTags": []
-      }
-    },
-    "aliases": {
-      "IPage.Sort_lt_IBbsArticle.IRequest.SortableColumns_gt_": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "enum": [
-            "-writer",
-            "-title",
-            "-created_at",
-            "-updated_at",
-            "+writer",
-            "+title",
-            "+created_at",
-            "+updated_at"
-          ]
-        }
       }
     }
   }
