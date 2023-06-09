@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    allow:
+      - dependency-name: "@nestia/core"
+      - dependency-name: "@nestia/e2e"
+      - dependency-name: "@nestia/sdk"
+      - dependency-name: "nestia"
+      - dependency-name: "typia"
