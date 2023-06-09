@@ -52,7 +52,7 @@ export class Backend {
 
     private async swagger(app: NestFastifyApplication): Promise<void> {
         // CREATE DIRECTORY
-        const location: string = `${Configuration.PROJECT_DIR}/dist`;
+        const location: string = `${Configuration.ROOT}/dist`;
         if (fs.existsSync(location) === false)
             await fs.promises.mkdir(location);
 

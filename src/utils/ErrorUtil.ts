@@ -31,7 +31,7 @@ export namespace ErrorUtil {
 
                 await directory.get();
                 await fs.promises.writeFile(
-                    `${Configuration.PROJECT_DIR}/assets/logs/errors/${prefix}_${fileName}.log`,
+                    `${Configuration.ROOT}/assets/logs/errors/${prefix}_${fileName}.log`,
                     content,
                     "utf8",
                 );
@@ -41,8 +41,8 @@ export namespace ErrorUtil {
 
 const cipher = (val: number): string => String(val).padStart(2, "0");
 const directory = new Singleton(async () => {
-    await mkdir(`${Configuration.PROJECT_DIR}/assets/logs`);
-    await mkdir(`${Configuration.PROJECT_DIR}/assets/logs/errors`);
+    await mkdir(`${Configuration.ROOT}/assets/logs`);
+    await mkdir(`${Configuration.ROOT}/assets/logs/errors`);
 });
 async function mkdir(path: string): Promise<void> {
     try {

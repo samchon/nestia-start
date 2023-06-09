@@ -6,13 +6,13 @@ import { Backend } from "../Backend";
 import { Configuration } from "../Configuration";
 import { ErrorUtil } from "../utils/ErrorUtil";
 
-const EXTENSION = __filename.substr(-2);
+const EXTENSION = __filename.substring(__filename.length - 2);
 if (EXTENSION === "js") require("source-map-support/register");
 
 const directory = new Singleton(async () => {
-    await mkdir(`${Configuration.PROJECT_DIR}/assets`);
-    await mkdir(`${Configuration.PROJECT_DIR}/assets/logs`);
-    await mkdir(`${Configuration.PROJECT_DIR}/assets/logs/errors`);
+    await mkdir(`${Configuration.ROOT}/assets`);
+    await mkdir(`${Configuration.ROOT}/assets/logs`);
+    await mkdir(`${Configuration.ROOT}/assets/logs/errors`);
 });
 
 function cipher(val: number): string {
@@ -38,7 +38,7 @@ async function handle_error(exp: any): Promise<void> {
 
         await directory.get();
         await fs.promises.writeFile(
-            `${Configuration.PROJECT_DIR}/assets/logs/errors/${fileName}.log`,
+            `${Configuration.ROOT}/assets/logs/errors/${fileName}.log`,
             content,
             "utf8",
         );
