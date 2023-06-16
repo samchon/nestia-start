@@ -14,5 +14,6 @@ const NESTIA_CONFIG: sdk.INestiaConfig = {
         ],
     },
     primitive: false,
+    simulate: true,
 };
 export default NESTIA_CONFIG;

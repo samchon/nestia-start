@@ -6,7 +6,9 @@
 //================================================================
 import { Fetcher } from "@nestia/fetcher";
 import type { IConnection } from "@nestia/fetcher";
+import typia from "typia";
 
+import { NestiaSimulator } from "./../../../utils/NestiaSimulator";
 import type { IBbsArticle } from "./../../../structures/bbs/IBbsArticle";
 import type { IPage } from "./../../../structures/common/IPage";
 
@@ -26,13 +28,19 @@ export async function index(
     section: string,
     input: IBbsArticle.IRequest,
 ): Promise<index.Output> {
-    return Fetcher.fetch(
-        connection,
-        index.ENCRYPTED,
-        index.METHOD,
-        index.path(section),
-        input,
-    );
+    return !!connection.simulate
+        ? index.simulate(
+              connection,
+              section,
+              input,
+          )
+        : Fetcher.fetch(
+              connection,
+              index.ENCRYPTED,
+              index.METHOD,
+              index.path(section),
+              input,
+          );
 }
 export namespace index {
     export type Input = IBbsArticle.IRequest;
@@ -47,6 +55,27 @@ export namespace index {
 
     export const path = (section: string): string => {
         return `/bbs/articles/${encodeURIComponent(section ?? "null")}`;
+    }
+    export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
+        typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        section: string,
+        input: index.Input,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(section)
+        });
+        assert.param("section")("string")(() => typia.assert(section));
+        assert.body(() => typia.assert(input));
+        return random(
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
+                : undefined
+        );
     }
 }
 
@@ -66,12 +95,18 @@ export async function at(
     section: string,
     id: string,
 ): Promise<at.Output> {
-    return Fetcher.fetch(
-        connection,
-        at.ENCRYPTED,
-        at.METHOD,
-        at.path(section, id),
-    );
+    return !!connection.simulate
+        ? at.simulate(
+              connection,
+              section,
+              id,
+          )
+        : Fetcher.fetch(
+              connection,
+              at.ENCRYPTED,
+              at.METHOD,
+              at.path(section, id),
+          );
 }
 export namespace at {
     export type Output = IBbsArticle;
@@ -85,6 +120,27 @@ export namespace at {
 
     export const path = (section: string, id: string): string => {
         return `/bbs/articles/${encodeURIComponent(section ?? "null")}/${encodeURIComponent(id ?? "null")}`;
+    }
+    export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
+        typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        section: string,
+        id: string,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(section, id)
+        });
+        assert.param("section")("string")(() => typia.assert(section));
+        assert.param("id")("uuid")(() => typia.assert(id));
+        return random(
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
+                : undefined
+        );
     }
 }
 
@@ -104,13 +160,19 @@ export async function store(
     section: string,
     input: IBbsArticle.IStore,
 ): Promise<store.Output> {
-    return Fetcher.fetch(
-        connection,
-        store.ENCRYPTED,
-        store.METHOD,
-        store.path(section),
-        input,
-    );
+    return !!connection.simulate
+        ? store.simulate(
+              connection,
+              section,
+              input,
+          )
+        : Fetcher.fetch(
+              connection,
+              store.ENCRYPTED,
+              store.METHOD,
+              store.path(section),
+              input,
+          );
 }
 export namespace store {
     export type Input = IBbsArticle.IStore;
@@ -125,6 +187,27 @@ export namespace store {
 
     export const path = (section: string): string => {
         return `/bbs/articles/${encodeURIComponent(section ?? "null")}`;
+    }
+    export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
+        typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        section: string,
+        input: store.Input,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(section)
+        });
+        assert.param("section")("string")(() => typia.assert(section));
+        assert.body(() => typia.assert(input));
+        return random(
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
+                : undefined
+        );
     }
 }
 
@@ -150,13 +233,20 @@ export async function update(
     id: string,
     input: IBbsArticle.IUpdate,
 ): Promise<update.Output> {
-    return Fetcher.fetch(
-        connection,
-        update.ENCRYPTED,
-        update.METHOD,
-        update.path(section, id),
-        input,
-    );
+    return !!connection.simulate
+        ? update.simulate(
+              connection,
+              section,
+              id,
+              input,
+          )
+        : Fetcher.fetch(
+              connection,
+              update.ENCRYPTED,
+              update.METHOD,
+              update.path(section, id),
+              input,
+          );
 }
 export namespace update {
     export type Input = IBbsArticle.IUpdate;
@@ -171,5 +261,28 @@ export namespace update {
 
     export const path = (section: string, id: string): string => {
         return `/bbs/articles/${encodeURIComponent(section ?? "null")}/${encodeURIComponent(id ?? "null")}`;
+    }
+    export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
+        typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        section: string,
+        id: string,
+        input: update.Input,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(section, id)
+        });
+        assert.param("section")("string")(() => typia.assert(section));
+        assert.param("id")("uuid")(() => typia.assert(id));
+        assert.body(() => typia.assert(input));
+        return random(
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
+                : undefined
+        );
     }
 }
