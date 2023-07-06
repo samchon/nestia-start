@@ -206,6 +206,7 @@
             "in": "path",
             "description": "Target articles id",
             "schema": {
+              "format": "uuid",
               "type": "string"
             },
             "required": true
@@ -290,6 +291,7 @@
             "in": "path",
             "description": "Target articles id",
             "schema": {
+              "format": "uuid",
               "type": "string"
             },
             "required": true
