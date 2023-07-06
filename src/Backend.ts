@@ -4,11 +4,8 @@ import {
     FastifyAdapter,
     NestFastifyApplication,
 } from "@nestjs/platform-fastify";
-import cp from "child_process";
-import fs from "fs";
 
 import { Configuration } from "./Configuration";
-import { SGlobal } from "./SGlobal";
 
 export class Backend {
     private application_?: NestFastifyApplication;
@@ -26,7 +23,6 @@ export class Backend {
 
         // DO OPEN
         this.application_.enableCors();
-        if (SGlobal.testing === false) await this.swagger(this.application_);
         await this.application_.listen(await Configuration.API_PORT());
 
         //----
@@ -48,27 +44,5 @@ export class Backend {
         // DO CLOSE
         await this.application_.close();
         delete this.application_;
-    }
-
-    private async swagger(app: NestFastifyApplication): Promise<void> {
-        // CREATE DIRECTORY
-        const location: string = `${Configuration.ROOT}/dist`;
-        if (fs.existsSync(location) === false)
-            await fs.promises.mkdir(location);
-
-        // BUILD SWAGGER
-        cp.execSync("npm run build:swagger");
-
-        // OPEN SWAGGER
-        await app.register(await import("@fastify/swagger"), {
-            mode: "static",
-            specification: {
-                path: `${location}/swagger.json`,
-                baseDir: process.cwd(),
-            },
-        });
-        await app.register(await import("@fastify/swagger-ui"), {
-            routePrefix: "/docs",
-        });
     }
 }
