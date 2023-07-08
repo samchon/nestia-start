@@ -23,7 +23,7 @@ export class Backend {
 
         // DO OPEN
         this.application_.enableCors();
-        await this.application_.listen(await Configuration.API_PORT());
+        await this.application_.listen(Configuration.API_PORT());
 
         //----
         // POST-PROCESSES
