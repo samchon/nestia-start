@@ -628,10 +628,28 @@
             }
           },
           "created_at": {
-            "description": "Creation time of the article.",
+            "description": "Creation time of the article.\n\n@format date-time",
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "datetime"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "date-time",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
             "x-typia-required": true,
             "x-typia-optional": false,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           }
         },
         "nullable": false,
@@ -642,7 +660,7 @@
           "snapshots",
           "created_at"
         ],
-        "description": "Creation time of the article.",
+        "description": "Creation time of the article.\n\n@format date-time",
         "x-typia-jsDocTags": []
       },
       "IBbsArticle.ISnapshot": {
