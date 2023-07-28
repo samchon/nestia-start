@@ -5,7 +5,7 @@ const NESTIA_CONFIG: sdk.INestiaConfig = {
     input: "src/controllers",
     output: "src/api",
     swagger: {
-        output: "dist/swagger.json",
+        output: "packages/api/swagger.json",
         servers: [
             {
                 url: "http://localhost:37001",

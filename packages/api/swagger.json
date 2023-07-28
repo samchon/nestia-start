@@ -52,7 +52,7 @@
           }
         },
         "summary": "List up entire articles, but paginated and summarized",
-        "description": "List up entire articles, but paginated and summarized.\n\n@param section Target section\n@param input Pagination request info with searching and sorting options\n@returns Paged articles witb summarization",
+        "description": "List up entire articles, but paginated and summarized.\n\nThis method is for listing up summarized articles with pagination.\n\nIf you want, you can search and sort articles with specific conditions.\n\n@param section Target section\n@param input Pagination request info with searching and sorting options\n@returns Paged articles witb summarization",
         "x-nestia-namespace": "bbs.articles.index",
         "x-nestia-jsDocTags": [
           {
@@ -139,7 +139,7 @@
           }
         },
         "summary": "Store a new article",
-        "description": "Store a new article.\n\n@param section Target section\n@param input New article info\n@returns Newly created article info",
+        "description": "Store a new article.\n\nStore a new article and returns its detailed record info.\n\n@param section Target section\n@param input New article info\n@returns Newly created article info",
         "x-nestia-namespace": "bbs.articles.store",
         "x-nestia-jsDocTags": [
           {
@@ -206,7 +206,6 @@
             "in": "path",
             "description": "Target articles id",
             "schema": {
-              "format": "uuid",
               "type": "string"
             },
             "required": true
@@ -226,7 +225,7 @@
           }
         },
         "summary": "Get an article with detailed info",
-        "description": "Get an article with detailed info.\n\n@param section Target section\n@param id Target articles id\n@returns Detailed article info",
+        "description": "Get an article with detailed info.\n\nOpen an article with detailed info, increasing reading count.\n\n@param section Target section\n@param id Target articles id\n@returns Detailed article info",
         "x-nestia-namespace": "bbs.articles.at",
         "x-nestia-jsDocTags": [
           {
@@ -291,7 +290,6 @@
             "in": "path",
             "description": "Target articles id",
             "schema": {
-              "format": "uuid",
               "type": "string"
             },
             "required": true

@@ -15,6 +15,10 @@ export class BbsArticlesController {
     /**
      * List up entire articles, but paginated and summarized.
      *
+     * This method is for listing up summarized articles with pagination.
+     *
+     * If you want, you can search and sort articles with specific conditions.
+     *
      * @param section Target section
      * @param input Pagination request info with searching and sorting options
      * @returns Paged articles witb summarization
@@ -30,6 +34,8 @@ export class BbsArticlesController {
     /**
      * Get an article with detailed info.
      *
+     * Open an article with detailed info, increasing reading count.
+     *
      * @param section Target section
      * @param id Target articles id
      * @returns Detailed article info
@@ -44,6 +50,8 @@ export class BbsArticlesController {
 
     /**
      * Store a new article.
+     *
+     * Store a new article and returns its detailed record info.
      *
      * @param section Target section
      * @param input New article info

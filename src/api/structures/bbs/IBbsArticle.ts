@@ -31,6 +31,8 @@ export interface IBbsArticle {
 
     /**
      * Creation time of the article.
+     *
+     * @format date-time
      */
     created_at: string;
 }
