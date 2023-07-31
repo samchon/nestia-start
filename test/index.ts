@@ -36,6 +36,13 @@ async function main(): Promise<void> {
         for (const f of failures) console.log(f.error);
         process.exit(-1);
     }
+         console.log(
+            `
+All : ${report.executions.length}
+Success : ${successCount}
+Faild : ${failures.length}
+        `
+        );
 }
 main().catch((exp) => {
     console.log(exp);
