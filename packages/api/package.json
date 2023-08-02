@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/samchon/nestia-template#readme",
   "dependencies": {
-    "@nestia/fetcher": "^1.4.0",
-    "typia": "^4.1.8"
+    "@nestia/fetcher": "^1.5.0",
+    "typia": "^4.1.13"
   }
 }

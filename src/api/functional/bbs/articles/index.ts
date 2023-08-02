@@ -15,6 +15,10 @@ import type { IPage } from "./../../../structures/common/IPage";
 /**
  * List up entire articles, but paginated and summarized.
  * 
+ * This method is for listing up summarized articles with pagination.
+ * 
+ * If you want, you can search and sort articles with specific conditions.
+ * 
  * @param section Target section
  * @param input Pagination request info with searching and sorting options
  * @returns Paged articles witb summarization
@@ -35,7 +39,13 @@ export async function index(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               index.ENCRYPTED,
               index.METHOD,
               index.path(section),
@@ -81,6 +91,8 @@ export namespace index {
 
 /**
  * Get an article with detailed info.
+ * 
+ * Open an article with detailed info, increasing reading count.
  * 
  * @param section Target section
  * @param id Target articles id
@@ -147,6 +159,8 @@ export namespace at {
 /**
  * Store a new article.
  * 
+ * Store a new article and returns its detailed record info.
+ * 
  * @param section Target section
  * @param input New article info
  * @returns Newly created article info
@@ -167,7 +181,13 @@ export async function store(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               store.ENCRYPTED,
               store.METHOD,
               store.path(section),
@@ -215,7 +235,7 @@ export namespace store {
  * Update article.
  * 
  * When updating, this BBS system does not overwrite the content, but accumulate it.
- * Therefore, whenever an article being updated, length of {@link IBbsArticle.snapshots}
+ * Therefore, whenever an article being updated, length of {@link IBbsArticle.snapshots }
  * would be increased and accumulated.
  * 
  * @param section Target section
@@ -241,7 +261,13 @@ export async function update(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               update.ENCRYPTED,
               update.METHOD,
               update.path(section, id),

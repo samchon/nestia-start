@@ -9,7 +9,10 @@
   "info": {
     "version": "0.1.0",
     "title": "@ORGANIZATION/PROJECT",
-    "description": "Starter kit of Nestia"
+    "description": "Starter kit of Nestia",
+    "license": {
+      "name": "MIT"
+    }
   },
   "paths": {
     "/bbs/articles/{section}": {
@@ -52,7 +55,7 @@
           }
         },
         "summary": "List up entire articles, but paginated and summarized",
-        "description": "List up entire articles, but paginated and summarized.\n\nThis method is for listing up summarized articles with pagination.\n\nIf you want, you can search and sort articles with specific conditions.\n\n@param section Target section\n@param input Pagination request info with searching and sorting options\n@returns Paged articles witb summarization",
+        "description": "List up entire articles, but paginated and summarized.\n\nThis method is for listing up summarized articles with pagination.\n\nIf you want, you can search and sort articles with specific conditions.",
         "x-nestia-namespace": "bbs.articles.index",
         "x-nestia-jsDocTags": [
           {
@@ -98,7 +101,8 @@
               }
             ]
           }
-        ]
+        ],
+        "x-nestia-method": "PATCH"
       },
       "post": {
         "tags": [],
@@ -139,7 +143,7 @@
           }
         },
         "summary": "Store a new article",
-        "description": "Store a new article.\n\nStore a new article and returns its detailed record info.\n\n@param section Target section\n@param input New article info\n@returns Newly created article info",
+        "description": "Store a new article.\n\nStore a new article and returns its detailed record info.",
         "x-nestia-namespace": "bbs.articles.store",
         "x-nestia-jsDocTags": [
           {
@@ -185,7 +189,8 @@
               }
             ]
           }
-        ]
+        ],
+        "x-nestia-method": "POST"
       }
     },
     "/bbs/articles/{section}/{id}": {
@@ -206,6 +211,7 @@
             "in": "path",
             "description": "Target articles id",
             "schema": {
+              "format": "uuid",
               "type": "string"
             },
             "required": true
@@ -225,7 +231,7 @@
           }
         },
         "summary": "Get an article with detailed info",
-        "description": "Get an article with detailed info.\n\nOpen an article with detailed info, increasing reading count.\n\n@param section Target section\n@param id Target articles id\n@returns Detailed article info",
+        "description": "Get an article with detailed info.\n\nOpen an article with detailed info, increasing reading count.",
         "x-nestia-namespace": "bbs.articles.at",
         "x-nestia-jsDocTags": [
           {
@@ -271,7 +277,8 @@
               }
             ]
           }
-        ]
+        ],
+        "x-nestia-method": "GET"
       },
       "put": {
         "tags": [],
@@ -290,6 +297,7 @@
             "in": "path",
             "description": "Target articles id",
             "schema": {
+              "format": "uuid",
               "type": "string"
             },
             "required": true
@@ -321,7 +329,7 @@
           }
         },
         "summary": "Update article",
-        "description": "Update article.\n\nWhen updating, this BBS system does not overwrite the content, but accumulate it.\nTherefore, whenever an article being updated, length of {@link IBbsArticle.snapshots}\nwould be increased and accumulated.\n\n@param section Target section\n@param id Target articles id\n@param input Content to update\n@returns Newly created content info",
+        "description": "Update article.\n\nWhen updating, this BBS system does not overwrite the content, but accumulate it.\nTherefore, whenever an article being updated, length of {@link IBbsArticle.snapshots }\nwould be increased and accumulated.",
         "x-nestia-namespace": "bbs.articles.update",
         "x-nestia-jsDocTags": [
           {
@@ -384,7 +392,8 @@
               }
             ]
           }
-        ]
+        ],
+        "x-nestia-method": "PUT"
       }
     }
   },
@@ -413,7 +422,7 @@
           }
         },
         "nullable": false,
-        "description": "Sorting options.\n\nThe plus sign means ASC and minus sign means DESC.",
+        "description": "Page request info with some options.",
         "x-typia-jsDocTags": []
       },
       "IBbsArticle.IRequest.ISearch": {
@@ -440,8 +449,10 @@
         "x-typia-jsDocTags": []
       },
       "IPage.Sort_lt_IBbsArticle.IRequest.SortableColumns_gt_": {
+        "description": "Sorting column specialization.\n\nThe plus means ascending order and the minus means descending order.",
         "type": "array",
         "items": {
+          "description": "Sorting column specialization.\n\nThe plus means ascending order and the minus means descending order.",
           "type": "string",
           "enum": [
             "-writer",
@@ -476,7 +487,7 @@
           "pagination",
           "data"
         ],
-        "description": "List of records.",
+        "description": "A page.\n\nCollection of records with pagination indformation.",
         "x-typia-jsDocTags": [
           {
             "name": "author",
@@ -499,7 +510,7 @@
             "type": "number"
           },
           "limit": {
-            "description": "Limitation of records per a page.\n\n@default 100",
+            "description": "Limitation of records per a page.",
             "x-typia-jsDocTags": [
               {
                 "name": "default",
@@ -523,7 +534,7 @@
             "type": "number"
           },
           "pages": {
-            "description": "Number of total pages.\n\nEqual to {@link records} / {@link limit} with ceiling.",
+            "description": "Number of total pages.\n\nEqual to {@link records } / {@link limit } with ceiling.",
             "x-typia-required": true,
             "x-typia-optional": false,
             "type": "number"
@@ -536,7 +547,7 @@
           "records",
           "pages"
         ],
-        "description": "Number of total pages.\n\nEqual to {@link records} / {@link limit} with ceiling.",
+        "description": "Page information.",
         "x-typia-jsDocTags": []
       },
       "IBbsArticle.ISummary": {
@@ -583,7 +594,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Primary Key.\n\n@format uuid",
+            "description": "Primary Key.",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -628,7 +639,7 @@
             }
           },
           "created_at": {
-            "description": "Creation time of the article.\n\n@format date-time",
+            "description": "Creation time of the article.",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -660,14 +671,14 @@
           "snapshots",
           "created_at"
         ],
-        "description": "Creation time of the article.\n\n@format date-time",
+        "description": "BBS article.",
         "x-typia-jsDocTags": []
       },
       "IBbsArticle.ISnapshot": {
         "type": "object",
         "properties": {
           "id": {
-            "description": "Primary key of individual content.\n\n@format uuid",
+            "description": "Primary key of individual content.",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -738,7 +749,7 @@
           "format",
           "files"
         ],
-        "description": "Creation time of this content.",
+        "description": "Content info.",
         "x-typia-jsDocTags": []
       },
       "IAttachmentFile": {
@@ -826,7 +837,7 @@
           "files",
           "password"
         ],
-        "description": "Name or nickname of the writer.",
+        "description": "Store info.",
         "x-typia-jsDocTags": []
       },
       "IBbsArticle.IUpdate": {
@@ -879,7 +890,7 @@
           "files",
           "password"
         ],
-        "description": "Password of the article.",
+        "description": "Update info.",
         "x-typia-jsDocTags": []
       }
     }
