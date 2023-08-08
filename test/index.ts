@@ -78,7 +78,7 @@ async function main(): Promise<void> {
          console.log(
             `
 All : ${report.executions.length}
-Success : ${successCount}
+Success : ${report.executions.length - failures.length}
 Faild : ${failures.length}
         `
         );
