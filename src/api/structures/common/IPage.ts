@@ -1,3 +1,5 @@
+import { tags } from "typia";
+
 /**
  * A page.
  *
@@ -24,26 +26,26 @@ export namespace IPage {
         /**
          * Current page number.
          */
-        current: number;
+        current: number & tags.Type<"uint32">;
 
         /**
          * Limitation of records per a page.
          *
          * @default 100
          */
-        limit: number;
+        limit: number & tags.Type<"uint32">;
 
         /**
          * Count of total records in database.
          */
-        records: number;
+        records: number & tags.Type<"uint32">;
 
         /**
          * Number of total pages.
          *
          * Equal to {@link records} / {@link limit} with ceiling.
          */
-        pages: number;
+        pages: number & tags.Type<"uint32">;
     }
 
     /**
@@ -53,12 +55,12 @@ export namespace IPage {
         /**
          * Page number.
          */
-        page?: number;
+        page?: number & tags.Type<"uint32">;
 
         /**
          * Limitation of records per a page.
          */
-        limit?: number;
+        limit?: number & tags.Type<"uint32">;
     }
 
     /**

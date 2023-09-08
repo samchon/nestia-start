@@ -1,3 +1,5 @@
+import { tags } from "typia";
+
 import { IAttachmentFile } from "../common/IAttachmentFile";
 import { IPage } from "../common/IPage";
 
@@ -7,10 +9,8 @@ import { IPage } from "../common/IPage";
 export interface IBbsArticle {
     /**
      * Primary Key.
-     *
-     * @format uuid
      */
-    id: string;
+    id: string & tags.Format<"uuid">;
 
     /**
      * Section code.
@@ -31,10 +31,8 @@ export interface IBbsArticle {
 
     /**
      * Creation time of the article.
-     *
-     * @format date-time
      */
-    created_at: string;
+    created_at: string & tags.Format<"date-time">;
 }
 
 export namespace IBbsArticle {
@@ -91,15 +89,13 @@ export namespace IBbsArticle {
     export interface ISnapshot extends Omit<IUpdate, "password"> {
         /**
          * Primary key of individual content.
-         *
-         * @format uuid
          */
-        id: string;
+        id: string & tags.Format<"uuid">;
 
         /**
          * Creation time of this content.
          */
-        created_at: string;
+        created_at: string & tags.Format<"date-time">;
     }
 
     /**

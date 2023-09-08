@@ -22,10 +22,10 @@
           {
             "name": "section",
             "in": "path",
-            "description": "Target section",
             "schema": {
               "type": "string"
             },
+            "description": "Target section",
             "required": true
           }
         ],
@@ -110,10 +110,10 @@
           {
             "name": "section",
             "in": "path",
-            "description": "Target section",
             "schema": {
               "type": "string"
             },
+            "description": "Target section",
             "required": true
           }
         ],
@@ -200,20 +200,19 @@
           {
             "name": "section",
             "in": "path",
-            "description": "Target section",
             "schema": {
               "type": "string"
             },
+            "description": "Target section",
             "required": true
           },
           {
             "name": "id",
             "in": "path",
-            "description": "Target articles id",
             "schema": {
-              "format": "uuid",
               "type": "string"
             },
+            "description": "Target articles id",
             "required": true
           }
         ],
@@ -286,20 +285,20 @@
           {
             "name": "section",
             "in": "path",
-            "description": "Target section",
             "schema": {
               "type": "string"
             },
+            "description": "Target section",
             "required": true
           },
           {
             "name": "id",
             "in": "path",
-            "description": "Target articles id",
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             },
+            "description": "Target articles id",
             "required": true
           }
         ],
@@ -406,19 +405,38 @@
             "$ref": "#/components/schemas/IBbsArticle.IRequest.ISearch"
           },
           "sort": {
-            "$ref": "#/components/schemas/IPage.Sort_lt_IBbsArticle.IRequest.SortableColumns_gt_"
+            "description": "Sorting options.\n\nThe plus sign means ASC and minus sign means DESC.",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "array",
+            "items": {
+              "description": "Sorting options.\n\nThe plus sign means ASC and minus sign means DESC.",
+              "x-typia-required": false,
+              "x-typia-optional": true,
+              "type": "string",
+              "enum": [
+                "-writer",
+                "-title",
+                "-created_at",
+                "-updated_at",
+                "+writer",
+                "+title",
+                "+created_at",
+                "+updated_at"
+              ]
+            }
           },
           "page": {
             "description": "Page number.",
             "x-typia-required": false,
             "x-typia-optional": true,
-            "type": "number"
+            "type": "integer"
           },
           "limit": {
             "description": "Limitation of records per a page.",
             "x-typia-required": false,
             "x-typia-optional": true,
-            "type": "number"
+            "type": "integer"
           }
         },
         "nullable": false,
@@ -447,24 +465,6 @@
         "nullable": false,
         "description": "Searching options.",
         "x-typia-jsDocTags": []
-      },
-      "IPage.Sort_lt_IBbsArticle.IRequest.SortableColumns_gt_": {
-        "description": "Sorting column specialization.\n\nThe plus means ascending order and the minus means descending order.",
-        "type": "array",
-        "items": {
-          "description": "Sorting column specialization.\n\nThe plus means ascending order and the minus means descending order.",
-          "type": "string",
-          "enum": [
-            "-writer",
-            "-title",
-            "-created_at",
-            "-updated_at",
-            "+writer",
-            "+title",
-            "+created_at",
-            "+updated_at"
-          ]
-        }
       },
       "IPage_lt_IBbsArticle.ISummary_gt_": {
         "type": "object",
@@ -507,7 +507,7 @@
             "description": "Current page number.",
             "x-typia-required": true,
             "x-typia-optional": false,
-            "type": "number"
+            "type": "integer"
           },
           "limit": {
             "description": "Limitation of records per a page.",
@@ -524,20 +524,20 @@
             ],
             "x-typia-required": true,
             "x-typia-optional": false,
-            "type": "number",
+            "type": "integer",
             "default": 100
           },
           "records": {
             "description": "Count of total records in database.",
             "x-typia-required": true,
             "x-typia-optional": false,
-            "type": "number"
+            "type": "integer"
           },
           "pages": {
             "description": "Number of total pages.\n\nEqual to {@link records } / {@link limit } with ceiling.",
             "x-typia-required": true,
             "x-typia-optional": false,
-            "type": "number"
+            "type": "integer"
           }
         },
         "nullable": false,
@@ -595,23 +595,6 @@
         "properties": {
           "id": {
             "description": "Primary Key.",
-            "x-typia-metaTags": [
-              {
-                "kind": "format",
-                "value": "uuid"
-              }
-            ],
-            "x-typia-jsDocTags": [
-              {
-                "name": "format",
-                "text": [
-                  {
-                    "text": "uuid",
-                    "kind": "text"
-                  }
-                ]
-              }
-            ],
             "x-typia-required": true,
             "x-typia-optional": false,
             "type": "string",
@@ -640,23 +623,6 @@
           },
           "created_at": {
             "description": "Creation time of the article.",
-            "x-typia-metaTags": [
-              {
-                "kind": "format",
-                "value": "datetime"
-              }
-            ],
-            "x-typia-jsDocTags": [
-              {
-                "name": "format",
-                "text": [
-                  {
-                    "text": "date-time",
-                    "kind": "text"
-                  }
-                ]
-              }
-            ],
             "x-typia-required": true,
             "x-typia-optional": false,
             "type": "string",
@@ -679,23 +645,6 @@
         "properties": {
           "id": {
             "description": "Primary key of individual content.",
-            "x-typia-metaTags": [
-              {
-                "kind": "format",
-                "value": "uuid"
-              }
-            ],
-            "x-typia-jsDocTags": [
-              {
-                "name": "format",
-                "text": [
-                  {
-                    "text": "uuid",
-                    "kind": "text"
-                  }
-                ]
-              }
-            ],
             "x-typia-required": true,
             "x-typia-optional": false,
             "type": "string",
@@ -705,16 +654,11 @@
             "description": "Creation time of this content.",
             "x-typia-required": true,
             "x-typia-optional": false,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "title": {
             "description": "Title of the article.",
-            "x-typia-required": true,
-            "x-typia-optional": false,
-            "type": "string"
-          },
-          "body": {
-            "description": "Content body.",
             "x-typia-required": true,
             "x-typia-optional": false,
             "type": "string"
@@ -729,6 +673,12 @@
               "html",
               "txt"
             ]
+          },
+          "body": {
+            "description": "Content body.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "files": {
             "description": "List of files (to be) attached.",
@@ -745,8 +695,8 @@
           "id",
           "created_at",
           "title",
-          "body",
           "format",
+          "body",
           "files"
         ],
         "description": "Content info.",
@@ -758,18 +708,24 @@
           "name": {
             "x-typia-required": true,
             "x-typia-optional": false,
-            "type": "string"
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1,
+            "nullable": true
           },
           "extension": {
             "x-typia-required": true,
             "x-typia-optional": false,
             "type": "string",
+            "maxLength": 8,
+            "minLength": 1,
             "nullable": true
           },
           "url": {
             "x-typia-required": true,
             "x-typia-optional": false,
-            "type": "string"
+            "type": "string",
+            "format": "url"
           }
         },
         "nullable": false,

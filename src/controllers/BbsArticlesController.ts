@@ -1,5 +1,6 @@
 import core from "@nestia/core";
 import { Controller } from "@nestjs/common";
+import { tags } from "typia";
 
 import { IBbsArticle } from "../api/structures/bbs/IBbsArticle";
 import { IPage } from "../api/structures/common/IPage";
@@ -25,7 +26,7 @@ export class BbsArticlesController {
      */
     @core.TypedRoute.Patch()
     public index(
-        @core.TypedParam("section", "string") section: string,
+        @core.TypedParam("section") section: string,
         @core.TypedBody() input: IBbsArticle.IRequest,
     ): Promise<IPage<IBbsArticle.ISummary>> {
         return BbsArticleProvider.index(section, input);
@@ -42,8 +43,8 @@ export class BbsArticlesController {
      */
     @core.TypedRoute.Get(":id")
     public at(
-        @core.TypedParam("section", "string") section: string,
-        @core.TypedParam("id", "uuid") id: string,
+        @core.TypedParam("section") section: string,
+        @core.TypedParam("id") id: string,
     ): Promise<IBbsArticle> {
         return BbsArticleProvider.find(section, id);
     }
@@ -59,7 +60,7 @@ export class BbsArticlesController {
      */
     @core.TypedRoute.Post()
     public store(
-        @core.TypedParam("section", "string") section: string,
+        @core.TypedParam("section") section: string,
         @core.TypedBody() input: IBbsArticle.IStore,
     ): Promise<IBbsArticle> {
         return BbsArticleProvider.store(section, input);
@@ -79,8 +80,8 @@ export class BbsArticlesController {
      */
     @core.TypedRoute.Put(":id")
     public update(
-        @core.TypedParam("section", "string") section: string,
-        @core.TypedParam("id", "uuid") id: string,
+        @core.TypedParam("section") section: string,
+        @core.TypedParam("id") id: string & tags.Format<"uuid">,
         @core.TypedBody() input: IBbsArticle.IUpdate,
     ): Promise<IBbsArticle.ISnapshot> {
         return BbsArticleProvider.update(section, id, input);
