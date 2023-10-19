@@ -1,4 +1,4 @@
 /* eslint-disable */
-export namespace SGlobal {
+export namespace MyGlobal {
     export let testing: boolean = false;
 }

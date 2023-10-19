@@ -1,6 +1,6 @@
 import path from "path";
 
-export namespace Configuration {
+export namespace MyConfiguration {
     export const API_PORT = () => 37001;
 
     export const ROOT = __filename.includes(

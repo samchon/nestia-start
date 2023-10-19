@@ -2,9 +2,9 @@ import { DynamicExecutor } from "@nestia/e2e";
 
 import api from "@ORGANIZATION/PROJECT-api";
 
-import { Backend } from "../src/Backend";
-import { Configuration } from "../src/Configuration";
-import { SGlobal } from "../src/SGlobal";
+import { MyBackend } from "../src/MyBackend";
+import { MyConfiguration } from "../src/MyConfiguration";
+import { MyGlobal } from "../src/MyGlobal";
 import { ArgumentParser } from "./helpers/ArgumentParser";
 
 interface IOptions {
@@ -36,10 +36,10 @@ const getOptions = () =>
 
 async function main(): Promise<void> {
     const options: IOptions = await getOptions();
-    SGlobal.testing = true;
+    MyGlobal.testing = true;
 
     // BACKEND SERVER
-    const backend: Backend = new Backend();
+    const backend: MyBackend = new MyBackend();
     await backend.open();
 
     //----
@@ -47,7 +47,7 @@ async function main(): Promise<void> {
     //----
     // DO TEST
     const connection: api.IConnection = {
-        host: `http://127.0.0.1:${await Configuration.API_PORT()}`,
+        host: `http://127.0.0.1:${MyConfiguration.API_PORT()}`,
     };
     const report: DynamicExecutor.IReport = await DynamicExecutor.validate({
         prefix: "test",

@@ -23,6 +23,7 @@
   "homepage": "https://nestia.io",
   "files": [
     "lib",
+    "swagger.json",
     "package.json",
     "README.md"
   ],
@@ -33,7 +34,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@nestia/fetcher": "^2.2.4",
-    "typia": "^5.2.2"
+    "@nestia/fetcher": "^2.3.0",
+    "typia": "^5.2.3"
   }
 }

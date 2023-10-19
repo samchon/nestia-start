@@ -1,13 +1,13 @@
-import core from "@nestia/core";
 import { NestFactory } from "@nestjs/core";
 import {
     FastifyAdapter,
     NestFastifyApplication,
 } from "@nestjs/platform-fastify";
 
-import { Configuration } from "./Configuration";
+import { MyConfiguration } from "./MyConfiguration";
+import { MyModule } from "./MyModule";
 
-export class Backend {
+export class MyBackend {
     private application_?: NestFastifyApplication;
 
     public async open(): Promise<void> {
@@ -16,14 +16,14 @@ export class Backend {
         //----
         // MOUNT CONTROLLERS
         this.application_ = await NestFactory.create(
-            await core.DynamicModule.mount(__dirname + "/controllers"),
+            await MyModule(),
             new FastifyAdapter(),
             { logger: false },
         );
 
         // DO OPEN
         this.application_.enableCors();
-        await this.application_.listen(Configuration.API_PORT());
+        await this.application_.listen(MyConfiguration.API_PORT());
 
         //----
         // POST-PROCESSES
