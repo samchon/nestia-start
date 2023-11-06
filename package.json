@@ -64,7 +64,7 @@
     "@nestia/core": "^2.3.4",
     "serialize-error": "^4.1.0",
     "tstl": "^2.5.13",
-    "typia": "^5.2.4",
+    "typia": "^5.2.5",
     "uuid": "^9.0.0"
   },
   "stackblitz": {
