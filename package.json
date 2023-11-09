@@ -61,7 +61,7 @@
     "typescript-transform-paths": "^3.4.6"
   },
   "dependencies": {
-    "@nestia/core": "^2.3.5",
+    "@nestia/core": "^2.3.9",
     "serialize-error": "^4.1.0",
     "tstl": "^2.5.13",
     "typia": "^5.2.6",
