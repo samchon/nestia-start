@@ -1,3 +1,8 @@
-import { DynamicModule } from "@nestia/core";
+import { Module } from "@nestjs/common";
 
-export const MyModule = () => DynamicModule.mount(__dirname + "/controllers");
+import { BbsArticleModule } from "./controllers/bbs/BbsArticleModule";
+
+@Module({
+  imports: [BbsArticleModule],
+})
+export class MyModule {}

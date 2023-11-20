@@ -5,7 +5,7 @@ import { NestFactory } from "@nestjs/core";
 import { MyModule } from "./src/MyModule";
 
 const NESTIA_CONFIG: sdk.INestiaConfig = {
-    input: async () => NestFactory.create(await MyModule()),
+    input: () => NestFactory.create(MyModule),
     output: "src/api",
     swagger: {
         output: "packages/api/swagger.json",
