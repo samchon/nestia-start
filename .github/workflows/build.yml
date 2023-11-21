@@ -23,5 +23,8 @@ jobs:
       - name: Run Test Program
         run: npm run test
 
+      - name: Test Webpack
+        run: npm run webpack && npm run test:webpack
+
       - name: EsLint
         run: npm run eslint

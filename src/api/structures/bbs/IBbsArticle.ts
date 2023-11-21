@@ -1,3 +1,5 @@
+import { tags } from "typia";
+
 import { IAttachmentFile } from "../common/IAttachmentFile";
 import { IPage } from "../common/IPage";
 
@@ -5,140 +7,134 @@ import { IPage } from "../common/IPage";
  * BBS article.
  */
 export interface IBbsArticle {
-    /**
-     * Primary Key.
-     *
-     * @format uuid
-     */
-    id: string;
+  /**
+   * Primary Key.
+   */
+  id: string & tags.Format<"uuid">;
 
-    /**
-     * Section code.
-     */
-    section: string;
+  /**
+   * Section code.
+   */
+  section: string;
 
-    /**
-     * Name of nickname of writer.
-     */
-    writer: string;
+  /**
+   * Name of nickname of writer.
+   */
+  writer: string;
 
-    /**
-     * List of snapshot contents.
-     *
-     * Whenever updating an article, its contents would be accumulated.
-     */
-    snapshots: IBbsArticle.ISnapshot[];
+  /**
+   * List of snapshot contents.
+   *
+   * Whenever updating an article, its contents would be accumulated.
+   */
+  snapshots: IBbsArticle.ISnapshot[];
 
-    /**
-     * Creation time of the article.
-     *
-     * @format date-time
-     */
-    created_at: string;
+  /**
+   * Creation time of the article.
+   */
+  created_at: string & tags.Format<"date-time">;
 }
 
 export namespace IBbsArticle {
+  /**
+   * Page request info with some options.
+   */
+  export interface IRequest extends IPage.IRequest {
     /**
-     * Page request info with some options.
+     * Searching options.
      */
-    export interface IRequest extends IPage.IRequest {
-        /**
-         * Searching options.
-         */
-        search?: IRequest.ISearch;
+    search?: IRequest.ISearch;
 
-        /**
-         * Sorting options.
-         *
-         * The plus sign means ASC and minus sign means DESC.
-         */
-        sort?: IPage.Sort<IRequest.SortableColumns>;
-    }
-    export namespace IRequest {
-        /**
-         * Searching options.
-         */
-        export interface ISearch {
-            writer?: string;
-            title?: string;
-            body?: string;
-        }
-
-        /**
-         * List of sortable columns.
-         */
-        export type SortableColumns =
-            | "writer"
-            | "title"
-            | "created_at"
-            | "updated_at";
+    /**
+     * Sorting options.
+     *
+     * The plus sign means ASC and minus sign means DESC.
+     */
+    sort?: IPage.Sort<IRequest.SortableColumns>;
+  }
+  export namespace IRequest {
+    /**
+     * Searching options.
+     */
+    export interface ISearch {
+      writer?: string;
+      title?: string;
+      body?: string;
     }
 
     /**
-     * Summarized info.
+     * List of sortable columns.
      */
-    export interface ISummary {
-        id: string;
-        writer: string;
-        title: string;
-        created_at: string;
-        updated_at: string;
-    }
+    export type SortableColumns =
+      | "writer"
+      | "title"
+      | "created_at"
+      | "updated_at";
+  }
+
+  /**
+   * Summarized info.
+   */
+  export interface ISummary {
+    id: string;
+    writer: string;
+    title: string;
+    created_at: string;
+    updated_at: string;
+  }
+
+  /**
+   * Content info.
+   */
+  export interface ISnapshot extends Omit<IUpdate, "password"> {
+    /**
+     * Primary key of individual content.
+     */
+    id: string & tags.Format<"uuid">;
 
     /**
-     * Content info.
+     * Creation time of this content.
      */
-    export interface ISnapshot extends Omit<IUpdate, "password"> {
-        /**
-         * Primary key of individual content.
-         *
-         * @format uuid
-         */
-        id: string;
+    created_at: string & tags.Format<"date-time">;
+  }
 
-        /**
-         * Creation time of this content.
-         */
-        created_at: string;
-    }
+  /**
+   * Store info.
+   */
+  export interface IStore extends IUpdate {
+    /**
+     * Name or nickname of the writer.
+     */
+    writer: string;
+  }
+
+  /**
+   * Update info.
+   */
+  export interface IUpdate {
+    /**
+     * Title of the article.
+     */
+    title: string;
 
     /**
-     * Store info.
+     * Content body.
      */
-    export interface IStore extends IUpdate {
-        /**
-         * Name or nickname of the writer.
-         */
-        writer: string;
-    }
+    body: string;
 
     /**
-     * Update info.
+     * Format of the content body.
      */
-    export interface IUpdate {
-        /**
-         * Title of the article.
-         */
-        title: string;
+    format: "md" | "html" | "txt";
 
-        /**
-         * Content body.
-         */
-        body: string;
+    /**
+     * List of files (to be) attached.
+     */
+    files: IAttachmentFile[];
 
-        /**
-         * Format of the content body.
-         */
-        format: "md" | "html" | "txt";
-
-        /**
-         * List of files (to be) attached.
-         */
-        files: IAttachmentFile[];
-
-        /**
-         * Password of the article.
-         */
-        password: string;
-    }
+    /**
+     * Password of the article.
+     */
+    password: string;
+  }
 }

@@ -1,8 +1,11 @@
 // nestia configuration file
 import type sdk from "@nestia/sdk";
+import { NestFactory } from "@nestjs/core";
+
+import { MyModule } from "./src/MyModule";
 
 const NESTIA_CONFIG: sdk.INestiaConfig = {
-    input: "src/controllers",
+    input: () => NestFactory.create(MyModule),
     output: "src/api",
     swagger: {
         output: "packages/api/swagger.json",
@@ -13,7 +16,7 @@ const NESTIA_CONFIG: sdk.INestiaConfig = {
             },
         ],
     },
-    primitive: false,
+    distribute: "packages/api",
     simulate: true,
     e2e: "test",
 };

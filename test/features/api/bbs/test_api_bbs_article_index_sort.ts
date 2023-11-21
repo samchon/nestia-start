@@ -1,8 +1,8 @@
 import {
-    ArrayUtil,
-    GaffComparator,
-    RandomGenerator,
-    TestValidator,
+  ArrayUtil,
+  GaffComparator,
+  RandomGenerator,
+  TestValidator,
 } from "@nestia/e2e";
 import typia from "typia";
 
@@ -11,47 +11,47 @@ import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsAr
 import { IPage } from "@ORGANIZATION/PROJECT-api/lib/structures/common/IPage";
 
 export async function test_api_bbs_article_index_sort(
-    connection: api.IConnection,
+  connection: api.IConnection,
 ): Promise<void> {
-    // GENERATE 100 ARTICLES
-    const section: string = "general";
-    const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100)(() =>
-        api.functional.bbs.articles.store(connection, section, {
-            writer: RandomGenerator.name(),
-            title: RandomGenerator.paragraph(5)(),
-            body: RandomGenerator.content(8)()(),
-            format: "txt",
-            files: [],
-            password: RandomGenerator.alphabets(8),
-        }),
-    );
-    typia.assertEquals(articles);
+  // GENERATE 100 ARTICLES
+  const section: string = "general";
+  const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100)(() =>
+    api.functional.bbs.articles.store(connection, section, {
+      writer: RandomGenerator.name(),
+      title: RandomGenerator.paragraph(5)(),
+      body: RandomGenerator.content(8)()(),
+      format: "txt",
+      files: [],
+      password: RandomGenerator.alphabets(8),
+    }),
+  );
+  typia.assertEquals(articles);
 
-    // PREPARE VALIDATOR
-    const validator = TestValidator.sort("BbsArticleProvider.index()")(
-        async (sort: IPage.Sort<IBbsArticle.IRequest.SortableColumns>) => {
-            const page: IPage<IBbsArticle.ISummary> =
-                await api.functional.bbs.articles.index(connection, section, {
-                    limit: 100,
-                    sort,
-                });
-            return typia.assertEquals(page).data;
-        },
-    );
+  // PREPARE VALIDATOR
+  const validator = TestValidator.sort("BbsArticleProvider.index()")(
+    async (sort: IPage.Sort<IBbsArticle.IRequest.SortableColumns>) => {
+      const page: IPage<IBbsArticle.ISummary> =
+        await api.functional.bbs.articles.index(connection, section, {
+          limit: 100,
+          sort,
+        });
+      return typia.assertEquals(page).data;
+    },
+  );
 
-    // DO VALIDATE
-    const components = [
-        validator("created_at")(GaffComparator.dates((x) => x.created_at)),
-        validator("updated_at")(GaffComparator.dates((x) => x.updated_at)),
-        validator("title")(GaffComparator.strings((x) => x.title)),
-        validator("writer")(GaffComparator.strings((x) => x.writer)),
-        validator(
-            "writer",
-            "title",
-        )(GaffComparator.strings((x) => [x.writer, x.title])),
-    ];
-    for (const comp of components) {
-        await comp("+", false);
-        await comp("-", false);
-    }
+  // DO VALIDATE
+  const components = [
+    validator("created_at")(GaffComparator.dates((x) => x.created_at)),
+    validator("updated_at")(GaffComparator.dates((x) => x.updated_at)),
+    validator("title")(GaffComparator.strings((x) => x.title)),
+    validator("writer")(GaffComparator.strings((x) => x.writer)),
+    validator(
+      "writer",
+      "title",
+    )(GaffComparator.strings((x) => [x.writer, x.title])),
+  ];
+  for (const comp of components) {
+    await comp("+", false);
+    await comp("-", false);
+  }
 }
