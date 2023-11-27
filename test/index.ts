@@ -75,12 +75,14 @@ async function main(): Promise<void> {
     for (const f of failures) console.log(f.error);
     process.exit(-1);
   }
-  
-  console.log([
-    `All : ${report.executions.length}`,
-    `Success : ${report.executions.length - failures.length}`,
-    `Failed : ${failures.length}`,
-  ].join("\n"));
+
+  console.log(
+    [
+      `All: #${report.executions.length}`,
+      `Success: #${report.executions.length - failures.length}`,
+      `Failed: #${failures.length}`,
+    ].join("\n"),
+  );
 }
 main().catch((exp) => {
   console.log(exp);
