@@ -50,18 +50,18 @@ export class BbsArticlesController {
   }
 
   /**
-   * Store a new article.
+   * Create a new article.
    *
-   * Store a new article and returns its detailed record info.
+   * Create a new article and returns its detailed record info.
    *
    * @param section Target section
    * @param input New article info
    * @returns Newly created article info
    */
   @core.TypedRoute.Post()
-  public store(
+  public create(
     @core.TypedParam("section") section: string,
-    @core.TypedBody() input: IBbsArticle.IStore,
+    @core.TypedBody() input: IBbsArticle.ICreate,
   ): Promise<IBbsArticle> {
     return BbsArticleProvider.store(section, input);
   }

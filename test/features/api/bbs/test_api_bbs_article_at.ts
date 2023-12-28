@@ -9,7 +9,7 @@ export async function test_api_bbs_article_at(
   connection: api.IConnection,
 ): Promise<void> {
   // STORE A NEW ARTICLE
-  const stored: IBbsArticle = await api.functional.bbs.articles.store(
+  const stored: IBbsArticle = await api.functional.bbs.articles.create(
     connection,
     "general",
     {

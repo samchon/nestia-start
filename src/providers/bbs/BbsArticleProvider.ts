@@ -122,7 +122,7 @@ export namespace BbsArticleProvider {
 
   export async function store(
     section: string,
-    input: IBbsArticle.IStore,
+    input: IBbsArticle.ICreate,
   ): Promise<IBbsArticle> {
     const now: string = datetime_to_string(new Date());
     const article: IBbsArticle = {

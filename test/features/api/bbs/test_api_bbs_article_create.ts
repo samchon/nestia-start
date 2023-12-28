@@ -1,15 +1,15 @@
-import { RandomGenerator } from "@nestia/e2e";
+import { RandomGenerator, TestValidator } from "@nestia/e2e";
 import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
 
-export async function test_api_bbs_article_store(
+export async function test_api_bbs_article_create(
   connection: api.IConnection,
 ): Promise<void> {
   // STORE A NEW ARTICLE
-  const stored: IBbsArticle = await api.functional.bbs.articles.store(
+  const stored: IBbsArticle = await api.functional.bbs.articles.create(
     connection,
     "general",
     {
@@ -36,8 +36,5 @@ export async function test_api_bbs_article_store(
     stored.id,
   );
   typia.assertEquals(read);
-
-  // CHECK EXISTENCE
-  if (read.id !== stored.id)
-    throw new Error("Bug on BbsArticleProvider.store(): failed to store.");
+  TestValidator.equals("created")(stored)(read);
 }

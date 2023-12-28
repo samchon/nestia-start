@@ -16,7 +16,7 @@ export async function test_api_bbs_article_index_sort(
   // GENERATE 100 ARTICLES
   const section: string = "general";
   const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100)(() =>
-    api.functional.bbs.articles.store(connection, section, {
+    api.functional.bbs.articles.create(connection, section, {
       writer: RandomGenerator.name(),
       title: RandomGenerator.paragraph(5)(),
       body: RandomGenerator.content(8)()(),

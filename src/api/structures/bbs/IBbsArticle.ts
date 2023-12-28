@@ -101,7 +101,7 @@ export namespace IBbsArticle {
   /**
    * Store info.
    */
-  export interface IStore extends IUpdate {
+  export interface ICreate extends IUpdate {
     /**
      * Name or nickname of the writer.
      */

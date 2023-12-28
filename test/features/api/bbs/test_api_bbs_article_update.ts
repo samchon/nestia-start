@@ -10,7 +10,7 @@ export async function test_api_bbs_article_update(
 ): Promise<void> {
   // STORE A NEW ARTICLE
   const password: string = v4();
-  const article: IBbsArticle = await api.functional.bbs.articles.store(
+  const article: IBbsArticle = await api.functional.bbs.articles.create(
     connection,
     "general",
     {
