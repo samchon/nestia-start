@@ -81,7 +81,7 @@
     "dotenv-expand": "^10.0.0",
     "serialize-error": "^4.1.0",
     "tstl": "^2.5.13",
-    "typia": "^5.3.7",
+    "typia": "^5.3.8",
     "uuid": "^9.0.0"
   },
   "stackblitz": {
