@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/samchon/nestia-template"
+    "url": "https://github.com/samchon/nestia-start"
   },
   "keywords": [
     "nestia",
@@ -39,9 +39,9 @@
   "author": "AUTHOR",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/samchon/nestia-template/issues"
+    "url": "https://github.com/samchon/nestia-start/issues"
   },
-  "homepage": "https://github.com/samchon/nestia-template#readme",
+  "homepage": "https://github.com/samchon/nestia-start#readme",
   "devDependencies": {
     "@nestia/e2e": "^0.4.1",
     "@nestia/sdk": "^2.4.5",

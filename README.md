@@ -1,6 +1,6 @@
 # Nestia Template
 ## Outline
-[![Build Status](https://github.com/samchon/nestia-template/workflows/build/badge.svg)](https://github.com/samchon/nestia-template/actions?query=workflow%3Abuild)
+[![Build Status](https://github.com/samchon/nestia-start/workflows/build/badge.svg)](https://github.com/samchon/nestia-start/actions?query=workflow%3Abuild)
 
 A template repository for backend projects using [nestia](https://github.com/samchon/nestia).
 
@@ -62,7 +62,7 @@ When you've created a new backend project through this template project, you can
 | ORGANIZATION | Your account or corporation name
 | PROJECT      | Your own project name
 | AUTHOR       | Author name
-| https://github.com/samchon/nestia-template | Your repository URL
+| https://github.com/samchon/nestia-start | Your repository URL
 
 
 
