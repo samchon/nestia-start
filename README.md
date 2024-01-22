@@ -10,7 +10,9 @@ You can create a new project from this boilerplate by running below command:
 npx nestia start <directory>
 ```
 
-For reference, this is a minimal boilerplate project concentrating only on [nestia](https://github.com/samchon/nestia) SDK generation. If you wanna much detailed boilerplate project even configured DB and Non-distruptive update system, visit [samchon/backend](https://github.com/samchon/backend) and create a new repository from that.
+For reference, this is a minimal boilerplate project concentrating only on [nestia](https://github.com/samchon/nestia) SDK generation. 
+
+If you wanna much detailed boilerplate project, visit [`@samchon/backend`](https://github.com/samchon/backend).
 
 
 
