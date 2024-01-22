@@ -52,6 +52,9 @@ module.exports = {
         // {
         //   from: "./node_modules/.prisma/client/*.node",
         //   to: () => Promise.resolve("[path][name][ext]"),
+        //   globOptions: {
+        //     dot: true,
+        //   },
         // },
       ],
     }),
