@@ -28,16 +28,16 @@ export async function test_api_bbs_article_index_sort(
   typia.assertEquals(articles);
 
   // PREPARE VALIDATOR
-  const validator = TestValidator.sort("BbsArticleProvider.index()")(
-    async (sort: IPage.Sort<IBbsArticle.IRequest.SortableColumns>) => {
-      const page: IPage<IBbsArticle.ISummary> =
-        await api.functional.bbs.articles.index(connection, section, {
-          limit: 100,
-          sort,
-        });
-      return typia.assertEquals(page).data;
-    },
-  );
+  const validator = TestValidator.sort("BbsArticleProvider.index()")(async (
+    sort: IPage.Sort<IBbsArticle.IRequest.SortableColumns>,
+  ) => {
+    const page: IPage<IBbsArticle.ISummary> =
+      await api.functional.bbs.articles.index(connection, section, {
+        limit: 100,
+        sort,
+      });
+    return typia.assertEquals(page).data;
+  });
 
   // DO VALIDATE
   const components = [

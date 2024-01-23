@@ -21,6 +21,7 @@ module.exports = {
                 "@typescript-eslint/no-duplicate-imports": "error",
                 "@typescript-eslint/no-explicit-any": "off",
                 "@typescript-eslint/no-floating-promises": "error",
+                "@typescript-eslint/no-duplicate-imports": "off",
                 "@typescript-eslint/no-inferrable-types": "off",
                 "@typescript-eslint/no-namespace": "off",
                 "@typescript-eslint/no-non-null-assertion": "off",
