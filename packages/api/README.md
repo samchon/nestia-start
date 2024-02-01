@@ -17,22 +17,28 @@ Just import and call some API functions like gif image below:
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/samchon/nestia/blob/master/LICENSE)
 [![npm version](https://img.shields.io/npm/v/@nestia/core.svg)](https://www.npmjs.com/package/@nestia/core)
-[![Downloads](https://img.shields.io/npm/dm/nestia.svg)](https://www.npmjs.com/package/nestia)
+[![Downloads](https://img.shields.io/npm/dm/@nestia/core.svg)](https://www.npmjs.com/package/@nestia/core)
 [![Build Status](https://github.com/samchon/nestia/workflows/build/badge.svg)](https://github.com/samchon/nestia/actions?query=workflow%3Abuild)
 [![Guide Documents](https://img.shields.io/badge/guide-documents-forestgreen)](https://nestia.io/docs/)
 
-[Nestia](https://nestia.io) is a set of helper libraries for NestJS, supporting below features:
+Nestia is a set of helper libraries for NestJS, supporting below features:
 
   - `@nestia/core`: super-fast decorators
-  - `@nestia/sdk`
-    - SDK generator for clients
+  - `@nestia/sdk`:
     - Swagger generator evolved than ever
+    - SDK library generator for clients
+    - Mockup Simulator for client applications
     - Automatic E2E test functions generator
+  - `@nestia/migrate`: migration from Swagger to NestJS
   - `nestia`: just CLI (command line interface) tool
 
 > **Note**
 > 
 > - **Only one line** required, with pure TypeScript type
-> - Runtime validator is **20,000x faster** than `class-validator`
-> - JSON serialization is **200x faster** than `class-transformer`
-> - SDK is similar with [tRPC](https://trpc.io), but much advanced
+> - Enhance performance **30x** up
+>   - Runtime validator is **20,000x faster** than `class-validator`
+>   - JSON serialization is **200x faster** than `class-transformer`
+> - Software Development Kit
+>   - SDK is a collection of `fetch` functions with type definitions like [tRPC](https://trpc.io/)
+>   - Mockup simulator means embedded backend simulator in SDK
+>     - similar with [msw](https://mswjs.io/), but fully automated
