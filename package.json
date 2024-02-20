@@ -85,7 +85,7 @@
     "inquirer": "8.2.5",
     "serialize-error": "^4.1.0",
     "tstl": "^2.5.13",
-    "typia": "^5.4.9",
+    "typia": "^5.4.10",
     "uuid": "^9.0.0"
   },
   "stackblitz": {
