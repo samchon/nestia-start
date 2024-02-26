@@ -13,7 +13,7 @@ updates:
       - dependency-name: "nestia"
       - dependency-name: "tstl"
       - dependency-name: "typia"
-    grooups:
+    groups:
       samchon:
         patterns:
           - "@nestia/*"
