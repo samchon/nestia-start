@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "@nestia/core": "^2.5.11",
-    "@nestia/fetcher": "^2.5.8",
+    "@nestia/fetcher": "^2.5.11",
     "@nestjs/common": "^10.3.3",
     "@nestjs/core": "^10.3.3",
     "@nestjs/platform-express": "^10.3.3",
