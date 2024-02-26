@@ -35,6 +35,6 @@
   },
   "dependencies": {
     "@nestia/fetcher": "^2.5.8",
-    "typia": "^5.4.11"
+    "typia": "^5.4.12"
   }
 }
