@@ -81,7 +81,7 @@
     "@nestjs/platform-express": "^10.3.3",
     "commander": "10.0.0",
     "dotenv": "^16.3.1",
-    "dotenv-expand": "^10.0.0",
+    "dotenv-expand": "^11.0.6",
     "inquirer": "8.2.5",
     "serialize-error": "^4.1.0",
     "tstl": "^2.5.13",
