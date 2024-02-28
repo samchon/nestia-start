@@ -28,7 +28,7 @@ updates:
     allow: []
     groups:
       Samchon:
-        - patterns:
+        patterns:
           - "@nestia/fetcher"
           - "typia"
 #######################################################
