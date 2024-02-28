@@ -7,7 +7,6 @@ updates:
       interval: 'daily'
     open-pull-requests-limit: 25
     versioning-strategy: increase
-    allow: []
     groups:
       Samchon:
         patterns:
@@ -25,7 +24,6 @@ updates:
       interval: 'daily'
     open-pull-requests-limit: 25
     versioning-strategy: increase
-    allow: []
     groups:
       Samchon:
         patterns:
