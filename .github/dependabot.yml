@@ -7,14 +7,20 @@ updates:
       interval: 'daily'
     open-pull-requests-limit: 25
     versioning-strategy: increase
+    ignore:
+      - dependency-name: "@nestjs/*"
+      - dependency-name: "@nestia/*"
+      - dependency-name: "nestia"
+      - dependency-name: "tstl"
+      - dependency-name: "typia"
     groups:
-      samchon:
+      Samchon:
         patterns:
           - "@nestia/*"
           - "nestia"
           - "tstl"
           - "typia"
-      nestjs:
+      NestJS:
         patterns:
           - "@nestjs/*"
 #######################################################
@@ -24,8 +30,11 @@ updates:
       interval: 'daily'
     open-pull-requests-limit: 25
     versioning-strategy: increase
+    ignore:
+      - dependency-name: "@nestia/fetcher"
+      - dependency-name: "typia"
     groups:
-      samchon:
+      Samchon:
         - patterns:
           - "@nestia/fetcher"
           - "typia"
