@@ -7,12 +7,6 @@ updates:
       interval: 'daily'
     open-pull-requests-limit: 25
     versioning-strategy: increase
-    allow:
-      - dependency-name: "@nestjs/*"
-      - dependency-name: "@nestia/*"
-      - dependency-name: "nestia"
-      - dependency-name: "tstl"
-      - dependency-name: "typia"
     groups:
       samchon:
         patterns:
