@@ -86,7 +86,7 @@
     "serialize-error": "^4.1.0",
     "tstl": "^2.5.13",
     "typia": "^5.4.13",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "stackblitz": {
     "startCommand": "npm run prepare && npm run build:test && npm run test"
