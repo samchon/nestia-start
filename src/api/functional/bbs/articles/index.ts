@@ -22,7 +22,7 @@ import type { IPage } from "../../../structures/common/IPage";
  *
  * @param section Target section
  * @param input Pagination request info with searching and sorting options
- * @returns Paged articles witb summarization
+ * @returns Paged articles with summarization
  *
  * @controller BbsArticlesController.index
  * @path PATCH /bbs/articles/:section
