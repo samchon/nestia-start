@@ -22,7 +22,7 @@ export class BbsArticlesController {
    *
    * @param section Target section
    * @param input Pagination request info with searching and sorting options
-   * @returns Paged articles with summarization
+   * @returns Paginated articles with summarization
    */
   @core.TypedRoute.Patch()
   public index(
