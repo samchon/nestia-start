@@ -2,10 +2,12 @@ name: build
 on: 
   push:
     paths:
+      - package.json
       - 'src/**'
       - 'test/**'
   pull_request:
     paths:
+      - package.json
       - 'src/**'
       - 'test/**'
 
