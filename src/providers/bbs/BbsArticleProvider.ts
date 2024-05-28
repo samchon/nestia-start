@@ -124,7 +124,7 @@ export namespace BbsArticleProvider {
     section: string,
     input: IBbsArticle.ICreate,
   ): Promise<IBbsArticle> {
-    const now: string = datetime_to_string(new Date());
+    const now: string = new Date().toISOString();
     const article: IBbsArticle = {
       id: v4(),
       section,
@@ -167,7 +167,7 @@ export namespace BbsArticleProvider {
         password: undefined,
       },
       id: v4(),
-      created_at: datetime_to_string(new Date()),
+      created_at: new Date().toISOString(),
     };
     article.snapshots.push(content);
     return content;
@@ -179,28 +179,3 @@ interface IRecord {
   password: string;
 }
 const storage: Map<string, Map<string, IRecord>> = new Map();
-
-function datetime_to_string(date: Date): string {
-  return (
-    cipher(4)(date.getFullYear()) +
-    "-" +
-    ([
-      [date.getMonth() + 1, date.getDate()].map(cipher(2)).join("-"),
-      [date.getHours(), date.getMinutes(), date.getSeconds()]
-        .map(cipher(2))
-        .join(":"),
-    ].join(" ") +
-      "." +
-      precision(date.getMilliseconds()))
-  );
-}
-
-const cipher = (digit: number) => (value: number) => {
-  const str: string = String(value);
-  return "0".repeat(digit - str.length) + str;
-};
-
-const precision = (value: number) => {
-  const str: string = String(value);
-  return str + "0".repeat(3 - str.length);
-};
