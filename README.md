@@ -29,6 +29,7 @@ As you can see from the below, all of the Backend source files are placed into t
       - [**src/api/structures/**](src/api/structures/): DTO structures
     - [src/controllers/](src/controllers/): Controller classes of the Main Program
   - [**test/**](test): Test Automation Program
+    - [test/benchmark](test/benchmark): Performance Benchmark Program
   - [nestia.config.ts](nestia.config.ts): Configuration file of [`nestia`](https://github.com/samchon/nestia)
   - [package.json](package.json): NPM configuration
   - [tsconfig.json](tsconfig.json): TypeScript configuration for the main program
@@ -50,6 +51,7 @@ List of the run commands defined in the [package.json](package.json) are like be
   - `eslint` & `eslint:fix` & `prettier`: Prettier and ESLint execution
   - `start`: Start local NestJS server
   - `test`: Run test automation program
+  - `benchmark`: Run performance benchmark program
 
 
 
