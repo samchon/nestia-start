@@ -86,53 +86,63 @@ During the test automation program development, you can find that which API is m
 > 4. Main Program
 
 ```typescript
-import typia from "typia";
+import {
+  ArrayUtil,
+  GaffComparator,
+  RandomGenerator,
+  TestValidator,
+} from "@nestia/e2e";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
-
-import { ArrayUtil } from "../../../../utils/ArrayUtil";
-import { GaffComparator } from "../../../internal/GaffComparator";
-import { RandomGenerator } from "../../../internal/RandomGenerator";
-import { validate_index_sort } from "../../../internal/validate_index_sort";
+import { IPage } from "@ORGANIZATION/PROJECT-api/lib/structures/common/IPage";
 
 export async function test_api_bbs_article_index_sort(
-    connection: api.IConnection,
+  connection: api.IConnection,
 ): Promise<void> {
-    // GENERATE 100 ARTICLES
-    const section: string = "general";
-    const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100, () =>
-        api.functional.bbs.articles.store(connection, section, {
-            writer: RandomGenerator.name(),
-            title: RandomGenerator.paragraph(),
-            body: RandomGenerator.content(),
-            format: "txt",
-            files: [],
-            password: RandomGenerator.alphabets(8),
-        }),
-    );
-    typia.assertEquals(articles);
+  // GENERATE 100 ARTICLES
+  const section: string = "general";
+  await ArrayUtil.asyncRepeat(100)(() =>
+    api.functional.bbs.articles.create(connection, section, {
+      writer: RandomGenerator.name(),
+      title: RandomGenerator.paragraph(5)(),
+      body: RandomGenerator.content(8)()(),
+      format: "txt",
+      files: [],
+      password: RandomGenerator.alphabets(8),
+    }),
+  );
 
-    // PREPARE VALIDATOR
-    const validator = validate_index_sort("BbsArticleProvider.index()")(
-        (input: IBbsArticle.IRequest) =>
-            api.functional.bbs.articles.index(connection, section, input),
-    );
+  // PREPARE VALIDATOR
+  const validator = TestValidator.sort("BbsArticleProvider.index()")(async (
+    sort: IPage.Sort<IBbsArticle.IRequest.SortableColumns>,
+  ) => {
+    const page: IPage<IBbsArticle.ISummary> =
+      await api.functional.bbs.articles.index(connection, section, {
+        limit: 100,
+        sort,
+      });
+    return page.data;
+  });
 
-    // DO VALIDATE
-    const components = [
-        validator("created_at")(GaffComparator.dates((x) => x.created_at)),
-        validator("updated_at")(GaffComparator.dates((x) => x.updated_at)),
-        validator("title")(GaffComparator.strings((x) => x.title)),
-        validator("writer")(GaffComparator.strings((x) => x.writer)),
-        validator(
-            "writer",
-            "title",
-        )(GaffComparator.strings((x) => [x.writer, x.title])),
-    ];
-    for (const comp of components) {
-        await comp("+");
-        await comp("-");
-    }
+  // DO VALIDATE
+  const components = [
+    validator("created_at")(GaffComparator.dates((x) => x.created_at)),
+    validator("updated_at")(GaffComparator.dates((x) => x.updated_at)),
+    validator("title")(GaffComparator.strings((x) => x.title)),
+    validator("writer")(GaffComparator.strings((x) => x.writer)),
+    validator(
+      "writer",
+      "title",
+    )(GaffComparator.strings((x) => [x.writer, x.title])),
+  ];
+  for (const comp of components) {
+    await comp("+", false);
+    await comp("-", false);
+  }
 }
 ```
+
+For reference, if you run `npm run benchmark` command, your test functions defined in the [test/features/api](test/features/api) directory would be utilized for performance benchmarking. If you want to see the performance bench result earlier, visit below link please:
+
+  - [docs/benchmarks/AMD Ryzen 9 7940HS w Radeon 780M Graphics.md](https://github.com/samchon/nestia-start/blob/master/docs/benchmarks/AMD%20Ryzen%209%207940HS%20w%20Radeon%20780M%20Graphics.md)
