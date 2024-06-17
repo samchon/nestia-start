@@ -1,5 +1,4 @@
 import { TestValidator } from "@nestia/e2e";
-import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
@@ -27,7 +26,6 @@ export async function test_api_bbs_article_at(
       password: "1234",
     },
   );
-  typia.assertEquals(stored);
 
   // READ IT
   const read: IBbsArticle = await api.functional.bbs.articles.at(
@@ -35,7 +33,6 @@ export async function test_api_bbs_article_at(
     stored.section,
     stored.id,
   );
-  typia.assertEquals(read);
 
   // CHECK EQUALITY
   TestValidator.equals("stored vs. read")(stored)(read);

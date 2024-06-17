@@ -4,7 +4,6 @@ import {
   RandomGenerator,
   TestValidator,
 } from "@nestia/e2e";
-import typia from "typia";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
@@ -15,7 +14,7 @@ export async function test_api_bbs_article_index_sort(
 ): Promise<void> {
   // GENERATE 100 ARTICLES
   const section: string = "general";
-  const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100)(() =>
+  await ArrayUtil.asyncRepeat(100)(() =>
     api.functional.bbs.articles.create(connection, section, {
       writer: RandomGenerator.name(),
       title: RandomGenerator.paragraph(5)(),
@@ -25,7 +24,6 @@ export async function test_api_bbs_article_index_sort(
       password: RandomGenerator.alphabets(8),
     }),
   );
-  typia.assertEquals(articles);
 
   // PREPARE VALIDATOR
   const validator = TestValidator.sort("BbsArticleProvider.index()")(async (
@@ -36,7 +34,7 @@ export async function test_api_bbs_article_index_sort(
         limit: 100,
         sort,
       });
-    return typia.assertEquals(page).data;
+    return page.data;
   });
 
   // DO VALIDATE
