@@ -5,6 +5,7 @@
   "description": "Starter kit of Nestia",
   "main": "lib/index.js",
   "scripts": {
+    "benchmark": "node bin/test/benchmark",
     "test": "node bin/test",
     "test:webpack": "npm run webpack && node bin/test/webpack.js",
     "------------------------BUILDS------------------------": "",
@@ -43,7 +44,7 @@
   },
   "homepage": "https://github.com/samchon/nestia-start#readme",
   "devDependencies": {
-    "@nestia/e2e": "^0.4.3",
+    "@nestia/e2e": "^0.5.0",
     "@nestia/sdk": "^3.2.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/cli": "^0.11.21",

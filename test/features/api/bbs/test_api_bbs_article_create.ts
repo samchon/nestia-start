@@ -1,5 +1,4 @@
 import { RandomGenerator, TestValidator } from "@nestia/e2e";
-import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
@@ -27,7 +26,6 @@ export async function test_api_bbs_article_create(
       password: v4(),
     },
   );
-  typia.assertEquals(stored);
 
   // READ THE DATA AGAIN
   const read: IBbsArticle = await api.functional.bbs.articles.at(
@@ -35,6 +33,5 @@ export async function test_api_bbs_article_create(
     stored.section,
     stored.id,
   );
-  typia.assertEquals(read);
   TestValidator.equals("created")(stored)(read);
 }

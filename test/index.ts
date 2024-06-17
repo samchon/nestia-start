@@ -35,6 +35,7 @@ const getOptions = () =>
   });
 
 async function main(): Promise<void> {
+  // CONFIGURATIONS
   const options: IOptions = await getOptions();
   MyGlobal.testing = true;
 

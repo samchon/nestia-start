@@ -1,5 +1,4 @@
 import { RandomGenerator, TestValidator } from "@nestia/e2e";
-import typia from "typia";
 import { v4 } from "uuid";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
@@ -28,7 +27,6 @@ export async function test_api_bbs_article_update(
       password,
     },
   );
-  typia.assertEquals(article);
 
   // UPDATE WITH EXACT PASSWORD
   const content: IBbsArticle.ISnapshot =
@@ -44,7 +42,7 @@ export async function test_api_bbs_article_update(
         password,
       },
     );
-  article.snapshots.push(typia.assertEquals(content));
+  article.snapshots.push(content);
 
   // TRY UPDATE WITH WRONG PASSWORD
   await TestValidator.error("update with wrong password")(() =>

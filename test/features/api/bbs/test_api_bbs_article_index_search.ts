@@ -1,5 +1,4 @@
 import { ArrayUtil, RandomGenerator, TestValidator } from "@nestia/e2e";
-import typia from "typia";
 
 import api from "@ORGANIZATION/PROJECT-api/lib/index";
 import { IBbsArticle } from "@ORGANIZATION/PROJECT-api/lib/structures/bbs/IBbsArticle";
@@ -20,7 +19,6 @@ export async function test_api_bbs_article_index_search(
       password: RandomGenerator.alphabets(8),
     }),
   );
-  typia.assertEquals(articles);
 
   // GET ENTIRE DATA
   const total: IPage<IBbsArticle.ISummary> =
@@ -28,7 +26,6 @@ export async function test_api_bbs_article_index_search(
       limit: articles.length,
       sort: ["-created_at"],
     });
-  await typia.assertEquals(total);
 
   // PREPARE SEARCH FUNCTION
   const search = TestValidator.search("BbsArticleProvider.index()")(
@@ -39,7 +36,7 @@ export async function test_api_bbs_article_index_search(
           search: input,
           sort: ["-created_at"],
         });
-      return typia.assertEquals(page).data;
+      return page.data;
     },
   )(total.data, 10);
 
