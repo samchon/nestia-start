@@ -13,13 +13,11 @@ interface IOptions {
 }
 
 const getOptions = () =>
-  ArgumentParser.parse<IOptions>(async (command, prompt, action) => {
+  ArgumentParser.parse<IOptions>(async (command, _prompt, action) => {
     // command.option("--mode <string>", "target mode");
     // command.option("--reset <true|false>", "reset local DB or not");
     command.option("--include <string...>", "include feature files");
     command.option("--exclude <string...>", "exclude feature files");
-
-    prompt;
 
     return action(async (options) => {
       // if (typeof options.reset === "string")

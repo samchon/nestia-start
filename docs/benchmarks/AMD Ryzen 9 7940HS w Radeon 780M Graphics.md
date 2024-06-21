@@ -11,23 +11,23 @@
     - Threads: 4
     - Simultaneous: 32
   - Time
-    - Start: 2024-06-20T16:01:12.297Z
-    - Complete: 2024-06-20T16:01:15.441Z
-    - Elapsed: 3,144 ms
+    - Start: 2024-06-21T13:24:13.810Z
+    - Complete: 2024-06-21T13:24:16.611Z
+    - Elapsed: 2,801 ms
 
 Type | Count | Success | Mean. | Stdev. | Minimum | Maximum
 ----|----|----|----|----|----|----
-Total | 3,948 | 3,948 | 22.32 | 23.61 | 1 | 164
+Total | 3,955 | 3,955 | 20.34 | 24.96 | 2 | 152
 
 > Unit: milliseconds
 
 ## Endpoints
 Type | Count | Success | Mean. | Stdev. | Minimum | Maximum
 ----|----|----|----|----|----|----
-PATCH /bbs/articles/:section | 593 | 593 | 50.52 | 35.53 | 1 | 164
-GET /bbs/articles/:section/:id | 82 | 82 | 19.12 | 5.31 | 10 | 41
-PUT /bbs/articles/:section/:id | 22 | 22 | 18.31 | 4.5 | 11 | 29
-POST /bbs/articles/:section | 3,251 | 3,251 | 17.28 | 16.59 | 5 | 161
+PATCH /bbs/articles/:section | 656 | 656 | 50.46 | 40.03 | 2 | 152
+GET /bbs/articles/:section/:id | 43 | 43 | 18.39 | 5.2 | 9 | 31
+PUT /bbs/articles/:section/:id | 22 | 22 | 16.77 | 3.46 | 12 | 28
+POST /bbs/articles/:section | 3,234 | 3,234 | 14.28 | 14.68 | 6 | 132
 
 > Unit: milliseconds
 
