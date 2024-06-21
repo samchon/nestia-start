@@ -13,6 +13,8 @@ updates:
       - dependency-name: "nestia"
       - dependency-name: "tstl"
       - dependency-name: "typia"
+      - dependency-name: "typescript"
+      - dependency-name: "ts-patch"
     groups:
       Samchon:
         patterns:
@@ -23,6 +25,10 @@ updates:
       NestJS:
         patterns:
           - "@nestjs/*"
+      TypeScript:
+        patterns:
+          - "typescript"
+          - "ts-patch"
 #######################################################
   - package-ecosystem: 'npm'
     directory: '/packages/api'
@@ -33,9 +39,11 @@ updates:
     allow:
       - dependency-name: "@nestia/fetcher"
       - dependency-name: "typia"
+      - dependency-name: "tgrid"
     groups:
       Samchon:
         patterns:
           - "@nestia/fetcher"
           - "typia"
+          - "tgrid"
 #######################################################
