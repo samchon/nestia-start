@@ -30,6 +30,6 @@
   "dependencies": {
     "@nestia/fetcher": "^3.4.1",
     "tgrid": "^1.0.2",
-    "typia": "^6.4.0"
+    "typia": "^6.4.1"
   }
 }
