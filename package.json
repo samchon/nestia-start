@@ -44,7 +44,8 @@
   },
   "homepage": "https://github.com/samchon/nestia-start#readme",
   "devDependencies": {
-    "@nestia/e2e": "^0.6.0",
+    "@nestia/benchmark": "^0.1.0",
+    "@nestia/e2e": "^0.7.0",
     "@nestia/sdk": "^3.5.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
@@ -57,7 +58,7 @@
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.2",
     "cli": "^1.0.1",
     "cli-progress": "^3.12.0",
     "copy-webpack-plugin": "^11.0.0",

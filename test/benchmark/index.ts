@@ -1,4 +1,4 @@
-import { DynamicBenchmarker } from "@nestia/e2e";
+import { DynamicBenchmarker } from "@nestia/benchmark";
 import cliProgress from "cli-progress";
 import fs from "fs";
 import os from "os";
