@@ -23,6 +23,7 @@
     "------------------------WEBPACK------------------------": "",
     "webpack": "rimraf dist && webpack",
     "webpack:start": "cd dist && node dist/server",
+    "webpack:test": "npm run webpack && node bin/test/webpack.js",
     "------------------------DEPLOYS------------------------": "",
     "package:api": "npm run build:swagger && npm run build:api && cd packages/api && npm publish",
     "start": "node lib/executable/server",

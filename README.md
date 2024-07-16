@@ -40,17 +40,23 @@ As you can see from the below, all of the Backend source files are placed into t
 ## NPM Run Commands
 List of the run commands defined in the [package.json](package.json) are like below:
 
-  - `build`: Build everything
-  - `build:api`: Build client SDK libray for the client developers
-  - `build:main`: Build main program (`src` directory)
-  - `build:sdk`: Build SDK into main program only
-  - `build:swagger`: Build Swagger Documents
-  - `build:test` Build test automation program (`test` directory)
-  - `dev`: Incremental build for development (test program)
-  - `eslint` & `eslint:fix` & `prettier`: Prettier and ESLint execution
-  - `start`: Start local NestJS server
-  - `test`: Run test automation program
-  - `benchmark`: Run performance benchmark program
+  - Test
+    - **`test`**: Run test automation program
+    - `benchmark`: Run performance benchmark program
+  - Build
+    - `build`: Build everything
+    - `build:main`: Build main program (`src` directory)
+    - `build:test` Build test automation program (`test` directory)
+    - `build:sdk`: Build SDK into main program only
+    - `build:swagger`: Build Swagger Documents
+    - **`dev`**: Incremental build for development (test program)
+  - Deploy
+    - `package:api`: Build and deploy the SDK library to the NPM
+    - `start`: Start local NestJS server
+  - Webpack
+    - `webpack`: Run webpack bundler
+    - `webpack:start`: Start the backend server built by webpack
+    - `webpack:test`: Run test program to the webpack built
 
 
 
