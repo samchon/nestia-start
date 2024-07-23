@@ -13,6 +13,7 @@
     "build:api": "rimraf packages/api/lib && npm run build:sdk && rimraf packages/api/lib && tsc -p packages/api/tsconfig.json && rollup -c packages/api/rollup.config.js",
     "build:main": "rimraf lib && tsc",
     "build:sdk": "rimraf src/api/functional && nestia sdk",
+    "build:openai": "npx nestia openai",
     "build:swagger": "npx nestia swagger",
     "build:test": "rimraf bin && tsc -p test/tsconfig.json",
     "dev": "npm run build:test -- --watch",

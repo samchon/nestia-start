@@ -17,8 +17,9 @@
   "homepage": "https://nestia.io",
   "files": [
     "lib",
-    "swagger.json",
     "package.json",
+    "swagger.json",
+    "openai.json",
     "README.md"
   ],
   "dependencies": {

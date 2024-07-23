@@ -49,6 +49,7 @@ List of the run commands defined in the [package.json](package.json) are like be
     - `build:test` Build test automation program (`test` directory)
     - `build:sdk`: Build SDK into main program only
     - `build:swagger`: Build Swagger Documents
+    - `build:openai`: Build OpenAI functioncCalling schemas
     - **`dev`**: Incremental build for development (test program)
   - Deploy
     - `package:api`: Build and deploy the SDK library to the NPM
