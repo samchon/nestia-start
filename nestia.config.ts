@@ -17,11 +17,6 @@ const NESTIA_CONFIG: sdk.INestiaConfig = {
     ],
     beautify: true,
   },
-  openai: {
-    output: "packages/api/openai.json",
-    keyword: true,
-    beautify: true,
-  },
   distribute: "packages/api",
   primitive: false,
   simulate: true,
