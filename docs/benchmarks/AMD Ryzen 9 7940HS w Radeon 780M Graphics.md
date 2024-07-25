@@ -7,27 +7,35 @@
     - NodeJS Version: v20.10.0
     - Backend Server: 1 core / 1 thread
   - Arguments
-    - Count: 1,024
+    - Count: 40,000
     - Threads: 4
     - Simultaneous: 32
   - Time
-    - Start: 2024-07-15T15:28:15.310Z
-    - Complete: 2024-07-15T15:28:18.113Z
-    - Elapsed: 2,803 ms
+    - Start: 2024-07-25T19:14:00.253Z
+    - Complete: 2024-07-25T19:16:37.125Z
+    - Elapsed: 156,872 ms
 
 Type | Count | Success | Mean. | Stdev. | Minimum | Maximum
 ----|----|----|----|----|----|----
-Total | 3,998 | 3,998 | 19.27 | 18.12 | 0 | 147
+Total | 41,226 | 41,226 | 114 | 109.72 | 8 | 998
 
 > Unit: milliseconds
+
+## Memory Usage
+```mermaid
+xychart-beta
+  x-axis "Time (second)"
+  y-axis "Memory (MB)"
+  line [37, 44, 33, 40, 66, 95, 114, 119, 123, 43, 42, 47, 68, 70, 66, 81, 87, 87, 97, 115, 135, 47, 58, 54, 61, 75, 45, 43, 49, 62, 83, 51, 65, 78, 54, 61, 63, 71, 72, 53, 70, 69, 61, 68, 88, 62, 70, 65, 67, 85, 62, 75, 81, 78, 58, 75, 77, 64, 69, 84, 98, 64, 70, 89, 98, 102, 58, 76, 82, 97, 61, 74, 77, 95, 70, 79, 92, 80, 92, 94, 94, 109, 71, 83, 80, 59, 70, 77, 92, 97, 75, 82, 89, 95, 78, 84, 100, 105, 117, 134, 129, 71, 85, 86, 88, 69, 76, 91, 92, 85, 86, 91, 104, 102, 78, 91, 81, 76, 91, 118, 114, 115, 135, 143, 73, 90, 91, 92, 102, 77, 85, 98, 81, 92, 83, 94, 72, 112, 92, 107, 100, 102, 115]
+```
 
 ## Endpoints
 Type | Count | Success | Mean. | Stdev. | Minimum | Maximum
 ----|----|----|----|----|----|----
-PATCH /bbs/articles/:section | 593 | 593 | 40.05 | 25.93 | 0 | 147
-PUT /bbs/articles/:section/:id | 26 | 26 | 21.15 | 6.93 | 12 | 41
-GET /bbs/articles/:section/:id | 115 | 115 | 18.38 | 7.1 | 9 | 45
-POST /bbs/articles/:section | 3,264 | 3,264 | 15.52 | 13.62 | 6 | 136
+PATCH /bbs/articles/:section | 6,703 | 6,703 | 167.16 | 125.5 | 8 | 996
+PUT /bbs/articles/:section/:id | 326 | 326 | 117.86 | 101.2 | 11 | 546
+GET /bbs/articles/:section/:id | 680 | 680 | 110.42 | 93.49 | 10 | 579
+POST /bbs/articles/:section | 33,517 | 33,517 | 103.4 | 103.45 | 8 | 998
 
 > Unit: milliseconds
 
