@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/samchon/nestia-start#readme",
   "devDependencies": {
-    "@nestia/benchmark": "^0.2.0",
+    "@nestia/benchmark": "^0.2.1",
     "@nestia/e2e": "^0.7.0",
     "@nestia/sdk": "^3.8.1",
     "@rollup/plugin-terser": "^0.4.4",
