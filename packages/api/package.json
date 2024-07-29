@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "@nestia/fetcher": "^3.9.0",
-    "tgrid": "^1.0.2",
+    "tgrid": "^1.0.3",
     "typia": "^6.6.0"
   }
 }
