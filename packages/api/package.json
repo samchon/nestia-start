@@ -23,8 +23,8 @@
     "README.md"
   ],
   "dependencies": {
-    "@nestia/fetcher": "^3.9.1",
+    "@nestia/fetcher": "^3.10.0",
     "tgrid": "^1.0.3",
-    "typia": "^6.6.2"
+    "typia": "^6.7.0"
   }
 }
