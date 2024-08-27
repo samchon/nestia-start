@@ -66,11 +66,11 @@ export namespace index {
       type: "application/json",
       encrypted: false,
     },
-    status: null,
+    status: 200,
   } as const;
 
   export const path = (section: string) =>
-    `/bbs/articles/${encodeURIComponent(section ?? "null")}`;
+    `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}`;
   export const random = (
     g?: Partial<typia.IRandomGenerator>,
   ): IPage<IBbsArticle.ISummary> =>
@@ -133,11 +133,11 @@ export namespace at {
       type: "application/json",
       encrypted: false,
     },
-    status: null,
+    status: 200,
   } as const;
 
   export const path = (section: string, id: string) =>
-    `/bbs/articles/${encodeURIComponent(section ?? "null")}/${encodeURIComponent(id ?? "null")}`;
+    `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}/${encodeURIComponent(id?.toString() ?? "null")}`;
   export const random = (g?: Partial<typia.IRandomGenerator>): IBbsArticle =>
     typia.random<IBbsArticle>(g);
   export const simulate = (
@@ -212,11 +212,11 @@ export namespace create {
       type: "application/json",
       encrypted: false,
     },
-    status: null,
+    status: 201,
   } as const;
 
   export const path = (section: string) =>
-    `/bbs/articles/${encodeURIComponent(section ?? "null")}`;
+    `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}`;
   export const random = (g?: Partial<typia.IRandomGenerator>): IBbsArticle =>
     typia.random<IBbsArticle>(g);
   export const simulate = (
@@ -295,11 +295,11 @@ export namespace update {
       type: "application/json",
       encrypted: false,
     },
-    status: null,
+    status: 200,
   } as const;
 
   export const path = (section: string, id: string & Format<"uuid">) =>
-    `/bbs/articles/${encodeURIComponent(section ?? "null")}/${encodeURIComponent(id ?? "null")}`;
+    `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}/${encodeURIComponent(id?.toString() ?? "null")}`;
   export const random = (
     g?: Partial<typia.IRandomGenerator>,
   ): IBbsArticle.ISnapshot => typia.random<IBbsArticle.ISnapshot>(g);

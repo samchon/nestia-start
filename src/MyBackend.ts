@@ -1,5 +1,7 @@
+import { NestiaSwaggerComposer } from "@nestia/sdk";
 import { INestApplication } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
+import { SwaggerModule } from "@nestjs/swagger";
 
 import { MyConfiguration } from "./MyConfiguration";
 import { MyModule } from "./MyModule";
@@ -13,6 +15,16 @@ export class MyBackend {
     //----
     // MOUNT CONTROLLERS
     this.application_ = await NestFactory.create(MyModule, { logger: false });
+    const document = await NestiaSwaggerComposer.document(this.application_, {
+      openapi: "3.1",
+      servers: [
+        {
+          url: "http://localhost:37001",
+          description: "Local Server",
+        },
+      ],
+    });
+    SwaggerModule.setup("", this.application_, document as any);
 
     // DO OPEN
     this.application_.enableCors();
