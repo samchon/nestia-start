@@ -137,4 +137,14 @@ export namespace IBbsArticle {
      */
     password: string;
   }
+
+  /**
+   * Erase info.
+   */
+  export interface IErase {
+    /**
+     * Password of the article.
+     */
+    password: string;
+  }
 }

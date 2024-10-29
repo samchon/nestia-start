@@ -29,7 +29,10 @@ export class BbsArticlesController {
     @core.TypedParam("section") section: string,
     @core.TypedBody() input: IBbsArticle.IRequest,
   ): Promise<IPage<IBbsArticle.ISummary>> {
-    return BbsArticleProvider.index(section, input);
+    return BbsArticleProvider.index({
+      section,
+      input,
+    });
   }
 
   /**
@@ -46,7 +49,10 @@ export class BbsArticlesController {
     @core.TypedParam("section") section: string,
     @core.TypedParam("id") id: string,
   ): Promise<IBbsArticle> {
-    return BbsArticleProvider.find(section, id);
+    return BbsArticleProvider.find({
+      section,
+      id,
+    });
   }
 
   /**
@@ -63,7 +69,10 @@ export class BbsArticlesController {
     @core.TypedParam("section") section: string,
     @core.TypedBody() input: IBbsArticle.ICreate,
   ): Promise<IBbsArticle> {
-    return BbsArticleProvider.store(section, input);
+    return BbsArticleProvider.create({
+      section,
+      input,
+    });
   }
 
   /**
@@ -84,6 +93,32 @@ export class BbsArticlesController {
     @core.TypedParam("id") id: string & tags.Format<"uuid">,
     @core.TypedBody() input: IBbsArticle.IUpdate,
   ): Promise<IBbsArticle.ISnapshot> {
-    return BbsArticleProvider.update(section, id, input);
+    return BbsArticleProvider.update({
+      section,
+      id,
+      input,
+    });
+  }
+
+  /**
+   * Erase an article.
+   *
+   * Erase an article with specific password.
+   *
+   * @param section Target section
+   * @param id Target articles id
+   * @param input Password to erase
+   */
+  @core.TypedRoute.Delete(":id")
+  public erase(
+    @core.TypedParam("section") section: string,
+    @core.TypedParam("id") id: string,
+    @core.TypedBody() input: IBbsArticle.IErase,
+  ): Promise<void> {
+    return BbsArticleProvider.erase({
+      section,
+      id,
+      input,
+    });
   }
 }

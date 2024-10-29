@@ -12,15 +12,15 @@ import { MapUtil } from "../../utils/MapUtil";
  * Remove it or change it to be stored on the real DB.
  */
 export namespace BbsArticleProvider {
-  export async function index(
-    section: string,
-    input: IBbsArticle.IRequest,
-  ): Promise<IPage<IBbsArticle.ISummary>> {
+  export async function index(props: {
+    section: string;
+    input: IBbsArticle.IRequest;
+  }): Promise<IPage<IBbsArticle.ISummary>> {
     // GET ENTIRE ARTICLES
-    const dict = storage.get(section);
+    const dict = storage.get(props.section);
     if (dict === undefined)
       throw new NotFoundException(
-        `Error on BbsArticleProvider.index(): unable to find the matched section "${section}".`,
+        `Error on BbsArticleProvider.index(): unable to find the matched section "${props.section}".`,
       );
 
     /* disable-eslint */
@@ -29,24 +29,27 @@ export namespace BbsArticleProvider {
     );
 
     // SEARCH
-    if (input.search !== undefined) {
-      if (input.search.writer)
+    if (props.input.search !== undefined) {
+      if (props.input.search.writer)
         articles = articles.filter(
-          (x) => x.writer.indexOf(input.search!.writer!) !== -1,
+          (x) => x.writer.indexOf(props.input.search!.writer!) !== -1,
         );
-      if (input.search.title)
+      if (props.input.search.title)
         articles = articles.filter(
-          (x) => x.snapshots.at(-1)!.title.indexOf(input.search!.title!) !== -1,
+          (x) =>
+            x.snapshots.at(-1)!.title.indexOf(props.input.search!.title!) !==
+            -1,
         );
-      if (input.search.body)
+      if (props.input.search.body)
         articles = articles.filter(
-          (x) => x.snapshots.at(-1)!.body.indexOf(input.search!.body!) !== -1,
+          (x) =>
+            x.snapshots.at(-1)!.body.indexOf(props.input.search!.body!) !== -1,
         );
     }
 
     // SORT
-    if (input.sort?.length)
-      for (const comp of input.sort.reverse())
+    if (props.input.sort?.length)
+      for (const comp of props.input.sort.reverse())
         articles.sort((x, y) => {
           const sign = comp[0];
           const column = comp.substring(1);
@@ -77,11 +80,11 @@ export namespace BbsArticleProvider {
       );
 
     // PAGINATION
-    const limit: number = input.limit || 100;
-    const start: number = ((input.page || 1) - 1) * limit;
+    const limit: number = props.input.limit ?? 100;
+    const start: number = ((props.input.page ?? 1) - 1) * limit;
     return {
       pagination: {
-        current: input.page || 1,
+        current: props.input.page ?? 1,
         limit: limit,
         records: articles.length,
         pages: Math.ceil(articles.length / limit),
@@ -97,42 +100,42 @@ export namespace BbsArticleProvider {
     };
   }
 
-  export async function find(
-    section: string,
-    id: string,
-    password?: string,
-  ): Promise<IBbsArticle> {
-    const dict = storage.get(section);
+  export async function find(props: {
+    section: string;
+    id: string;
+    password?: string;
+  }): Promise<IBbsArticle> {
+    const dict = storage.get(props.section);
     if (dict === undefined)
       throw new NotFoundException(
-        `Error on BbsArticleProvider.find(): unable to find the matched section "${section}".`,
+        `Error on BbsArticleProvider.find(): unable to find the matched section "${props.section}".`,
       );
 
-    const record = dict.get(id);
+    const record = dict.get(props.id);
     if (record === undefined)
       throw new NotFoundException(
-        `Error on BbsArticleProvider.find(): unable to find the matched article "${id}".`,
+        `Error on BbsArticleProvider.find(): unable to find the matched article "${props.id}".`,
       );
-    else if (password !== undefined && password !== record.password)
+    else if (props.password !== undefined && props.password !== record.password)
       throw new ForbiddenException(
         `Error on BbsArticleProvider.find(): different password.`,
       );
     return record.article;
   }
 
-  export async function store(
-    section: string,
-    input: IBbsArticle.ICreate,
-  ): Promise<IBbsArticle> {
+  export async function create(props: {
+    section: string;
+    input: IBbsArticle.ICreate;
+  }): Promise<IBbsArticle> {
     const now: string = new Date().toISOString();
     const article: IBbsArticle = {
       id: v4(),
-      section,
-      writer: input.writer,
+      section: props.section,
+      writer: props.input.writer,
       snapshots: [
         {
           ...{
-            ...input,
+            ...props.input,
             password: undefined,
           },
           id: v4(),
@@ -144,26 +147,29 @@ export namespace BbsArticleProvider {
 
     const dict: Map<string, IRecord> = MapUtil.take(
       storage,
-      section,
+      props.section,
       () => new Map(),
     );
     dict.set(article.id, {
       article,
-      password: input.password,
+      password: props.input.password,
     });
-
     return article;
   }
 
-  export async function update(
-    section: string,
-    id: string,
-    input: IBbsArticle.IUpdate,
-  ): Promise<IBbsArticle.ISnapshot> {
-    const article: IBbsArticle = await find(section, id, input.password);
+  export async function update(props: {
+    section: string;
+    id: string;
+    input: IBbsArticle.IUpdate;
+  }): Promise<IBbsArticle.ISnapshot> {
+    const article: IBbsArticle = await find({
+      section: props.section,
+      id: props.id,
+      password: props.input.password,
+    });
     const content: IBbsArticle.ISnapshot = {
       ...{
-        ...input,
+        ...props.input,
         password: undefined,
       },
       id: v4(),
@@ -171,6 +177,19 @@ export namespace BbsArticleProvider {
     };
     article.snapshots.push(content);
     return content;
+  }
+
+  export async function erase(props: {
+    section: string;
+    id: string;
+    input: IBbsArticle.IErase;
+  }): Promise<void> {
+    await find({
+      section: props.section,
+      id: props.id,
+      password: props.input.password,
+    });
+    storage.get(props.section)!.delete(props.id);
   }
 }
 
