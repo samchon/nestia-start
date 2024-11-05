@@ -14,6 +14,7 @@ updates:
       - dependency-name: "tstl"
       - dependency-name: "typia"
       - dependency-name: "typescript"
+      - dependency-name: "typescript-transform-paths"
       - dependency-name: "ts-patch"
     groups:
       Samchon:
@@ -28,6 +29,7 @@ updates:
       TypeScript:
         patterns:
           - "typescript"
+          - "typescript-transform-paths"
           - "ts-patch"
 #######################################################
   - package-ecosystem: 'npm'
