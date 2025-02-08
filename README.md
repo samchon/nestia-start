@@ -52,7 +52,8 @@ List of the run commands defined in the [package.json](package.json) are like be
     - **`dev`**: Incremental build for development (test program)
   - Deploy
     - `package:api`: Build and deploy the SDK library to the NPM
-    - `start`: Start local NestJS server
+    - `start`: Start the backend server
+    - `start:dev`: Start the backend server with incremental build and reload
   - Webpack
     - `webpack`: Run webpack bundler
     - `webpack:start`: Start the backend server built by webpack
@@ -81,7 +82,7 @@ With [nestia](https://github.com/samchon/nestia) helps to accomplish TDD (Test D
 
 Just define DTOs and API controllers' methods (only declarations) first. After the definitions, and build SDK (Software Development Kit) through [nestia](https://github.com/samchon/nestia) (`npm run build:sdk`). After buildling those SDK, develop test automation program using the SDK, following use-case scenarios in the framework of client side.
 
-During the test automation program development, you can find that which API is mis-designed or which requirement analysis is not exact. Development of the main program must be the last step after such validation process during TDD.
+During the test automation program development, you can find that which API is miss-designed or which requirement analysis is not exact. Development of the main program must be the last step after such validation process during TDD.
 
 > Visit the [samchon/backend](https://github.com/samchon/backend), then you may find much detailed story about this TDD.
 >

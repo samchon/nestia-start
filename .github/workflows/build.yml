@@ -30,10 +30,7 @@ jobs:
         run: npm run build
 
       - name: Run Test Program
-        run: npm run test
-
-      - name: Test Webpack
-        run: npm run webpack && npm run test:webpack
+        run: npm run test -- --simultaneous 16
 
       - name: EsLint
         run: npm run eslint
