@@ -3,7 +3,6 @@ import chalk from "chalk";
 import { sleep_for } from "tstl";
 
 import { MyConfiguration } from "../src/MyConfiguration";
-import { MyGlobal } from "../src/MyGlobal";
 import api from "../src/api";
 import { ArgumentParser } from "./helpers/ArgumentParser";
 
@@ -20,12 +19,11 @@ export namespace TestAutomation {
   }
 
   export const execute = async <T>(props: IProps<T>): Promise<void> => {
-    // CONFIGURE
+    // OPEN BACKEND
     const options: IOptions = await getOptions();
-    MyGlobal.testing = true;
+    const backend: T = await props.open(options);
 
     // DO TEST
-    const backend: T = await props.open(options);
     const connection: api.IConnection = {
       host: `http://127.0.0.1:${MyConfiguration.API_PORT()}`,
     };

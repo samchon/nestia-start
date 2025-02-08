@@ -20,9 +20,9 @@ const wait = async (): Promise<void> => {
 };
 
 const main = async (): Promise<void> => {
+  MyGlobal.testing = true;
   await TestAutomation.execute({
     open: async () => {
-      MyGlobal.testing = true;
       const backend: cp.ChildProcess = cp.fork(
         `${MyConfiguration.ROOT}/dist/server.js`,
         {
