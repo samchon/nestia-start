@@ -1,3 +1,4 @@
+import { WebSocketAdaptor } from "@nestia/core";
 import { INestApplication } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 
@@ -13,6 +14,7 @@ export class MyBackend {
     //----
     // MOUNT CONTROLLERS
     this.application_ = await NestFactory.create(MyModule, { logger: false });
+    await WebSocketAdaptor.upgrade(this.application_);
 
     // DO OPEN
     this.application_.enableCors();
