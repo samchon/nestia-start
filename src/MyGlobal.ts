@@ -12,7 +12,7 @@ export class MyGlobal {
 }
 export namespace MyGlobal {
   export interface IEnvironments {
-    PROJECT_API_PORT: `${number}`;
+    API_PORT: `${number}`;
   }
 }
 
