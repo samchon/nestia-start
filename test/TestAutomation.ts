@@ -96,6 +96,8 @@ const getOptions = () =>
               "Number of simultaneous requests to make",
             )),
         );
+        if (isNaN(options.simultaneous) || options.simultaneous <= 0)
+          options.simultaneous = 1;
         return options as TestAutomation.IOptions;
       });
     },
