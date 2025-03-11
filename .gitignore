@@ -5,5 +5,6 @@ lib/
 node_modules/
 packages/api/lib/
 
+.env
 package-lock.json
 pnpm-lock.yaml
