@@ -32,7 +32,6 @@ As you can see from the below, all of the Backend source files are placed into t
   - [nestia.config.ts](nestia.config.ts): Configuration file of [`nestia`](https://github.com/samchon/nestia)
   - [package.json](package.json): NPM configuration
   - [tsconfig.json](tsconfig.json): TypeScript configuration for the main program
-  - [tsconfig.api.json](tsconfig.api.json): TypeScript configuration for the SDK generation
 
 
 
