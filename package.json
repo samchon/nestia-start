@@ -100,6 +100,6 @@
     "uuid": "^9.0.0"
   },
   "stackblitz": {
-    "startCommand": "npm run prepare && npm run build:test && npm run test"
+    "startCommand": "npm run prepare && npm run build:test && npm run test -- --simultaneous 1"
   }
 }
