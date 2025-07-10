@@ -31,9 +31,9 @@ import type { IPage } from "../../../structures/common/IPage";
 export async function index(
   connection: IConnection,
   section: string,
-  input: IBbsArticle.IRequest,
+  input: index.Body,
 ): Promise<index.Output> {
-  return !!connection.simulate
+  return true === connection.simulate
     ? index.simulate(connection, section, input)
     : PlainFetcher.fetch(
         {
@@ -52,7 +52,7 @@ export async function index(
       );
 }
 export namespace index {
-  export type Input = IBbsArticle.IRequest;
+  export type Body = IBbsArticle.IRequest;
   export type Output = IPage<IBbsArticle.ISummary>;
 
   export const METADATA = {
@@ -71,14 +71,12 @@ export namespace index {
 
   export const path = (section: string) =>
     `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}`;
-  export const random = (
-    g?: Partial<typia.IRandomGenerator>,
-  ): IPage<IBbsArticle.ISummary> =>
-    typia.random<IPage<IBbsArticle.ISummary>>(g);
+  export const random = (): IPage<IBbsArticle.ISummary> =>
+    typia.random<IPage<IBbsArticle.ISummary>>();
   export const simulate = (
     connection: IConnection,
     section: string,
-    input: IBbsArticle.IRequest,
+    input: Body,
   ): Output => {
     const assert = NestiaSimulator.assert({
       method: METADATA.method,
@@ -88,11 +86,7 @@ export namespace index {
     });
     assert.param("section")(() => typia.assert(section));
     assert.body(() => typia.assert(input));
-    return random(
-      "object" === typeof connection.simulate && null !== connection.simulate
-        ? connection.simulate
-        : undefined,
-    );
+    return random();
   };
 }
 
@@ -114,7 +108,7 @@ export async function at(
   section: string,
   id: string,
 ): Promise<at.Output> {
-  return !!connection.simulate
+  return true === connection.simulate
     ? at.simulate(connection, section, id)
     : PlainFetcher.fetch(connection, {
         ...at.METADATA,
@@ -138,8 +132,7 @@ export namespace at {
 
   export const path = (section: string, id: string) =>
     `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}/${encodeURIComponent(id?.toString() ?? "null")}`;
-  export const random = (g?: Partial<typia.IRandomGenerator>): IBbsArticle =>
-    typia.random<IBbsArticle>(g);
+  export const random = (): IBbsArticle => typia.random<IBbsArticle>();
   export const simulate = (
     connection: IConnection,
     section: string,
@@ -153,11 +146,7 @@ export namespace at {
     });
     assert.param("section")(() => typia.assert(section));
     assert.param("id")(() => typia.assert(id));
-    return random(
-      "object" === typeof connection.simulate && null !== connection.simulate
-        ? connection.simulate
-        : undefined,
-    );
+    return random();
   };
 }
 
@@ -177,9 +166,9 @@ export namespace at {
 export async function create(
   connection: IConnection,
   section: string,
-  input: IBbsArticle.ICreate,
+  input: create.Body,
 ): Promise<create.Output> {
-  return !!connection.simulate
+  return true === connection.simulate
     ? create.simulate(connection, section, input)
     : PlainFetcher.fetch(
         {
@@ -198,7 +187,7 @@ export async function create(
       );
 }
 export namespace create {
-  export type Input = IBbsArticle.ICreate;
+  export type Body = IBbsArticle.ICreate;
   export type Output = IBbsArticle;
 
   export const METADATA = {
@@ -217,12 +206,11 @@ export namespace create {
 
   export const path = (section: string) =>
     `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}`;
-  export const random = (g?: Partial<typia.IRandomGenerator>): IBbsArticle =>
-    typia.random<IBbsArticle>(g);
+  export const random = (): IBbsArticle => typia.random<IBbsArticle>();
   export const simulate = (
     connection: IConnection,
     section: string,
-    input: IBbsArticle.ICreate,
+    input: Body,
   ): Output => {
     const assert = NestiaSimulator.assert({
       method: METADATA.method,
@@ -232,11 +220,7 @@ export namespace create {
     });
     assert.param("section")(() => typia.assert(section));
     assert.body(() => typia.assert(input));
-    return random(
-      "object" === typeof connection.simulate && null !== connection.simulate
-        ? connection.simulate
-        : undefined,
-    );
+    return random();
   };
 }
 
@@ -260,9 +244,9 @@ export async function update(
   connection: IConnection,
   section: string,
   id: string & Format<"uuid">,
-  input: IBbsArticle.IUpdate,
+  input: update.Body,
 ): Promise<update.Output> {
-  return !!connection.simulate
+  return true === connection.simulate
     ? update.simulate(connection, section, id, input)
     : PlainFetcher.fetch(
         {
@@ -281,7 +265,7 @@ export async function update(
       );
 }
 export namespace update {
-  export type Input = IBbsArticle.IUpdate;
+  export type Body = IBbsArticle.IUpdate;
   export type Output = IBbsArticle.ISnapshot;
 
   export const METADATA = {
@@ -300,14 +284,13 @@ export namespace update {
 
   export const path = (section: string, id: string & Format<"uuid">) =>
     `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}/${encodeURIComponent(id?.toString() ?? "null")}`;
-  export const random = (
-    g?: Partial<typia.IRandomGenerator>,
-  ): IBbsArticle.ISnapshot => typia.random<IBbsArticle.ISnapshot>(g);
+  export const random = (): IBbsArticle.ISnapshot =>
+    typia.random<IBbsArticle.ISnapshot>();
   export const simulate = (
     connection: IConnection,
     section: string,
     id: string & Format<"uuid">,
-    input: IBbsArticle.IUpdate,
+    input: Body,
   ): Output => {
     const assert = NestiaSimulator.assert({
       method: METADATA.method,
@@ -318,11 +301,7 @@ export namespace update {
     assert.param("section")(() => typia.assert(section));
     assert.param("id")(() => typia.assert(id));
     assert.body(() => typia.assert(input));
-    return random(
-      "object" === typeof connection.simulate && null !== connection.simulate
-        ? connection.simulate
-        : undefined,
-    );
+    return random();
   };
 }
 
@@ -343,9 +322,9 @@ export async function erase(
   connection: IConnection,
   section: string,
   id: string,
-  input: IBbsArticle.IErase,
+  input: erase.Body,
 ): Promise<void> {
-  return !!connection.simulate
+  return true === connection.simulate
     ? erase.simulate(connection, section, id, input)
     : PlainFetcher.fetch(
         {
@@ -364,7 +343,7 @@ export async function erase(
       );
 }
 export namespace erase {
-  export type Input = IBbsArticle.IErase;
+  export type Body = IBbsArticle.IErase;
 
   export const METADATA = {
     method: "DELETE",
@@ -382,13 +361,12 @@ export namespace erase {
 
   export const path = (section: string, id: string) =>
     `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}/${encodeURIComponent(id?.toString() ?? "null")}`;
-  export const random = (g?: Partial<typia.IRandomGenerator>): void =>
-    typia.random<void>(g);
+  export const random = (): void => typia.random<void>();
   export const simulate = (
     connection: IConnection,
     section: string,
     id: string,
-    input: IBbsArticle.IErase,
+    input: Body,
   ): void => {
     const assert = NestiaSimulator.assert({
       method: METADATA.method,
@@ -399,10 +377,6 @@ export namespace erase {
     assert.param("section")(() => typia.assert(section));
     assert.param("id")(() => typia.assert(id));
     assert.body(() => typia.assert(input));
-    return random(
-      "object" === typeof connection.simulate && null !== connection.simulate
-        ? connection.simulate
-        : undefined,
-    );
+    return random();
   };
 }
