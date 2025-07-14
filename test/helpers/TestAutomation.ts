@@ -52,8 +52,4 @@ export namespace TestAutomation {
     await props.close(backend);
     return report;
   };
-
-  export function getOptions(): IOptions | PromiseLike<IOptions> {
-    throw new Error("Function not implemented.");
-  }
 }

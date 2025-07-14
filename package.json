@@ -46,6 +46,7 @@
   },
   "homepage": "https://github.com/samchon/nestia-start#readme",
   "devDependencies": {
+    "@autobe/interface": "^0.10.6",
     "@nestia/benchmark": "^7.1.0",
     "@nestia/e2e": "^7.1.0",
     "@nestia/sdk": "^7.1.0",
