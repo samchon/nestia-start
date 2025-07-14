@@ -20,8 +20,8 @@ import type { IPage } from "../../../structures/common/IPage";
  *
  * If you want, you can search and sort articles with specific conditions.
  *
- * @param section Target section
- * @param input Pagination request info with searching and sorting options
+ * @param props.section Target section
+ * @param props.body Pagination request info with searching and sorting options
  * @returns Paginated articles with summarization
  *
  * @controller BbsArticlesController.index
@@ -30,11 +30,10 @@ import type { IPage } from "../../../structures/common/IPage";
  */
 export async function index(
   connection: IConnection,
-  section: string,
-  input: index.Body,
+  props: index.Props,
 ): Promise<index.Output> {
   return true === connection.simulate
-    ? index.simulate(connection, section, input)
+    ? index.simulate(connection, props)
     : PlainFetcher.fetch(
         {
           ...connection,
@@ -46,12 +45,23 @@ export async function index(
         {
           ...index.METADATA,
           template: index.METADATA.path,
-          path: index.path(section),
+          path: index.path(props),
         },
-        input,
+        props.body,
       );
 }
 export namespace index {
+  export type Props = {
+    /**
+     * Target section
+     */
+    section: string;
+
+    /**
+     * Pagination request info with searching and sorting options
+     */
+    body: Body;
+  };
   export type Body = IBbsArticle.IRequest;
   export type Output = IPage<IBbsArticle.ISummary>;
 
@@ -69,23 +79,19 @@ export namespace index {
     status: 200,
   } as const;
 
-  export const path = (section: string) =>
-    `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}`;
+  export const path = (props: Omit<Props, "body">) =>
+    `/bbs/articles/${encodeURIComponent(props.section?.toString() ?? "null")}`;
   export const random = (): IPage<IBbsArticle.ISummary> =>
     typia.random<IPage<IBbsArticle.ISummary>>();
-  export const simulate = (
-    connection: IConnection,
-    section: string,
-    input: Body,
-  ): Output => {
+  export const simulate = (connection: IConnection, props: Props): Output => {
     const assert = NestiaSimulator.assert({
       method: METADATA.method,
       host: connection.host,
-      path: path(section),
+      path: path(props),
       contentType: "application/json",
     });
-    assert.param("section")(() => typia.assert(section));
-    assert.body(() => typia.assert(input));
+    assert.param("section")(() => typia.assert(props.section));
+    assert.body(() => typia.assert(props.body));
     return random();
   };
 }
@@ -95,8 +101,8 @@ export namespace index {
  *
  * Open an article with detailed info, increasing reading count.
  *
- * @param section Target section
- * @param id Target articles id
+ * @param props.section Target section
+ * @param props.id Target articles id
  * @returns Detailed article info
  *
  * @controller BbsArticlesController.at
@@ -105,18 +111,28 @@ export namespace index {
  */
 export async function at(
   connection: IConnection,
-  section: string,
-  id: string,
+  props: at.Props,
 ): Promise<at.Output> {
   return true === connection.simulate
-    ? at.simulate(connection, section, id)
+    ? at.simulate(connection, props)
     : PlainFetcher.fetch(connection, {
         ...at.METADATA,
         template: at.METADATA.path,
-        path: at.path(section, id),
+        path: at.path(props),
       });
 }
 export namespace at {
+  export type Props = {
+    /**
+     * Target section
+     */
+    section: string;
+
+    /**
+     * Target articles id
+     */
+    id: string;
+  };
   export type Output = IBbsArticle;
 
   export const METADATA = {
@@ -130,22 +146,18 @@ export namespace at {
     status: 200,
   } as const;
 
-  export const path = (section: string, id: string) =>
-    `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}/${encodeURIComponent(id?.toString() ?? "null")}`;
+  export const path = (props: Props) =>
+    `/bbs/articles/${encodeURIComponent(props.section?.toString() ?? "null")}/${encodeURIComponent(props.id?.toString() ?? "null")}`;
   export const random = (): IBbsArticle => typia.random<IBbsArticle>();
-  export const simulate = (
-    connection: IConnection,
-    section: string,
-    id: string,
-  ): Output => {
+  export const simulate = (connection: IConnection, props: Props): Output => {
     const assert = NestiaSimulator.assert({
       method: METADATA.method,
       host: connection.host,
-      path: path(section, id),
+      path: path(props),
       contentType: "application/json",
     });
-    assert.param("section")(() => typia.assert(section));
-    assert.param("id")(() => typia.assert(id));
+    assert.param("section")(() => typia.assert(props.section));
+    assert.param("id")(() => typia.assert(props.id));
     return random();
   };
 }
@@ -155,8 +167,8 @@ export namespace at {
  *
  * Create a new article and returns its detailed record info.
  *
- * @param section Target section
- * @param input New article info
+ * @param props.section Target section
+ * @param props.body New article info
  * @returns Newly created article info
  *
  * @controller BbsArticlesController.create
@@ -165,11 +177,10 @@ export namespace at {
  */
 export async function create(
   connection: IConnection,
-  section: string,
-  input: create.Body,
+  props: create.Props,
 ): Promise<create.Output> {
   return true === connection.simulate
-    ? create.simulate(connection, section, input)
+    ? create.simulate(connection, props)
     : PlainFetcher.fetch(
         {
           ...connection,
@@ -181,12 +192,23 @@ export async function create(
         {
           ...create.METADATA,
           template: create.METADATA.path,
-          path: create.path(section),
+          path: create.path(props),
         },
-        input,
+        props.body,
       );
 }
 export namespace create {
+  export type Props = {
+    /**
+     * Target section
+     */
+    section: string;
+
+    /**
+     * New article info
+     */
+    body: Body;
+  };
   export type Body = IBbsArticle.ICreate;
   export type Output = IBbsArticle;
 
@@ -204,22 +226,18 @@ export namespace create {
     status: 201,
   } as const;
 
-  export const path = (section: string) =>
-    `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}`;
+  export const path = (props: Omit<Props, "body">) =>
+    `/bbs/articles/${encodeURIComponent(props.section?.toString() ?? "null")}`;
   export const random = (): IBbsArticle => typia.random<IBbsArticle>();
-  export const simulate = (
-    connection: IConnection,
-    section: string,
-    input: Body,
-  ): Output => {
+  export const simulate = (connection: IConnection, props: Props): Output => {
     const assert = NestiaSimulator.assert({
       method: METADATA.method,
       host: connection.host,
-      path: path(section),
+      path: path(props),
       contentType: "application/json",
     });
-    assert.param("section")(() => typia.assert(section));
-    assert.body(() => typia.assert(input));
+    assert.param("section")(() => typia.assert(props.section));
+    assert.body(() => typia.assert(props.body));
     return random();
   };
 }
@@ -231,9 +249,9 @@ export namespace create {
  * Therefore, whenever an article being updated, length of {@link IBbsArticle.snapshots}
  * would be increased and accumulated.
  *
- * @param section Target section
- * @param id Target articles id
- * @param input Content to update
+ * @param props.section Target section
+ * @param props.id Target articles id
+ * @param props.body Content to update
  * @returns Newly created content info
  *
  * @controller BbsArticlesController.update
@@ -242,12 +260,10 @@ export namespace create {
  */
 export async function update(
   connection: IConnection,
-  section: string,
-  id: string & Format<"uuid">,
-  input: update.Body,
+  props: update.Props,
 ): Promise<update.Output> {
   return true === connection.simulate
-    ? update.simulate(connection, section, id, input)
+    ? update.simulate(connection, props)
     : PlainFetcher.fetch(
         {
           ...connection,
@@ -259,12 +275,28 @@ export async function update(
         {
           ...update.METADATA,
           template: update.METADATA.path,
-          path: update.path(section, id),
+          path: update.path(props),
         },
-        input,
+        props.body,
       );
 }
 export namespace update {
+  export type Props = {
+    /**
+     * Target section
+     */
+    section: string;
+
+    /**
+     * Target articles id
+     */
+    id: string & Format<"uuid">;
+
+    /**
+     * Content to update
+     */
+    body: Body;
+  };
   export type Body = IBbsArticle.IUpdate;
   export type Output = IBbsArticle.ISnapshot;
 
@@ -282,25 +314,20 @@ export namespace update {
     status: 200,
   } as const;
 
-  export const path = (section: string, id: string & Format<"uuid">) =>
-    `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}/${encodeURIComponent(id?.toString() ?? "null")}`;
+  export const path = (props: Omit<Props, "body">) =>
+    `/bbs/articles/${encodeURIComponent(props.section?.toString() ?? "null")}/${encodeURIComponent(props.id?.toString() ?? "null")}`;
   export const random = (): IBbsArticle.ISnapshot =>
     typia.random<IBbsArticle.ISnapshot>();
-  export const simulate = (
-    connection: IConnection,
-    section: string,
-    id: string & Format<"uuid">,
-    input: Body,
-  ): Output => {
+  export const simulate = (connection: IConnection, props: Props): Output => {
     const assert = NestiaSimulator.assert({
       method: METADATA.method,
       host: connection.host,
-      path: path(section, id),
+      path: path(props),
       contentType: "application/json",
     });
-    assert.param("section")(() => typia.assert(section));
-    assert.param("id")(() => typia.assert(id));
-    assert.body(() => typia.assert(input));
+    assert.param("section")(() => typia.assert(props.section));
+    assert.param("id")(() => typia.assert(props.id));
+    assert.body(() => typia.assert(props.body));
     return random();
   };
 }
@@ -310,9 +337,9 @@ export namespace update {
  *
  * Erase an article with specific password.
  *
- * @param section Target section
- * @param id Target articles id
- * @param input Password to erase
+ * @param props.section Target section
+ * @param props.id Target articles id
+ * @param props.body Password to erase
  *
  * @controller BbsArticlesController.erase
  * @path DELETE /bbs/articles/:section/:id
@@ -320,12 +347,10 @@ export namespace update {
  */
 export async function erase(
   connection: IConnection,
-  section: string,
-  id: string,
-  input: erase.Body,
+  props: erase.Props,
 ): Promise<void> {
   return true === connection.simulate
-    ? erase.simulate(connection, section, id, input)
+    ? erase.simulate(connection, props)
     : PlainFetcher.fetch(
         {
           ...connection,
@@ -337,12 +362,28 @@ export async function erase(
         {
           ...erase.METADATA,
           template: erase.METADATA.path,
-          path: erase.path(section, id),
+          path: erase.path(props),
         },
-        input,
+        props.body,
       );
 }
 export namespace erase {
+  export type Props = {
+    /**
+     * Target section
+     */
+    section: string;
+
+    /**
+     * Target articles id
+     */
+    id: string;
+
+    /**
+     * Password to erase
+     */
+    body: Body;
+  };
   export type Body = IBbsArticle.IErase;
 
   export const METADATA = {
@@ -359,24 +400,19 @@ export namespace erase {
     status: 200,
   } as const;
 
-  export const path = (section: string, id: string) =>
-    `/bbs/articles/${encodeURIComponent(section?.toString() ?? "null")}/${encodeURIComponent(id?.toString() ?? "null")}`;
+  export const path = (props: Omit<Props, "body">) =>
+    `/bbs/articles/${encodeURIComponent(props.section?.toString() ?? "null")}/${encodeURIComponent(props.id?.toString() ?? "null")}`;
   export const random = (): void => typia.random<void>();
-  export const simulate = (
-    connection: IConnection,
-    section: string,
-    id: string,
-    input: Body,
-  ): void => {
+  export const simulate = (connection: IConnection, props: Props): void => {
     const assert = NestiaSimulator.assert({
       method: METADATA.method,
       host: connection.host,
-      path: path(section, id),
+      path: path(props),
       contentType: "application/json",
     });
-    assert.param("section")(() => typia.assert(section));
-    assert.param("id")(() => typia.assert(id));
-    assert.body(() => typia.assert(input));
+    assert.param("section")(() => typia.assert(props.section));
+    assert.param("id")(() => typia.assert(props.id));
+    assert.body(() => typia.assert(props.body));
     return random();
   };
 }
