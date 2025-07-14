@@ -10,28 +10,29 @@ export async function test_api_bbs_article_create(
   // STORE A NEW ARTICLE
   const stored: IBbsArticle = await api.functional.bbs.articles.create(
     connection,
-    "general",
     {
-      writer: RandomGenerator.name(),
-      title: RandomGenerator.paragraph(3)(),
-      body: RandomGenerator.content(8)()(),
-      format: "txt",
-      files: [
-        {
-          name: "logo",
-          extension: "png",
-          url: "https://somewhere.com/logo.png",
-        },
-      ],
-      password: v4(),
+      section: "general",
+      body: {
+        writer: RandomGenerator.name(),
+        title: RandomGenerator.paragraph(3)(),
+        body: RandomGenerator.content(8)()(),
+        format: "txt",
+        files: [
+          {
+            name: "logo",
+            extension: "png",
+            url: "https://somewhere.com/logo.png",
+          },
+        ],
+        password: v4(),
+      },
     },
   );
 
   // READ THE DATA AGAIN
-  const read: IBbsArticle = await api.functional.bbs.articles.at(
-    connection,
-    stored.section,
-    stored.id,
-  );
+  const read: IBbsArticle = await api.functional.bbs.articles.at(connection, {
+    section: stored.section,
+    id: stored.id,
+  });
   TestValidator.equals("created")(stored)(read);
 }

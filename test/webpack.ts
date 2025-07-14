@@ -1,9 +1,11 @@
+import { DynamicExecutor } from "@nestia/e2e";
 import cp from "child_process";
 import { sleep_for } from "tstl";
 
 import { MyConfiguration } from "../src/MyConfiguration";
 import { MyGlobal } from "../src/MyGlobal";
-import { TestAutomation } from "./TestAutomation";
+import { TestAutomation } from "./helpers/TestAutomation";
+import { TestAutomationStdio } from "./helpers/TestAutomationStdio";
 
 const wait = async (): Promise<void> => {
   while (true)
@@ -17,7 +19,8 @@ const wait = async (): Promise<void> => {
 
 const main = async (): Promise<void> => {
   MyGlobal.testing = true;
-  await TestAutomation.execute({
+
+  const report: DynamicExecutor.IReport = await TestAutomation.execute({
     open: async () => {
       const backend: cp.ChildProcess = cp.fork(
         `${MyConfiguration.ROOT}/dist/server.js`,
@@ -31,7 +34,10 @@ const main = async (): Promise<void> => {
     close: async (backend) => {
       backend.kill();
     },
+    options: await TestAutomationStdio.getOptions(),
+    onComplete: TestAutomationStdio.onComplete,
   });
+  TestAutomationStdio.report(report);
 };
 main().catch((exp) => {
   console.log(exp);

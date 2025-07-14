@@ -10,31 +10,40 @@ export async function test_api_bbs_article_index_search(
   // GENERATE 100 ARTICLES
   const section: string = "general";
   const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100)(() =>
-    api.functional.bbs.articles.create(connection, section, {
-      writer: RandomGenerator.name(),
-      title: RandomGenerator.paragraph(4)(),
-      body: RandomGenerator.content(3)()(),
-      format: "txt",
-      files: [],
-      password: RandomGenerator.alphabets(8),
+    api.functional.bbs.articles.create(connection, {
+      section,
+      body: {
+        writer: RandomGenerator.name(),
+        title: RandomGenerator.paragraph(4)(),
+        body: RandomGenerator.content(3)()(),
+        format: "txt",
+        files: [],
+        password: RandomGenerator.alphabets(8),
+      },
     }),
   );
 
   // GET ENTIRE DATA
   const total: IPage<IBbsArticle.ISummary> =
-    await api.functional.bbs.articles.index(connection, section, {
-      limit: articles.length,
-      sort: ["-created_at"],
+    await api.functional.bbs.articles.index(connection, {
+      section,
+      body: {
+        limit: articles.length,
+        sort: ["-created_at"],
+      },
     });
 
   // PREPARE SEARCH FUNCTION
   const search = TestValidator.search("BbsArticleProvider.index()")(
     async (input: IBbsArticle.IRequest.ISearch) => {
       const page: IPage<IBbsArticle.ISummary> =
-        await api.functional.bbs.articles.index(connection, section, {
-          limit: articles.length,
-          search: input,
-          sort: ["-created_at"],
+        await api.functional.bbs.articles.index(connection, {
+          section,
+          body: {
+            limit: articles.length,
+            search: input,
+            sort: ["-created_at"],
+          },
         });
       return page.data;
     },

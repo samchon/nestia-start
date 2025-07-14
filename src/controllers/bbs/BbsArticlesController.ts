@@ -21,17 +21,17 @@ export class BbsArticlesController {
    * If you want, you can search and sort articles with specific conditions.
    *
    * @param section Target section
-   * @param input Pagination request info with searching and sorting options
+   * @param body Pagination request info with searching and sorting options
    * @returns Paginated articles with summarization
    */
   @core.TypedRoute.Patch()
   public index(
     @core.TypedParam("section") section: string,
-    @core.TypedBody() input: IBbsArticle.IRequest,
+    @core.TypedBody() body: IBbsArticle.IRequest,
   ): Promise<IPage<IBbsArticle.ISummary>> {
     return BbsArticleProvider.index({
       section,
-      input,
+      input: body,
     });
   }
 
@@ -61,17 +61,17 @@ export class BbsArticlesController {
    * Create a new article and returns its detailed record info.
    *
    * @param section Target section
-   * @param input New article info
+   * @param body New article info
    * @returns Newly created article info
    */
   @core.TypedRoute.Post()
   public create(
     @core.TypedParam("section") section: string,
-    @core.TypedBody() input: IBbsArticle.ICreate,
+    @core.TypedBody() body: IBbsArticle.ICreate,
   ): Promise<IBbsArticle> {
     return BbsArticleProvider.create({
       section,
-      input,
+      input: body,
     });
   }
 
@@ -84,19 +84,19 @@ export class BbsArticlesController {
    *
    * @param section Target section
    * @param id Target articles id
-   * @param input Content to update
+   * @param body Content to update
    * @returns Newly created content info
    */
   @core.TypedRoute.Put(":id")
   public update(
     @core.TypedParam("section") section: string,
     @core.TypedParam("id") id: string & tags.Format<"uuid">,
-    @core.TypedBody() input: IBbsArticle.IUpdate,
+    @core.TypedBody() body: IBbsArticle.IUpdate,
   ): Promise<IBbsArticle.ISnapshot> {
     return BbsArticleProvider.update({
       section,
       id,
-      input,
+      input: body,
     });
   }
 
@@ -107,18 +107,18 @@ export class BbsArticlesController {
    *
    * @param section Target section
    * @param id Target articles id
-   * @param input Password to erase
+   * @param body Password to erase
    */
   @core.TypedRoute.Delete(":id")
   public erase(
     @core.TypedParam("section") section: string,
     @core.TypedParam("id") id: string,
-    @core.TypedBody() input: IBbsArticle.IErase,
+    @core.TypedBody() body: IBbsArticle.IErase,
   ): Promise<void> {
     return BbsArticleProvider.erase({
       section,
       id,
-      input,
+      input: body,
     });
   }
 }
