@@ -47,9 +47,9 @@
   "homepage": "https://github.com/samchon/nestia-start#readme",
   "devDependencies": {
     "@autobe/interface": "^0.10.6",
-    "@nestia/benchmark": "^8.0.0-dev.20250829",
-    "@nestia/e2e": "^8.0.0-dev.20250829",
-    "@nestia/sdk": "^8.0.0-dev.20250829",
+    "@nestia/benchmark": "^8.0.0-dev.20250829-2",
+    "@nestia/e2e": "^8.0.0-dev.20250829-2",
+    "@nestia/sdk": "^8.0.0-dev.20250829-2",
     "@nestjs/cli": "^11.0.10",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
@@ -68,7 +68,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "eslint-plugin-deprecation": "^3.0.0",
     "express": "^4.18.2",
-    "nestia": "^8.0.0-dev.20250829",
+    "nestia": "^8.0.0-dev.20250829-2",
     "prettier": "^3.2.4",
     "prettier-plugin-prisma": "^5.0.0",
     "rimraf": "^3.0.2",
@@ -85,8 +85,8 @@
     "write-file-webpack-plugin": "^4.5.1"
   },
   "dependencies": {
-    "@nestia/core": "^8.0.0-dev.20250829",
-    "@nestia/fetcher": "^8.0.0-dev.20250829",
+    "@nestia/core": "^8.0.0-dev.20250829-2",
+    "@nestia/fetcher": "^8.0.0-dev.20250829-2",
     "@nestjs/common": "^11.1.6",
     "@nestjs/core": "^11.1.6",
     "@nestjs/platform-express": "^11.1.6",
