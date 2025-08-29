@@ -36,16 +36,16 @@ export async function test_api_bbs_article_at(
   });
 
   // CHECK EQUALITY
-  TestValidator.equals("stored vs. read")(stored)(read);
+  TestValidator.equals("stored vs. read", stored, read);
 
   // TRY 404 ERRORS
-  await TestValidator.error("wrong section")(() =>
+  await TestValidator.error("wrong section", () =>
     api.functional.bbs.articles.at(connection, {
       section: v4(),
       id: stored.id,
     }),
   );
-  await TestValidator.error("wrong id")(() =>
+  await TestValidator.error("wrong id", () =>
     api.functional.bbs.articles.at(connection, {
       section: stored.section,
       id: v4(),

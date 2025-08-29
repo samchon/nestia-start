@@ -14,8 +14,8 @@ export async function test_api_bbs_article_create(
       section: "general",
       body: {
         writer: RandomGenerator.name(),
-        title: RandomGenerator.paragraph(3)(),
-        body: RandomGenerator.content(8)()(),
+        title: RandomGenerator.paragraph(),
+        body: RandomGenerator.content(),
         format: "txt",
         files: [
           {
@@ -34,5 +34,5 @@ export async function test_api_bbs_article_create(
     section: stored.section,
     id: stored.id,
   });
-  TestValidator.equals("created")(stored)(read);
+  TestValidator.equals("created", stored, read);
 }
