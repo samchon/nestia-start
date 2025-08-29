@@ -9,13 +9,13 @@ export async function test_api_bbs_article_index_search(
 ): Promise<void> {
   // GENERATE 100 ARTICLES
   const section: string = "general";
-  const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100)(() =>
+  const articles: IBbsArticle[] = await ArrayUtil.asyncRepeat(100, () =>
     api.functional.bbs.articles.create(connection, {
       section,
       body: {
         writer: RandomGenerator.name(),
-        title: RandomGenerator.paragraph(4)(),
-        body: RandomGenerator.content(3)()(),
+        title: RandomGenerator.paragraph(),
+        body: RandomGenerator.content(),
         format: "txt",
         files: [],
         password: RandomGenerator.alphabets(8),
@@ -34,7 +34,8 @@ export async function test_api_bbs_article_index_search(
     });
 
   // PREPARE SEARCH FUNCTION
-  const search = TestValidator.search("BbsArticleProvider.index()")(
+  const search = TestValidator.search(
+    "BbsArticleProvider.index()",
     async (input: IBbsArticle.IRequest.ISearch) => {
       const page: IPage<IBbsArticle.ISummary> =
         await api.functional.bbs.articles.index(connection, {
@@ -47,7 +48,9 @@ export async function test_api_bbs_article_index_search(
         });
       return page.data;
     },
-  )(total.data, 10);
+    total.data,
+    10,
+  );
 
   // SEARCH TITLE
   await search({

@@ -36,7 +36,7 @@ export async function test_api_bbs_article_at(
       password: "1234",
     },
   });
-  await TestValidator.httpError("erased")(404)(() =>
+  await TestValidator.httpError("erased", 404, () =>
     api.functional.bbs.articles.at(connection, {
       section: stored.section,
       id: stored.id,
