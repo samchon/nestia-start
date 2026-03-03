@@ -49,7 +49,6 @@
     "@autobe/interface": "^0.10.6",
     "@nestia/benchmark": "^10.0.2",
     "@nestia/e2e": "^10.0.2",
-    "@nestia/sdk": "^10.0.2",
     "@nestjs/cli": "^11.0.16",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
@@ -87,6 +86,7 @@
   "dependencies": {
     "@nestia/core": "^10.0.2",
     "@nestia/fetcher": "^10.0.2",
+    "@nestia/sdk": "^10.0.2",
     "@nestjs/common": "^11.1.12",
     "@nestjs/core": "^11.1.12",
     "@nestjs/platform-express": "^11.1.12",
