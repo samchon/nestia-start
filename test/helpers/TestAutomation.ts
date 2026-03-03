@@ -45,6 +45,7 @@ export namespace TestAutomation {
           (props.options.exclude ?? []).every((str) => !func.includes(str))),
       onComplete: props.onComplete,
       simultaneous: props.options.simultaneous,
+      extension: __filename.endsWith(".ts") ? "ts" : "js",
     });
 
     // TERMINATE - WAIT FOR BACKGROUND EVENTS
