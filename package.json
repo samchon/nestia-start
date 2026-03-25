@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "scripts": {
     "benchmark": "node bin/test/benchmark",
-    "test": "node bin/test",
+    "test": "ts-node test/index.ts",
     "test:webpack": "npm run webpack && node bin/test/webpack.js",
     "------------------------BUILDS------------------------": "",
     "build": "npm run build:sdk && npm run build:main && npm run build:test",
