@@ -1,8 +1,5 @@
 import type { ITtscLintConfig } from "@ttsc/lint";
 
-export default async () => {
-  const shared = (await import("@ORGANIZATION/PROJECT-config/lint.config.ts")).default;
-  return {
-    ...shared,
-  } satisfies ITtscLintConfig;
-};
+export default {
+  extends: "../../config/lint.config.ts",
+} satisfies ITtscLintConfig;
