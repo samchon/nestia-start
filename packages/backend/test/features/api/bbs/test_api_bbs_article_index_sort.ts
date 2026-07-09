@@ -1,0 +1,61 @@
+import {
+  ArrayUtil,
+  GaffComparator,
+  RandomGenerator,
+  TestValidator,
+} from "@nestia/e2e";
+
+import api from "@ORGANIZATION/PROJECT-api";
+import { IBbsArticle, IPage } from "@ORGANIZATION/PROJECT-api";
+
+export async function test_api_bbs_article_index_sort(
+  connection: api.IConnection,
+): Promise<void> {
+  // GENERATE 100 ARTICLES
+  const section: string = "general";
+  await ArrayUtil.asyncRepeat(100, () =>
+    api.functional.bbs.articles.create(connection, {
+      section,
+      body: {
+        writer: RandomGenerator.name(),
+        title: RandomGenerator.paragraph(),
+        body: RandomGenerator.content(),
+        format: "txt",
+        files: [],
+        password: RandomGenerator.alphabets(8),
+      },
+    }),
+  );
+
+  // PREPARE VALIDATOR
+  const validator = TestValidator.sort(
+    "BbsArticleProvider.index()",
+    async (sort: IPage.Sort<IBbsArticle.IRequest.SortableColumns>) => {
+      const page: IPage<IBbsArticle.ISummary> =
+        await api.functional.bbs.articles.index(connection, {
+          section,
+          body: {
+            limit: 100,
+            sort,
+          },
+        });
+      return page.data;
+    },
+  );
+
+  // DO VALIDATE
+  const components = [
+    validator("created_at")(GaffComparator.dates((x) => x.created_at)),
+    validator("updated_at")(GaffComparator.dates((x) => x.updated_at)),
+    validator("title")(GaffComparator.strings((x) => x.title)),
+    validator("writer")(GaffComparator.strings((x) => x.writer)),
+    validator(
+      "writer",
+      "title",
+    )(GaffComparator.strings((x) => [x.writer, x.title])),
+  ];
+  for (const comp of components) {
+    await comp("+", false);
+    await comp("-", false);
+  }
+}

@@ -1,6 +1,5 @@
 version: 2
 updates:
-#######################################################
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
@@ -11,16 +10,18 @@ updates:
       - dependency-name: "@nestjs/*"
       - dependency-name: "@nestia/*"
       - dependency-name: "nestia"
+      - dependency-name: "tgrid"
       - dependency-name: "tstl"
       - dependency-name: "typia"
       - dependency-name: "typescript"
-      - dependency-name: "typescript-transform-paths"
-      - dependency-name: "ts-patch"
+      - dependency-name: "ttsc"
+      - dependency-name: "@ttsc/*"
     groups:
       Samchon:
         patterns:
           - "@nestia/*"
           - "nestia"
+          - "tgrid"
           - "tstl"
           - "typia"
       NestJS:
@@ -29,23 +30,5 @@ updates:
       TypeScript:
         patterns:
           - "typescript"
-          - "typescript-transform-paths"
-          - "ts-patch"
-#######################################################
-  - package-ecosystem: 'npm'
-    directory: '/packages/api'
-    schedule:
-      interval: 'daily'
-    open-pull-requests-limit: 25
-    versioning-strategy: increase
-    allow:
-      - dependency-name: "@nestia/fetcher"
-      - dependency-name: "typia"
-      - dependency-name: "tgrid"
-    groups:
-      Samchon:
-        patterns:
-          - "@nestia/fetcher"
-          - "typia"
-          - "tgrid"
-#######################################################
+          - "ttsc"
+          - "@ttsc/*"
