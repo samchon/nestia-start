@@ -80,7 +80,7 @@ importers:
         version: 13.0.0(@types/node@24.13.3)
     devDependencies:
       '@ORGANIZATION/PROJECT-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../config
       '@rollup/plugin-terser':
         specifier: ^0.4.4
@@ -153,7 +153,7 @@ importers:
         version: 13.0.2
     devDependencies:
       '@ORGANIZATION/PROJECT-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../config
       '@nestia/benchmark':
         specifier: catalog:samchon
