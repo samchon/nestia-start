@@ -1,9 +1,7 @@
+import { IBbsArticle, IPage } from "@ORGANIZATION/PROJECT-api";
 import core from "@nestia/core";
 import { Controller } from "@nestjs/common";
 import { tags } from "typia";
-
-import { IBbsArticle, IPage } from "@ORGANIZATION/PROJECT-api";
-
 import { BbsArticleProvider } from "../../providers/bbs/BbsArticleProvider";
 
 /**

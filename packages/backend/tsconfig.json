@@ -1,22 +1,10 @@
 {
+  "extends": "../../config/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "commonjs",
-    "lib": ["DOM", "ESNext"],
-    "sourceMap": true,
-    "outDir": "./lib",
-    "rootDir": "./src",
-    "removeComments": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
+    "outDir": "lib",
+    "rootDir": "src",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "emitDecoratorMetadata": true
   },
   "include": ["src"]
 }

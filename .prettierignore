@@ -1,7 +1,0 @@
-bin/
-dist/
-lib/
-node_modules/
-
-packages/api/src/functional
-README.md

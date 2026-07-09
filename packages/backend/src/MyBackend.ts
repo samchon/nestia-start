@@ -1,7 +1,6 @@
 import { WebSocketAdaptor } from "@nestia/core";
 import { INestApplication } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-
 import { MyConfiguration } from "./MyConfiguration";
 import { MyModule } from "./MyModule";
 

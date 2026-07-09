@@ -1,7 +1,6 @@
 import { ArrayUtil, RandomGenerator, TestValidator } from "@nestia/e2e";
 
-import api from "@ORGANIZATION/PROJECT-api";
-import { IBbsArticle, IPage } from "@ORGANIZATION/PROJECT-api";
+import api, { IBbsArticle, IPage } from "@ORGANIZATION/PROJECT-api";
 
 export async function test_api_bbs_article_index_search(
   connection: api.IConnection,
@@ -56,7 +55,7 @@ export async function test_api_bbs_article_index_search(
     fields: ["title"],
     values: (article) => [article.title],
     request: ([title]) => ({ title }),
-    filter: (article, [title]) => article.title.includes(title),
+    filter: (article, [title]) => article.title.includes(title!),
   });
 
   // SEARCH WRITER
@@ -64,7 +63,7 @@ export async function test_api_bbs_article_index_search(
     fields: ["writer"],
     values: (article) => [article.writer],
     request: ([writer]) => ({ writer }),
-    filter: (article, [writer]) => article.writer.includes(writer),
+    filter: (article, [writer]) => article.writer.includes(writer!),
   });
 
   // SEARCH BOTH OF THEM
@@ -73,6 +72,6 @@ export async function test_api_bbs_article_index_search(
     values: (article) => [article.title, article.writer],
     request: ([title, writer]) => ({ title, writer }),
     filter: (article, [title, writer]) =>
-      article.title.includes(title) && article.writer.includes(writer),
+      article.title.includes(title!) && article.writer.includes(writer!),
   });
 }
