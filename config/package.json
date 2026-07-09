@@ -5,14 +5,14 @@
   "description": "Shared TypeScript and @ttsc/lint configuration for the workspace",
   "exports": {
     "./lint": {
-      "types": "./lint.config.ts",
-      "default": "./lint.config.ts"
+      "types": "./lint.ts",
+      "default": "./lint.ts"
     },
     "./tsconfig": "./tsconfig.json",
     "./package.json": "./package.json"
   },
   "files": [
-    "lint.config.ts",
+    "lint.ts",
     "tsconfig.json"
   ],
   "devDependencies": {
