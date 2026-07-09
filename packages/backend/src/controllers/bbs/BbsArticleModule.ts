@@ -1,5 +1,4 @@
 import { Module } from "@nestjs/common";
-
 import { BbsArticlesController } from "./BbsArticlesController";
 
 @Module({

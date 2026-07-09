@@ -1,8 +1,6 @@
+import { IBbsArticle, IPage } from "@ORGANIZATION/PROJECT-api";
 import { ForbiddenException, NotFoundException } from "@nestjs/common";
 import { v4 } from "uuid";
-
-import { IBbsArticle, IPage } from "@ORGANIZATION/PROJECT-api";
-
 import { MapUtil } from "../../utils/MapUtil";
 
 /**

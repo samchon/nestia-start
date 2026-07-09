@@ -64,7 +64,10 @@ Also, in the root directory, you can run below commands:
   - `build`: Build every package (`pnpm -r build`)
   - `test`: Run test automation program of the backend
   - `start`: Start the backend server
-  - `format`: Format every TypeScript file with [prettier](https://prettier.io)
+  - `lint`: Type check and lint every package with [`ttsc`](https://ttsc.dev)
+  - `format`: Format every TypeScript file with [`ttsc format`](https://ttsc.dev)
+
+For reference, TypeScript compiler options and [`@ttsc/lint`](https://ttsc.dev) rules are shared from the [config](config) workspace package. Each package extends [config/tsconfig.json](config/tsconfig.json) and spreads [config/lint.config.ts](config/lint.config.ts) in its own `lint.config.ts` file.
 
 To publish the SDK library, run `npm publish` in the [packages/api](packages/api) directory. The `prepack` script would build everything before the publishing.
 
