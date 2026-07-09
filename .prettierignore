@@ -1,8 +1,7 @@
-dist
-bin
-node_modules
-packages
-src/api/functional
-src/api/utils/NestiaSimulator.ts
+bin/
+dist/
+lib/
+node_modules/
+
+packages/api/src/functional
 README.md
-tsconfig.json

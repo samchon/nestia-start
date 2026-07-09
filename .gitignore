@@ -1,10 +1,9 @@
-.git/
 bin/
 dist/
 lib/
 node_modules/
-packages/api/lib/
 
 .env
+.npmrc
 package-lock.json
-pnpm-lock.yaml
+*.log
