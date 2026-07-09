@@ -1,9 +1,8 @@
 import type { ITtscLintConfig } from "@ttsc/lint";
 
-import shared from "@ORGANIZATION/PROJECT-config/lint";
-
-const config = {
-  ...shared,
-} satisfies ITtscLintConfig;
-
-export default config;
+export default async () => {
+  const shared = (await import("@ORGANIZATION/PROJECT-config/lint")).default;
+  return {
+    ...shared,
+  } satisfies ITtscLintConfig;
+};
