@@ -7,7 +7,7 @@ A template repository for backend projects using [nestia](https://github.com/sam
 You can create a new project from this boilerplate by running below command:
 
 ```bash
-npx nestia start <directory>
+pnpm dlx nestia start <directory>
 ```
 
 For reference, this is a minimal boilerplate project concentrating only on [nestia](https://github.com/samchon/nestia) SDK generation. 
@@ -69,7 +69,7 @@ Also, in the root directory, you can run below commands:
 
 For reference, TypeScript compiler options and [`@ttsc/lint`](https://ttsc.dev) rules are shared from the [config](config) workspace package. Each package extends [config/tsconfig.json](config/tsconfig.json) and spreads [config/lint.config.ts](config/lint.config.ts) in its own `lint.config.ts` file.
 
-To publish the SDK library, run `npm publish` in the [packages/api](packages/api) directory. The `prepack` script would build everything before the publishing.
+To publish the SDK library, run `pnpm publish` in the [packages/api](packages/api) directory. The `prepack` script would build everything before the publishing.
 
 
 
