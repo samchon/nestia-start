@@ -37,8 +37,8 @@
     "typia": "catalog:samchon"
   },
   "devDependencies": {
+    "@ORGANIZATION/PROJECT-api": "workspace:*",
     "@ttsc/lint": "catalog:typescript",
-    "@ttsc/paths": "catalog:typescript",
     "rolldown": "catalog:rolldown",
     "ttsc": "catalog:typescript",
     "typescript": "catalog:typescript"
