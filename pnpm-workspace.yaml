@@ -3,12 +3,12 @@ packages:
   - "packages/*"
 catalogs:
   samchon:
-    nestia: &nestia ^12.0.0-rc.4
-    "@nestia/benchmark": *nestia
-    "@nestia/core": *nestia
-    "@nestia/e2e": *nestia
-    "@nestia/fetcher": *nestia
-    "@nestia/sdk": *nestia
+    "@nestia/benchmark": ^12.0.0-rc.4
+    "@nestia/core": ^12.0.0-rc.4
+    "@nestia/e2e": ^12.0.0-rc.4
+    "@nestia/fetcher": ^12.0.0-rc.4
+    "@nestia/sdk": ^12.0.0-rc.4
+    nestia: ^12.0.0-rc.4
     tgrid: ^1.2.1
     tstl: ^3.0.0
     typia: ^13.0.1
@@ -18,8 +18,8 @@ catalogs:
     rimraf: ^6.1.3
     uuid: ^13.0.0
   typescript:
-    ttsc: &ttsc ^0.18.2
-    "@ttsc/lint": *ttsc
-    "@ttsc/paths": *ttsc
-    "@ttsc/unplugin": *ttsc
+    "@ttsc/lint": ^0.18.2
+    "@ttsc/paths": ^0.18.2
+    "@ttsc/unplugin": ^0.18.2
+    ttsc: ^0.18.2
     typescript: ^7.0.2
