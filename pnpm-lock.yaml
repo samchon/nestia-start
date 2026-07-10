@@ -92,10 +92,10 @@ importers:
         specifier: catalog:samchon
         version: 13.0.1(@types/node@24.13.3)
     devDependencies:
+      '@ORGANIZATION/PROJECT-api':
+        specifier: workspace:*
+        version: 'link:'
       '@ttsc/lint':
-        specifier: catalog:typescript
-        version: 0.18.2
-      '@ttsc/paths':
         specifier: catalog:typescript
         version: 0.18.2
       rolldown:
