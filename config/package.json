@@ -5,10 +5,13 @@
   "description": "Shared TypeScript and @ttsc/lint configuration for the workspace",
   "files": [
     "lint.config.ts",
+    "rolldown.config.mjs",
     "tsconfig.json"
   ],
   "devDependencies": {
     "@ttsc/lint": "catalog:typescript",
+    "@ttsc/unplugin": "catalog:typescript",
+    "tinyglobby": "^0.2.12",
     "typescript": "catalog:typescript"
   }
 }
