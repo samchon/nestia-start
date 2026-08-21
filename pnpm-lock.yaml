@@ -11,23 +11,23 @@ catalogs:
       version: 1.1.5
   samchon:
     '@nestia/benchmark':
-      specifier: ^12.0.0
-      version: 12.0.0
+      specifier: ^13.0.0
+      version: 13.0.0
     '@nestia/core':
-      specifier: ^12.0.0
-      version: 12.0.0
+      specifier: ^13.0.0
+      version: 13.0.0
     '@nestia/e2e':
-      specifier: ^12.0.0
-      version: 12.0.0
+      specifier: ^13.0.0
+      version: 13.0.0
     '@nestia/fetcher':
-      specifier: ^12.0.0
-      version: 12.0.0
+      specifier: ^13.0.0
+      version: 13.0.0
     '@nestia/sdk':
-      specifier: ^12.0.0
-      version: 12.0.0
+      specifier: ^13.0.0
+      version: 13.0.0
     nestia:
-      specifier: ^12.0.0
-      version: 12.0.0
+      specifier: ^13.0.0
+      version: 13.0.0
     tgrid:
       specifier: ^1.2.1
       version: 1.2.1
@@ -35,21 +35,21 @@ catalogs:
       specifier: ^3.0.0
       version: 3.0.0
     typia:
-      specifier: ^13.1.1
-      version: 13.1.1
+      specifier: ^14.0.1
+      version: 14.0.1
   typescript:
     '@ttsc/lint':
-      specifier: ^0.18.4
-      version: 0.18.4
+      specifier: ^0.28.1
+      version: 0.28.1
     '@ttsc/paths':
-      specifier: ^0.18.4
-      version: 0.18.4
+      specifier: ^0.28.1
+      version: 0.28.1
     '@ttsc/unplugin':
-      specifier: ^0.18.4
-      version: 0.18.4
+      specifier: ^0.28.1
+      version: 0.28.1
     ttsc:
-      specifier: ^0.18.4
-      version: 0.18.4
+      specifier: ^0.28.1
+      version: 0.28.1
     typescript:
       specifier: ^7.0.2
       version: 7.0.2
@@ -69,10 +69,10 @@ importers:
     devDependencies:
       '@ttsc/lint':
         specifier: catalog:typescript
-        version: 0.18.4
+        version: 0.28.1
       '@ttsc/unplugin':
         specifier: catalog:typescript
-        version: 0.18.4
+        version: 0.28.1(ttsc@0.28.1)
       tinyglobby:
         specifier: ^0.2.12
         version: 0.2.17
@@ -84,26 +84,26 @@ importers:
     dependencies:
       '@nestia/fetcher':
         specifier: catalog:samchon
-        version: 12.0.0
+        version: 13.0.0
       tgrid:
         specifier: catalog:samchon
         version: 1.2.1
       typia:
         specifier: catalog:samchon
-        version: 13.1.1(@types/node@24.13.3)
+        version: 14.0.1(ttsc@0.28.1)
     devDependencies:
       '@ORGANIZATION/PROJECT-api':
         specifier: workspace:*
         version: 'link:'
       '@ttsc/lint':
         specifier: catalog:typescript
-        version: 0.18.4
+        version: 0.28.1
       rolldown:
         specifier: catalog:rolldown
         version: 1.1.5
       ttsc:
         specifier: catalog:typescript
-        version: 0.18.4
+        version: 0.28.1
       typescript:
         specifier: catalog:typescript
         version: 7.0.2
@@ -115,13 +115,13 @@ importers:
         version: link:../api
       '@nestia/core':
         specifier: catalog:samchon
-        version: 12.0.0(@nestia/fetcher@12.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@13.1.1(@types/node@24.13.3))
+        version: 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.1(ttsc@0.28.1))
       '@nestia/fetcher':
         specifier: catalog:samchon
-        version: 12.0.0
+        version: 13.0.0
       '@nestia/sdk':
         specifier: catalog:samchon
-        version: 12.0.0(@nestia/core@12.0.0(@nestia/fetcher@12.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@13.1.1(@types/node@24.13.3)))(@types/node@24.13.3)
+        version: 13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.1(ttsc@0.28.1)))
       '@nestjs/common':
         specifier: ^11.2.0
         version: 11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -154,26 +154,26 @@ importers:
         version: 3.0.0
       typia:
         specifier: catalog:samchon
-        version: 13.1.1(@types/node@24.13.3)
+        version: 14.0.1(ttsc@0.28.1)
       uuid:
         specifier: catalog:utils
         version: 13.0.2
     devDependencies:
       '@nestia/benchmark':
         specifier: catalog:samchon
-        version: 12.0.0
+        version: 13.0.0
       '@nestia/e2e':
         specifier: catalog:samchon
-        version: 12.0.0
+        version: 13.0.0
       '@nestjs/cli':
         specifier: ^11.0.16
         version: 11.0.24(@types/node@24.13.3)(prettier@3.9.4)(webpack-cli@5.1.4)
       '@ttsc/lint':
         specifier: catalog:typescript
-        version: 0.18.4
+        version: 0.28.1
       '@ttsc/paths':
         specifier: catalog:typescript
-        version: 0.18.4
+        version: 0.28.1
       '@types/cli-progress':
         specifier: ^3.11.5
         version: 3.11.6
@@ -203,7 +203,7 @@ importers:
         version: 8.2.7(@types/node@24.13.3)
       nestia:
         specifier: catalog:samchon
-        version: 12.0.0
+        version: 13.0.0
       rimraf:
         specifier: catalog:utils
         version: 6.1.3
@@ -212,7 +212,7 @@ importers:
         version: 5.0.1(express@4.22.2)
       ttsc:
         specifier: catalog:typescript
-        version: 0.18.4
+        version: 0.28.1
       typescript:
         specifier: catalog:typescript
         version: 7.0.2
@@ -463,34 +463,37 @@ packages:
       '@emnapi/core': ^1.7.1
       '@emnapi/runtime': ^1.7.1
 
-  '@nestia/benchmark@12.0.0':
-    resolution: {integrity: sha512-1y0H4uILaUfLnUTI3xNpmY/F7UHaHN4Lg9UkHtMZq0g35VS/sFK/EL9wUXA3koIquwmGzN7PjrIQrEeohjDjxw==}
+  '@nestia/benchmark@13.0.0':
+    resolution: {integrity: sha512-b9T3FhLKBFv4zeZZ72w4+JfIePDJgwW772pjJFrxnnu4J8eYl1E0rsvfofa+egN5QJ8YrBsWD6V9UKWVwcp4Aw==}
 
-  '@nestia/core@12.0.0':
-    resolution: {integrity: sha512-0fArojyEs4xDv8DS1enTgBZsCP5NAPlQKwhC40bDyrA014dVcdspCVWxWN31S8boHvvVxAcam1tV0AQBF/H4zg==}
+  '@nestia/core@13.0.0':
+    resolution: {integrity: sha512-vWExEZJZbe/R8f+khTsyXJIiuZXzk2ynkZUIUd87aZsn6arq9My/oWoynN4dcVbNcwG8XVvJZNwRvjDpQt+W3Q==}
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.18.0
-      '@nestia/fetcher': ^12.0.0
+      '@nestia/fetcher': ^13.0.0
       '@nestjs/common': '>=7.0.1'
       '@nestjs/core': '>=7.0.1'
       reflect-metadata: '>=0.1.12'
       rxjs: '>=6.0.3'
-      typia: ^13.0.2
+      ttsc: '>=0.19.2'
+      typia: ^14.0.1
     peerDependenciesMeta:
       '@modelcontextprotocol/sdk':
         optional: true
+      ttsc:
+        optional: true
 
-  '@nestia/e2e@12.0.0':
-    resolution: {integrity: sha512-AUdkVNsYrvVPoYFUa6+Iucwpijqwp2IAicf+a/XZP/RlnxfBXUxcgOUBouzD+obQ2ENTyxPLxL49Bs8r+e5O2A==}
+  '@nestia/e2e@13.0.0':
+    resolution: {integrity: sha512-H8w6pZqIUS37Cx6+0XHbCsvshusYioT6fvfLOPFGbuktGMd5y+PWTsfdgBRXp8JWw5P8BA3/IiUBWHB7fmLr1w==}
 
-  '@nestia/fetcher@12.0.0':
-    resolution: {integrity: sha512-0dUsH+pUqCE5pG7HOQyE7F6wyAD48X4d/WmbK/uEnMBgTTJFwcJrfQWLd9fW2kddfLlQTqm/NPdM1Nv7oF0XoQ==}
+  '@nestia/fetcher@13.0.0':
+    resolution: {integrity: sha512-uUAEX2mvJbmjhLicLiJHhRSIldJmp1mUYGmVvfh2E76cX5KCu6mmu+36bnqCM2M8iKwu8spUaIPGmPQR1I5Lbw==}
 
-  '@nestia/sdk@12.0.0':
-    resolution: {integrity: sha512-MR2EWYP7ZYNGnwvSz76JAHb8LLtE3aug3VSYgLDbcwHYEwd+vsJPcsYCw6q/jpOAgU8QbRE31EcvXrkI3c//bQ==}
+  '@nestia/sdk@13.0.0':
+    resolution: {integrity: sha512-OQpgto5Z+AOdbCTHYqGb5F2TK7ZDXfEHZviAEcPeUvjP5YqAgdSwCFp6dFKtdLmxYbKC5thmbWiIpl/6XIdmLA==}
     hasBin: true
     peerDependencies:
-      '@nestia/core': ^12.0.0
+      '@nestia/core': ^13.0.0
 
   '@nestjs/cli@11.0.24':
     resolution: {integrity: sha512-aIHxQLSYtXShifA3zwWIeznEsZnNa3Iz2QRykFj+sl9IcbERBHr5nH87FRgywM+He3NxoF5WazHfR8FsmVeWxw==}
@@ -661,9 +664,6 @@ packages:
   '@scarf/scarf@1.4.0':
     resolution: {integrity: sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ==}
 
-  '@standard-schema/spec@1.1.0':
-    resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
-
   '@tokenizer/inflate@0.4.1':
     resolution: {integrity: sha512-2mAv+8pkG6GIZiF1kNg1jAjh27IDxEPKwdGul3snfztFerfPGI1LjDezZp3i7BElXompqEtPmoPx6c2wgtWsOA==}
     engines: {node: '>=18'}
@@ -671,50 +671,52 @@ packages:
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
 
-  '@ttsc/darwin-arm64@0.18.4':
-    resolution: {integrity: sha512-XhUPqcmx1w83fUSQfYA91zoD5dQzDlTxi6fGtmDPzXz839hbI21iZ80rQtKIr0FjLqbCHWuTmz5PAbquTZ1wXA==}
+  '@ttsc/darwin-arm64@0.28.1':
+    resolution: {integrity: sha512-DNEcf5b/Z4RwFqfeHiN29+9aW/A/2XG+CUNLNBLftGCR24wbr6mlK+vgeurWEVyT3cVB4uVYfVpQo25VKvJ/gA==}
     cpu: [arm64]
     os: [darwin]
 
-  '@ttsc/darwin-x64@0.18.4':
-    resolution: {integrity: sha512-oDfrHVsHGgmbhEwNtVUmArzB4XnkfqhtjEN1h95eZWfJpTZGKhWIXwucX3ODOaJpxZFjRczvrvlpm5c5Sksw0g==}
+  '@ttsc/darwin-x64@0.28.1':
+    resolution: {integrity: sha512-MCecQQ9d9GaSE+7n4I0xK6Z/UsB/NaWYcB35ZN7rVJ8WSb8o8WB1tvS+WTuYNXAuK4KVsnv6YVNwY8kyROfClw==}
     cpu: [x64]
     os: [darwin]
 
-  '@ttsc/factory@0.18.4':
-    resolution: {integrity: sha512-rh3AawuAJaQC4IQ4F1I5/8LuJhMBWR61tB2tNQ8wTPF3FEoFNYasfHfvDg00yHK74roA1UNjfGPVfOHDOFzd+g==}
+  '@ttsc/factory@0.28.1':
+    resolution: {integrity: sha512-nUir/sT0p7Y9BhDRNoMnqUHDZUSMsUmSH+qc5EX6ViXo/mk0CBSvqUKKetSoE+AKWXx4nzAXiCnNgPkgUqLRbQ==}
 
-  '@ttsc/lint@0.18.4':
-    resolution: {integrity: sha512-1LC58PoQL1ckqOg2PMpq3ZIoWUA0j9dyT6wfa/HI4QNNYA+ql9I79n+hjKPKddNjtNe/BPs+CzZWpsHLJt3udw==}
+  '@ttsc/lint@0.28.1':
+    resolution: {integrity: sha512-8aTY3i3hRTRRafr4jLc5e1fQOAQrn/nUCmX7QSXkrhKJNla1g6p/YzYws83yVgYcaQBzzTJshjhPFaHOCP7YGw==}
 
-  '@ttsc/linux-arm64@0.18.4':
-    resolution: {integrity: sha512-y7j9rhYGxiYosDsnP2ZzTVGLo8CRm6CyK+2ex16bhdO1idkmRCvCYMN6PdtYTjFfldDROI+bqouikqwftEKylQ==}
+  '@ttsc/linux-arm64@0.28.1':
+    resolution: {integrity: sha512-pXAAJhdobYuEXQ7oKLMQ2y8RP8YDWFIrvayWPpPJQJdo4DViyX2iGC6rgUUYwpAkDXonxJ9Tk6qZtRZGBHNwSw==}
     cpu: [arm64]
     os: [linux]
 
-  '@ttsc/linux-arm@0.18.4':
-    resolution: {integrity: sha512-B5P6a65jXh4mDYbmbSgdnGMUsZ0/gvld5KcVbQMb1Am0tl3yQ9F588zgGQm4PYAWcoqsvZ+qtNoBMQkvg93WFw==}
+  '@ttsc/linux-arm@0.28.1':
+    resolution: {integrity: sha512-8x2SyV7FC4r/IphhxJxS09BwrXHnKN3vQMj2gUwTDoZXKnXL7sJO1M0Ulm5N05F6tKvKkil9HPGu4Srhar5eoQ==}
     cpu: [arm]
     os: [linux]
 
-  '@ttsc/linux-x64@0.18.4':
-    resolution: {integrity: sha512-nq6Tzm1yJf2XQ+68Sg8MIf5GoLyDFuwW0Pw+6TQCKz8mFpexiIkztoiptGYgzNJmrEqTNeiK/gs4IMIO1pkb/g==}
+  '@ttsc/linux-x64@0.28.1':
+    resolution: {integrity: sha512-2deTIhHV3Z9G1hbEzs4YsPTqxKXflnKkkKdup6LUD62ZEa/KQbNGZnsnIoFw41R8uaux+225kCMi8H77KAPocQ==}
     cpu: [x64]
     os: [linux]
 
-  '@ttsc/paths@0.18.4':
-    resolution: {integrity: sha512-d9cL4FVLOIuFD//TZJm99IAa78G6efpkE9S+ugDd60SMlaMUXrN5wEVwmJQS9omaDL0VwYfTYXHviocRYO4qPw==}
+  '@ttsc/paths@0.28.1':
+    resolution: {integrity: sha512-6b3NeFR+iuA2+1ix6bOH6OfAc55oc3YJBu0jLmQLu0ecGrcu70Rmr9x/yvtEdYxfiOU6F7cMgRcs5ou6DN4uog==}
 
-  '@ttsc/unplugin@0.18.4':
-    resolution: {integrity: sha512-lbizSMFePL+dzJZIw8N/ethvsHKwqsa741H301EefMvG7u4sOEyJHiorN1H2Zp58sYb8HJYBxCtDavtHJjf9IQ==}
+  '@ttsc/unplugin@0.28.1':
+    resolution: {integrity: sha512-JJzSXxWrOHYrlnM3yj3mNGd56HTdwLukzXpQ0ow1fZvCzntmB2+6QbtYrEcZM9H9cUeROT0PtfscAUuNLBncrA==}
+    peerDependencies:
+      ttsc: ^0.28.1
 
-  '@ttsc/win32-arm64@0.18.4':
-    resolution: {integrity: sha512-YmEoUVZg2OAQcoWeYQw0c9aBgoz8kBvFEvbI+uAFn0+bFX1uGryD/5f6bUhS/c3Cdx7xoISumEF3KSJpkjmT9g==}
+  '@ttsc/win32-arm64@0.28.1':
+    resolution: {integrity: sha512-JjHCOFYCQLyB9je0T+90RMn1NZY8BavMQHyJZi91qugiLbQLO6JzZMVISG8qQRuEPHpXNE8wqb8+B68NnGER/g==}
     cpu: [arm64]
     os: [win32]
 
-  '@ttsc/win32-x64@0.18.4':
-    resolution: {integrity: sha512-dp+h7XLLYSw4FHSiZF+EgQs0Fu2RtPcO4lpZfA6NwtmXuTuf64kh4NSsYTDeaEv5qquTcZpFxmA9I4HMNxXWkA==}
+  '@ttsc/win32-x64@0.28.1':
+    resolution: {integrity: sha512-dqvfvb0hXNHRm9eJEMt/YVkHfLd327/AFrZH1sNCemYEbLaCT543Zdv2qMMT4RyJiAGTo0TeXhyHBRaga63/BQ==}
     cpu: [x64]
     os: [win32]
 
@@ -907,17 +909,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@typia/interface@13.0.2':
-    resolution: {integrity: sha512-8MnKq/vs90KA1iydscUubBzP2C6qXYL4vlW83giWV8ZzCfROtyyczx29P2ZH0tvN6yRd6qQlnx6sAB4YAmr7QA==}
+  '@typia/interface@14.0.1':
+    resolution: {integrity: sha512-aDIu4B9JVH+2QwhrhIEEVd9PILzIyMDGJ0P4wULbg8LU6c5CmIWShCAR7TteOfk3UZiAzUHXnBpHdUlPO44JXg==}
 
-  '@typia/interface@13.1.1':
-    resolution: {integrity: sha512-6m2Rd5+sHadNo5nI5Z7TCfbkfCSP6Cxv3D4zuo0jzFsVV3CLTcxAzt4VT1WJdp3g3kCA/s53rZbVdLyws4Ui3A==}
-
-  '@typia/utils@13.0.2':
-    resolution: {integrity: sha512-xBaSdfviUgGJPdunaxKI/KFI5AFubDag2BYy8O+fd64yVaNgh/OaaWnOuHU2M7m+88pyR2WeVz0BisHcUJ7V7A==}
-
-  '@typia/utils@13.1.1':
-    resolution: {integrity: sha512-mmZ8+ZIN3qmfpPRw9+pwZKsrf0micpIGYQ3e8Lsd1fMpX3zIvyN+bzfkthklGYbOlqw/fswmJO1xkNethpJ4og==}
+  '@typia/utils@14.0.1':
+    resolution: {integrity: sha512-iyGP+mQ5qW/ESyjZCPneZdgw3umC6corMmIilUuUbSMc6hVH/ns300Gbft+LuQa9RWHE+PLtiHLwoTkmF7JF8w==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -1930,8 +1926,8 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  nestia@12.0.0:
-    resolution: {integrity: sha512-BwWTkeBrPyo6KaakTAV5i8kLsU5m+pVQxO695HbR/zIus5ZKm+0esAXBbuOOl3xmdGCK3sO9Oi03539CYu4hGg==}
+  nestia@13.0.0:
+    resolution: {integrity: sha512-u+ineX2O2z1c5SKNQfCHn1D9Ja/CMUVh3jkqZ+Jmo2jS37egLQ+Zirto0bXuzuHgFXD5mEBdIZlKhCaT3kz4cA==}
     hasBin: true
 
   node-abort-controller@3.1.1:
@@ -2419,8 +2415,9 @@ packages:
   tstl@3.0.0:
     resolution: {integrity: sha512-pR83y6/tbJx6jeGRqGJXk2t/eCUynaHEE6zsOLB0Zga8ej61LXtPfoeiROdhezpoCT15+1QMbqKB1Um5kasSKg==}
 
-  ttsc@0.18.4:
-    resolution: {integrity: sha512-RKsPOGP0D4EpH3yMNOiDw2Ona7e2CeEX6YwybDcVu+2dN6oToHrF43rlYC9srZ6zyvEbT/4wT39QiYQNj4d9JQ==}
+  ttsc@0.28.1:
+    resolution: {integrity: sha512-OCUun5oRR+AjqOgcC3znvwd7DGyHxsueiwg5lI3H2EjUEP+VkY2Ix3ccQYLbX3vMUITYuuM4mir4r6ClkWHWLQ==}
+    engines: {node: '>=22.15.0'}
     hasBin: true
 
   type-fest@0.21.3:
@@ -2452,9 +2449,13 @@ packages:
     engines: {node: '>=16.20.0'}
     hasBin: true
 
-  typia@13.1.1:
-    resolution: {integrity: sha512-hur9fCJ20mVzy/w3UfvxM+rmX9gGImdKHvhpNiTpEcUDT9qRiFbIG2+hTS9iNpw+plOJ5wgmPHci0yQKOHg4Xg==}
-    hasBin: true
+  typia@14.0.1:
+    resolution: {integrity: sha512-ate2e5EBbV0EsvYtBhfAhN1kh9ges4Om/hmeX0H1+CfjgdqMVzmiS7T0DojODT6l+irGZG4LH+SQPDY7qX+Tvg==}
+    peerDependencies:
+      ttsc: '>=0.19.2'
+    peerDependenciesMeta:
+      ttsc:
+        optional: true
 
   uid@2.0.2:
     resolution: {integrity: sha512-u3xV3X7uzvi5b1MncmZo3i2Aw222Zk1keqLA1YkHldREkAhAqi65wuPfe7lHx8H/Wzy+8CE7S7uS3jekIM5s8g==}
@@ -2869,22 +2870,22 @@ snapshots:
       '@tybys/wasm-util': 0.10.3
     optional: true
 
-  '@nestia/benchmark@12.0.0':
+  '@nestia/benchmark@13.0.0':
     dependencies:
-      '@nestia/fetcher': 12.0.0
+      '@nestia/fetcher': 13.0.0
       tgrid: 1.2.1
       tstl: 3.0.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@nestia/core@12.0.0(@nestia/fetcher@12.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@13.1.1(@types/node@24.13.3))':
+  '@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.1(ttsc@0.28.1))':
     dependencies:
-      '@nestia/fetcher': 12.0.0
+      '@nestia/fetcher': 13.0.0
       '@nestjs/common': 11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.2.1(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@typia/interface': 13.0.2
-      '@typia/utils': 13.0.2
+      '@typia/interface': 14.0.1
+      '@typia/utils': 14.0.1
       get-function-location: 2.0.0
       glob: 11.1.0
       path-parser: 6.1.0
@@ -2892,36 +2893,37 @@ snapshots:
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
       tgrid: 1.2.1
-      typia: 13.1.1(@types/node@24.13.3)
+      typia: 14.0.1(ttsc@0.28.1)
       ws: 7.5.11
+    optionalDependencies:
+      ttsc: 0.28.1
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@nestia/e2e@12.0.0': {}
+  '@nestia/e2e@13.0.0': {}
 
-  '@nestia/fetcher@12.0.0':
+  '@nestia/fetcher@13.0.0':
     dependencies:
-      '@typia/interface': 13.0.2
-      '@typia/utils': 13.0.2
+      '@typia/interface': 14.0.1
+      '@typia/utils': 14.0.1
 
-  '@nestia/sdk@12.0.0(@nestia/core@12.0.0(@nestia/fetcher@12.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@13.1.1(@types/node@24.13.3)))(@types/node@24.13.3)':
+  '@nestia/sdk@13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.1(ttsc@0.28.1)))':
     dependencies:
-      '@nestia/core': 12.0.0(@nestia/fetcher@12.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typia@13.1.1(@types/node@24.13.3))
-      '@nestia/fetcher': 12.0.0
-      '@ttsc/factory': 0.18.4
-      '@typia/interface': 13.0.2
-      '@typia/utils': 13.0.2
+      '@nestia/core': 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.1(ttsc@0.28.1))
+      '@nestia/fetcher': 13.0.0
+      '@ttsc/factory': 0.28.1
+      '@typia/interface': 14.0.1
+      '@typia/utils': 14.0.1
       get-function-location: 2.0.0
       glob: 11.1.0
       path-to-regexp: 6.3.0
       prettier: 3.9.4
       tgrid: 1.2.1
       tstl: 3.0.0
-      ttsc: 0.18.4
-      typia: 13.1.1(@types/node@24.13.3)
+      ttsc: 0.28.1
+      typia: 14.0.1(ttsc@0.28.1)
     transitivePeerDependencies:
-      - '@types/node'
       - bufferutil
       - utf-8-validate
 
@@ -3078,8 +3080,6 @@ snapshots:
 
   '@scarf/scarf@1.4.0': {}
 
-  '@standard-schema/spec@1.1.0': {}
-
   '@tokenizer/inflate@0.4.1':
     dependencies:
       debug: 4.4.3
@@ -3089,35 +3089,36 @@ snapshots:
 
   '@tokenizer/token@0.3.0': {}
 
-  '@ttsc/darwin-arm64@0.18.4':
+  '@ttsc/darwin-arm64@0.28.1':
     optional: true
 
-  '@ttsc/darwin-x64@0.18.4':
+  '@ttsc/darwin-x64@0.28.1':
     optional: true
 
-  '@ttsc/factory@0.18.4': {}
+  '@ttsc/factory@0.28.1': {}
 
-  '@ttsc/lint@0.18.4': {}
+  '@ttsc/lint@0.28.1': {}
 
-  '@ttsc/linux-arm64@0.18.4':
+  '@ttsc/linux-arm64@0.28.1':
     optional: true
 
-  '@ttsc/linux-arm@0.18.4':
+  '@ttsc/linux-arm@0.28.1':
     optional: true
 
-  '@ttsc/linux-x64@0.18.4':
+  '@ttsc/linux-x64@0.28.1':
     optional: true
 
-  '@ttsc/paths@0.18.4': {}
+  '@ttsc/paths@0.28.1': {}
 
-  '@ttsc/unplugin@0.18.4':
+  '@ttsc/unplugin@0.28.1(ttsc@0.28.1)':
     dependencies:
+      ttsc: 0.28.1
       unplugin: 2.3.11
 
-  '@ttsc/win32-arm64@0.18.4':
+  '@ttsc/win32-arm64@0.28.1':
     optional: true
 
-  '@ttsc/win32-x64@0.18.4':
+  '@ttsc/win32-x64@0.28.1':
     optional: true
 
   '@tybys/wasm-util@0.10.3':
@@ -3274,17 +3275,11 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@typia/interface@13.0.2': {}
+  '@typia/interface@14.0.1': {}
 
-  '@typia/interface@13.1.1': {}
-
-  '@typia/utils@13.0.2':
+  '@typia/utils@14.0.1':
     dependencies:
-      '@typia/interface': 13.0.2
-
-  '@typia/utils@13.1.1':
-    dependencies:
-      '@typia/interface': 13.1.1
+      '@typia/interface': 14.0.1
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
@@ -4268,7 +4263,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  nestia@12.0.0: {}
+  nestia@13.0.0: {}
 
   node-abort-controller@3.1.1: {}
 
@@ -4758,15 +4753,15 @@ snapshots:
 
   tstl@3.0.0: {}
 
-  ttsc@0.18.4:
+  ttsc@0.28.1:
     optionalDependencies:
-      '@ttsc/darwin-arm64': 0.18.4
-      '@ttsc/darwin-x64': 0.18.4
-      '@ttsc/linux-arm': 0.18.4
-      '@ttsc/linux-arm64': 0.18.4
-      '@ttsc/linux-x64': 0.18.4
-      '@ttsc/win32-arm64': 0.18.4
-      '@ttsc/win32-x64': 0.18.4
+      '@ttsc/darwin-arm64': 0.28.1
+      '@ttsc/darwin-x64': 0.28.1
+      '@ttsc/linux-arm': 0.28.1
+      '@ttsc/linux-arm64': 0.28.1
+      '@ttsc/linux-x64': 0.28.1
+      '@ttsc/win32-arm64': 0.28.1
+      '@ttsc/win32-x64': 0.28.1
 
   type-fest@0.21.3: {}
 
@@ -4810,17 +4805,13 @@ snapshots:
       '@typescript/typescript-win32-arm64': 7.0.2
       '@typescript/typescript-win32-x64': 7.0.2
 
-  typia@13.1.1(@types/node@24.13.3):
+  typia@14.0.1(ttsc@0.28.1):
     dependencies:
-      '@standard-schema/spec': 1.1.0
-      '@typia/interface': 13.1.1
-      '@typia/utils': 13.1.1
-      commander: 10.0.1
-      inquirer: 8.2.7(@types/node@24.13.3)
+      '@typia/interface': 14.0.1
+      '@typia/utils': 14.0.1
       randexp: 0.5.3
-      tinyglobby: 0.2.17
-    transitivePeerDependencies:
-      - '@types/node'
+    optionalDependencies:
+      ttsc: 0.28.1
 
   uid@2.0.2:
     dependencies:
