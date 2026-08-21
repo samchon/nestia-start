@@ -1,6 +1,7 @@
 import type { ITtscLintConfig } from "@ttsc/lint";
 
 const config = {
+  ignores: ["../packages/api/src/functional/**"],
   format: {
     // Keep @ttsc/lint formatting aligned with the repository import groups.
     severity: "off",
