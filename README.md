@@ -67,7 +67,7 @@ Also, in the root directory, you can run below commands:
   - `lint`: Type check and lint every package with [`ttsc`](https://ttsc.dev)
   - `format`: Format every TypeScript file with [`ttsc format`](https://ttsc.dev)
 
-For reference, TypeScript compiler options and [`@ttsc/lint`](https://ttsc.dev) rules are shared from the [config](config) workspace package. Each package extends [config/tsconfig.json](config/tsconfig.json) and spreads [config/lint.config.ts](config/lint.config.ts) in its own `lint.config.ts` file.
+For reference, TypeScript compiler options and [`@ttsc/lint`](https://ttsc.dev) rules are shared from the [config](config) workspace package. Each package extends [config/tsconfig.json](config/tsconfig.json) and the root [lint.config.ts](lint.config.ts), which layers workspace-wide ignores over [config/lint.config.ts](config/lint.config.ts).
 
 To publish the SDK library, run `pnpm publish` in the [packages/api](packages/api) directory. The `prepack` script would build everything before the publishing.
 

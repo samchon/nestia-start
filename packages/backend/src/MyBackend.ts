@@ -26,9 +26,10 @@ export class MyBackend {
     if (process.send) process.send("ready");
 
     // WHEN KILL COMMAND COMES
-    process.on("SIGINT", async () => {
-      await this.close();
-      process.exit(0);
+    process.on("SIGINT", () => {
+      void this.close()
+        .then(() => process.exit(0))
+        .catch(() => process.exit(1));
     });
   }
 
