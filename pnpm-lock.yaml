@@ -35,8 +35,8 @@ catalogs:
       specifier: ^3.0.0
       version: 3.0.0
     typia:
-      specifier: ^14.0.6
-      version: 14.0.6
+      specifier: ^15.0.0
+      version: 15.0.0
   typescript:
     '@ttsc/lint':
       specifier: ^0.28.1
@@ -90,7 +90,7 @@ importers:
         version: 1.2.1
       typia:
         specifier: catalog:samchon
-        version: 14.0.6(ttsc@0.28.1)
+        version: 15.0.0(ttsc@0.28.1)
     devDependencies:
       '@ORGANIZATION/PROJECT-api':
         specifier: workspace:*
@@ -115,13 +115,13 @@ importers:
         version: link:../api
       '@nestia/core':
         specifier: catalog:samchon
-        version: 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.6(ttsc@0.28.1))
+        version: 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.0(ttsc@0.28.1))
       '@nestia/fetcher':
         specifier: catalog:samchon
         version: 13.0.0
       '@nestia/sdk':
         specifier: catalog:samchon
-        version: 13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.6(ttsc@0.28.1)))
+        version: 13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.0(ttsc@0.28.1)))
       '@nestjs/common':
         specifier: ^12.0.1
         version: 12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -154,7 +154,7 @@ importers:
         version: 3.0.0
       typia:
         specifier: catalog:samchon
-        version: 14.0.6(ttsc@0.28.1)
+        version: 15.0.0(ttsc@0.28.1)
       uuid:
         specifier: catalog:utils
         version: 13.0.2
@@ -947,11 +947,17 @@ packages:
   '@typia/interface@14.0.6':
     resolution: {integrity: sha512-Ct4cW8vt1OfZNFlRBrVFeWZZrM/KvNUg4bmeIU4amXgYYp1sZkY71h+6GdrL+ApdF0KNnRxZ92hrrlbDodsjNg==}
 
+  '@typia/interface@15.0.0':
+    resolution: {integrity: sha512-iLl1Xtawi+GkdIILJdRyEKi1CZxj/ZRoz5jZ636GLGX83xWy95CZEo/WMJEcjJfdc3UhVK6xbh881d9iuZ+3uA==}
+
   '@typia/utils@14.0.1':
     resolution: {integrity: sha512-iyGP+mQ5qW/ESyjZCPneZdgw3umC6corMmIilUuUbSMc6hVH/ns300Gbft+LuQa9RWHE+PLtiHLwoTkmF7JF8w==}
 
   '@typia/utils@14.0.6':
     resolution: {integrity: sha512-g1LLQiOdPNyFR6dEQKsaa8HQnpZAAW+XAG0tVQ3/fVCARR5n4Yn59jBSI1UcNEv4F9DaM7vzHZi0b4iS+liajw==}
+
+  '@typia/utils@15.0.0':
+    resolution: {integrity: sha512-8gELqfowtStO/3gEc1ABRbFB8rKhabBJ7pNuhQ+7DV9aPKJGDfni6nxkRR0BCV7nuKZ5ev9DGjo8uAgnQ3vq+g==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -2488,6 +2494,14 @@ packages:
       ttsc:
         optional: true
 
+  typia@15.0.0:
+    resolution: {integrity: sha512-ZP+58aI7G4CK/NKIfgY4zoMDwtJvtEc9bzb3E3QKnAJs/PeGFJEFbjXLiMq0qYapX6z6BGbDi3NLxetmREhwFg==}
+    peerDependencies:
+      ttsc: '>=0.19.2'
+    peerDependenciesMeta:
+      ttsc:
+        optional: true
+
   uid@2.0.2:
     resolution: {integrity: sha512-u3xV3X7uzvi5b1MncmZo3i2Aw222Zk1keqLA1YkHldREkAhAqi65wuPfe7lHx8H/Wzy+8CE7S7uS3jekIM5s8g==}
     engines: {node: '>=8'}
@@ -2902,7 +2916,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.6(ttsc@0.28.1))':
+  '@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.0(ttsc@0.28.1))':
     dependencies:
       '@nestia/fetcher': 13.0.0
       '@nestjs/common': 12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -2916,7 +2930,7 @@ snapshots:
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
       tgrid: 1.2.1
-      typia: 14.0.6(ttsc@0.28.1)
+      typia: 15.0.0(ttsc@0.28.1)
       ws: 7.5.11
     optionalDependencies:
       ttsc: 0.28.1
@@ -2931,9 +2945,9 @@ snapshots:
       '@typia/interface': 14.0.1
       '@typia/utils': 14.0.1
 
-  '@nestia/sdk@13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.6(ttsc@0.28.1)))':
+  '@nestia/sdk@13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.0(ttsc@0.28.1)))':
     dependencies:
-      '@nestia/core': 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@14.0.6(ttsc@0.28.1))
+      '@nestia/core': 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.0.4(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.0.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.0(ttsc@0.28.1))
       '@nestia/fetcher': 13.0.0
       '@ttsc/factory': 0.28.1
       '@typia/interface': 14.0.1
@@ -3286,6 +3300,8 @@ snapshots:
 
   '@typia/interface@14.0.6': {}
 
+  '@typia/interface@15.0.0': {}
+
   '@typia/utils@14.0.1':
     dependencies:
       '@typia/interface': 14.0.1
@@ -3293,6 +3309,10 @@ snapshots:
   '@typia/utils@14.0.6':
     dependencies:
       '@typia/interface': 14.0.6
+
+  '@typia/utils@15.0.0':
+    dependencies:
+      '@typia/interface': 15.0.0
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
@@ -4888,6 +4908,14 @@ snapshots:
     dependencies:
       '@typia/interface': 14.0.6
       '@typia/utils': 14.0.6
+      randexp: 0.5.3
+    optionalDependencies:
+      ttsc: 0.28.1
+
+  typia@15.0.0(ttsc@0.28.1):
+    dependencies:
+      '@typia/interface': 15.0.0
+      '@typia/utils': 15.0.0
       randexp: 0.5.3
     optionalDependencies:
       ttsc: 0.28.1
