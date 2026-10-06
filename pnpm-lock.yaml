@@ -35,8 +35,8 @@ catalogs:
       specifier: ^3.0.0
       version: 3.0.0
     typia:
-      specifier: ^15.0.1
-      version: 15.0.1
+      specifier: ^15.1.0
+      version: 15.1.0
   typescript:
     '@ttsc/lint':
       specifier: ^0.28.1
@@ -90,7 +90,7 @@ importers:
         version: 1.2.1
       typia:
         specifier: catalog:samchon
-        version: 15.0.1(ttsc@0.28.1)
+        version: 15.1.0(ttsc@0.28.1)
     devDependencies:
       '@ORGANIZATION/PROJECT-api':
         specifier: workspace:*
@@ -115,13 +115,13 @@ importers:
         version: link:../api
       '@nestia/core':
         specifier: catalog:samchon
-        version: 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.1(ttsc@0.28.1))
+        version: 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.1.0(ttsc@0.28.1))
       '@nestia/fetcher':
         specifier: catalog:samchon
         version: 13.0.0
       '@nestia/sdk':
         specifier: catalog:samchon
-        version: 13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.1(ttsc@0.28.1)))
+        version: 13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.1.0(ttsc@0.28.1)))
       '@nestjs/common':
         specifier: ^12.1.2
         version: 12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -154,7 +154,7 @@ importers:
         version: 3.0.0
       typia:
         specifier: catalog:samchon
-        version: 15.0.1(ttsc@0.28.1)
+        version: 15.1.0(ttsc@0.28.1)
       uuid:
         specifier: catalog:utils
         version: 13.0.2
@@ -938,8 +938,8 @@ packages:
   '@typia/interface@14.0.6':
     resolution: {integrity: sha512-Ct4cW8vt1OfZNFlRBrVFeWZZrM/KvNUg4bmeIU4amXgYYp1sZkY71h+6GdrL+ApdF0KNnRxZ92hrrlbDodsjNg==}
 
-  '@typia/interface@15.0.1':
-    resolution: {integrity: sha512-dB5M3exm6/6PyfIUEQeE8Klhil3bayHXtvDiNWJyTvemHP5FpKiCyCjeGzPT6AG5cnSjzx10OPT3RDBULPuekw==}
+  '@typia/interface@15.1.0':
+    resolution: {integrity: sha512-kiKKWTAmJ8x48eUAkzTwH4AsX3CSe5AcsxGUkzkOqhqwlklxUWIACw93DXTr2F5aDIse3YBExJerWdgURsring==}
 
   '@typia/utils@14.0.1':
     resolution: {integrity: sha512-iyGP+mQ5qW/ESyjZCPneZdgw3umC6corMmIilUuUbSMc6hVH/ns300Gbft+LuQa9RWHE+PLtiHLwoTkmF7JF8w==}
@@ -947,8 +947,8 @@ packages:
   '@typia/utils@14.0.6':
     resolution: {integrity: sha512-g1LLQiOdPNyFR6dEQKsaa8HQnpZAAW+XAG0tVQ3/fVCARR5n4Yn59jBSI1UcNEv4F9DaM7vzHZi0b4iS+liajw==}
 
-  '@typia/utils@15.0.1':
-    resolution: {integrity: sha512-bq6m8U2ZPIjkoHPAtPAkOtC3P1ekFBRoh7+Xa7eAOy/jp/o3v58BojN3uTLXsZOWB79GmMqCpeyJNgtfs7Z2aA==}
+  '@typia/utils@15.1.0':
+    resolution: {integrity: sha512-9NLCbKI2rQOA4M9EbEx0HwXfKIUIdkvO2J+6mZQttx2CBfiIspgt0VdJSvmD0hqMKa6LvDdmeBKl13wTizVGog==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -2500,8 +2500,8 @@ packages:
       ttsc:
         optional: true
 
-  typia@15.0.1:
-    resolution: {integrity: sha512-kFk/yIQHujSbpFYeaiYfqPYowHjAIjujrSVLIQwrOqZQbSirVJl46RT0rVYrVYT7f0CNrbFfv5F05sb6vAj+Pg==}
+  typia@15.1.0:
+    resolution: {integrity: sha512-EW+b8jxKrRU/Q0eJXFry53vL6LFRlAMsSvfhKq3hh4pLTiswBWJMs6g4AtNlCPGCYJ0WMbSEME2qqe8DM7PnHg==}
     peerDependencies:
       ttsc: '>=0.19.2'
     peerDependenciesMeta:
@@ -2907,7 +2907,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.1(ttsc@0.28.1))':
+  '@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.1.0(ttsc@0.28.1))':
     dependencies:
       '@nestia/fetcher': 13.0.0
       '@nestjs/common': 12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -2921,7 +2921,7 @@ snapshots:
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
       tgrid: 1.2.1
-      typia: 15.0.1(ttsc@0.28.1)
+      typia: 15.1.0(ttsc@0.28.1)
       ws: 7.5.11
     optionalDependencies:
       ttsc: 0.28.1
@@ -2936,9 +2936,9 @@ snapshots:
       '@typia/interface': 14.0.1
       '@typia/utils': 14.0.1
 
-  '@nestia/sdk@13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.1(ttsc@0.28.1)))':
+  '@nestia/sdk@13.0.0(@nestia/core@13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.1.0(ttsc@0.28.1)))':
     dependencies:
-      '@nestia/core': 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.0.1(ttsc@0.28.1))
+      '@nestia/core': 13.0.0(@nestia/fetcher@13.0.0)(@nestjs/common@12.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.1.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)(ttsc@0.28.1)(typia@15.1.0(ttsc@0.28.1))
       '@nestia/fetcher': 13.0.0
       '@ttsc/factory': 0.28.1
       '@typia/interface': 14.0.1
@@ -3292,7 +3292,7 @@ snapshots:
 
   '@typia/interface@14.0.6': {}
 
-  '@typia/interface@15.0.1': {}
+  '@typia/interface@15.1.0': {}
 
   '@typia/utils@14.0.1':
     dependencies:
@@ -3302,9 +3302,9 @@ snapshots:
     dependencies:
       '@typia/interface': 14.0.6
 
-  '@typia/utils@15.0.1':
+  '@typia/utils@15.1.0':
     dependencies:
-      '@typia/interface': 15.0.1
+      '@typia/interface': 15.1.0
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
@@ -4918,10 +4918,10 @@ snapshots:
     optionalDependencies:
       ttsc: 0.28.1
 
-  typia@15.0.1(ttsc@0.28.1):
+  typia@15.1.0(ttsc@0.28.1):
     dependencies:
-      '@typia/interface': 15.0.1
-      '@typia/utils': 15.0.1
+      '@typia/interface': 15.1.0
+      '@typia/utils': 15.1.0
       randexp: 0.5.3
     optionalDependencies:
       ttsc: 0.28.1
